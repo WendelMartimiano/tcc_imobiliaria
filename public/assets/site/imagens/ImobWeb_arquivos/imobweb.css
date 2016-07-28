@@ -1,0 +1,79 @@
+/*Utilidades*/
+.oculta{font-size: 0px; margin: 0px; padding: 0px;}
+img.logo{max-width: 120px;}
+.clear{clear: both;}
+.divider{width: 200px; border-bottom: 2px dotted #AE9DAB; margin: 0 auto;}
+.titulo{text-transform: uppercase;color: #ff8100;font-size: 35px;font-weight: bold; font-family: 'Francois One', sans-serif;}
+.descricao{color: #363535;line-height: 24px;margin: 11px;}
+
+/*Background Parallax*/
+.background-parallax-slide{background-image: url("/home/wendel/Projetos/Site ImobWeb/imagens/construction-1210677_1280.jpg"); background-attachment: fixed;}
+.background-parallax-slide2{background-color: #333; background-attachment: fixed;}
+
+
+/*Background Colors*/
+.color-grey{background-color: #EEE;}
+/*Cores*/
+.color-white{color: #FFF;}
+
+/*Resets*/
+a:hover{text-decoration: none !important;}
+
+/*Fonts Sizes*/
+
+/*Btns*/
+.btn-saiba-mais{color: #FFF;background-color: #FF8100;padding: 10px 24px;border-radius: 4px;font-size: 16px;text-transform: uppercase;}
+.btn-saiba-mais:hover{background-color: #FFF; color: #FF8100; text-decoration: none;}
+
+/*Triangulos*/
+#triangle-white{margin: 0 auto; display: block; margin-top:-1px; z-index: 99;}
+#triangle-white path{fill: #000; stroke: #000; stroke-width: 2;}
+
+/*Paddings*/
+.padding-1{padding: 1px 0px;}
+.padding-10{padding: 10px 0px;}
+.padding-20{padding: 20px 0px;}
+.padding-30{padding: 30px 0px;}
+.padding-40{padding: 40px 0px;}
+.padding-50{padding: 50px 0px;}
+.padding-60{padding: 60px 0px;}
+.padding-70{padding: 70px 0px;}
+.padding-80{padding: 80px 0px;}
+
+/*Header*/
+.header{background-color: #FFF; float: left; width: 100%; padding: 5px; position: fixed; z-index: 1000; box-shadow: 0 0 12px #000;}
+.logo{float: left;}
+span.logo{margin: 20px 30px 0px 0px; font-size: 36px; color: #012275; font-family: 'Francois One', sans-serif;}
+ul.menu{list-style: none; float: right; margin-top: 25px;}
+ul.menu li{display: inline;}
+ul.menu li a{margin: 10px 30px; color: #000; font-size: 16px; font-weight: bold;}
+ul.menu li a:hover{color: #012275; text-decoration: none;}
+ul.menu li a:focus{color: #012275; text-decoration: none;}
+
+/*Slide*/
+.slide{padding: 300px 0px;}
+.descricao-slide{padding-bottom: 20px; font-size: 12px;}
+
+/*Sobre*/
+.detalhe-sobre{margin-top: 35px;}
+.titulo-sobre{font-size: 18px;font-weight: bold;color: #000;}
+.sobre{color: #999; background-color: #d9534f;}
+
+/*Cursos*/
+.cursos{}
+.curso{margin-top: 25px;}
+.img-curso{max-width: 260px;}
+.titulo-curso{font-size: 18px; color: #000; font-weight: bold; margin-top: 8px;}
+
+/*Detalhes*/
+.titulo-detalhe{font-size: 18px;font-weight: bold;color: #FFF;}
+
+/*
+Formulario Login
+*/
+.login{margin: -50px 0 0 100px; max-width: 400px;text-align: center;background-color: #FFF;}
+.conteudo-login{padding: 34px 8px 12px 8px;}
+.topo-login{background-color: #33B5E5;color: #FFF;padding: 5px;}
+.titulo-login{font-size: 24px;}
+.recuperar-senha{float: right;color: #33B5E5;}
+.btn-padrao{background: #E0E0E0 !important;color: #666565 !important;padding: 8px 36px;font-size: 18px;border: none;width: 100%;font-weight: bold;}
