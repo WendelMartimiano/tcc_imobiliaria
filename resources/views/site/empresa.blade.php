@@ -3,109 +3,127 @@
 @section('content')
 
 
-<section class="container-fluid col-md-11 col-md-offset-2">
+    <div class="row container">
+      <div class="row">
+          <div class="col s6 offset-s3">
+            <div class="card-panel">
+              <div class="row">
+                <h5 class="card-title indigo-text">Cadastre sua Empresa</h5>
+                <div class="divider"></div>
+              </div>              
+              <form method="POST" action="/site/empresa" send="/site/empresa">
+                {!! csrf_field() !!}
+                <!--
+                <div class="alert alert-warning mensagem-warning" role="alert" style="display: none"></div>
+                <div class="alert alert-success mensagem-success" role="alert" style="display: none"></div>
+                -->
 
-    <div class="col-sm-90 col-sm-offset-30 col-lg-10 col-lg-offset-1 main">
-        <div class="row">
-        </div><!--/.row-->
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Cadastre sua Empresa</div>
-                    <div class="panel-body">
-                        <div class="col-md-12">
-
-                            <form method="POST" action="/site/empresa" send="/site/empresa">
-                                {!! csrf_field() !!}
-
-                                <div class="alert alert-warning mensagem-warning" role="alert" style="display: none"></div>
-                                <div class="alert alert-success mensagem-success" role="alert" style="display: none"></div>
-
-                                {{--validando e listando o plano selecionado no site--}}
-                                @if($plano->id == 1)
-
-                                    <div class="form-group">
-                                        <input type="text" name="nome_plano" class="form-control" placeholder="Plano selecionado" value="{{$plano->nome}} - 100% {{$plano->valor}}" disabled>
-                                        <input type="hidden" name="id_plano" class="form-control" placeholder="Plano selecionado" value="{{$plano->id}}">
-                                    </div>
-
-                                @else
-
-                                    <div class="form-group">
-                                        <input type="text" name="nome_plano" class="form-control" placeholder="Plano selecionado" value="{{$plano->nome}} - R${{$plano->valor}}" disabled>
-                                        <input type="hidden" name="id_plano" class="form-control" placeholder="Plano selecionado" value="{{$plano->id}}">
-                                    </div>
-
-                                @endif
-
-                                <div class="form-group">
-                                    <input type="text" name="razao_social" class="form-control" placeholder="Razão Social *" value="{{ old('razao_social') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ *" value="{{ old('cnpj') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="E-mail *" value="{{ old('email') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="inscricao" class="form-control" placeholder="Inscrição *" value="{{ old('inscricao') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP *" value="{{ old('cep') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="rua" id="rua" class="form-control" placeholder="Rua *" value="{{ old('rua') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="numero" id="num" class="form-control" placeholder="Número *" value="{{ old('numero') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro *" value="{{ old('bairro') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Cidade *" value="{{ old('cidade') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="uf" id="uf" class="form-control" placeholder="UF *" value="{{ old('uf') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="creci" class="form-control" placeholder="CRECI *" value="{{ old('creci') }}">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary"> Cadastrar Empresa</button>
-                                <!--<button type="reset" class="btn btn-default">Limpar</button>-->
-                            </form>
-
-                            <div class="loader" style="display: none">Enviando os dados, por favor aguarde...
-                                <div class='preloader' >
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-
-                        </div>
+                {{--validando e listando o plano selecionado no site--}}
+                @if($plano->id == 1)
+                    <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled name="nome_plano" value="{{$plano->nome}} - 100% {{$plano->valor}}" id="disabled" type="text" class="validate">
+                        <input name="id_plano" value="{{$plano->id}}" type="hidden">
+                        <label for="disabled">Plano</label>
                     </div>
-                </div>
-            </div><!-- /.col-->
-        </div><!-- /.row -->
+                    </div>
+                @else 
+                    <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled name="nome_plano" value="{{$plano->nome}} - R${{$plano->valor}}" id="disabled" type="text" class="validate">
+                        <input name="id_plano" value="{{$plano->id}}" type="hidden">
+                        <label for="disabled">Plano</label>
+                    </div>
+                    </div>
+                @endif
 
-    </div><!--/.main-->
-</section>
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="razao_social" id="razao_social" type="text" class="validate" value="{{ old('razao_social') }}">
+                    <label for="razao_social">Razão Social</label>
+                  </div>
+                </div>                
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input name="cnpj" id="cnpj" type="text" class="validate" value="{{ old('cnpj') }}">
+                    <label for="cnpj">CNPJ</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input name="email" id="email" type="email" class="validate" value="{{ old('email') }}">
+                    <label for="email">E-mail</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input name="inscricao" id="inscricao" type="text" class="validate" value="{{ old('inscricao') }}">
+                    <label for="inscricao">Inscrição</label>
+                  </div>
+                </div>
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="cep" id="cep" type="text" class="validate" value="{{ old('cep') }}">
+                    <label for="cep">CEP</label>
+                  </div>
+                </div>                 
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="rua" id="rua" type="text" class="validate" value="{{ old('rua') }}">
+                    <label for="rua">Rua</label>
+                  </div>
+                </div> 
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="numero" id="num" type="text" class="validate" value="{{ old('numero') }}">
+                    <label for="numero">Número</label>
+                  </div>
+                </div> 
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="bairro" id="bairro" type="text" class="validate" value="{{ old('bairro') }}">
+                    <label for="bairro">Bairro</label>
+                  </div>
+                </div> 
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="cidade" id="cidade" type="text" class="validate" value="{{ old('cidade') }}">
+                    <label for="cidade">Cidade</label>
+                  </div>
+                </div>
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="uf" id="uf" type="text" class="validate" value="{{ old('uf') }}">
+                    <label for="uf">UF</label>
+                  </div>
+                </div>  
+                <div class="row">                  
+                  <div class="input-field col s12">
+                    <input name="creci" id="creci" type="text" class="validate" value="{{ old('creci') }}">
+                    <label for="creci">CRECI</label>
+                  </div>
+                </div> 
+                <button class="btn waves-effect waves-light indigo darken-2" type="submit" name="action">Cadastrar Empresa
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>
+              <div class="loader" >Enviando os dados, por favor aguarde...
+                <div class='preloader' >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+
+
+
+
 @endsection
 
 

@@ -9,30 +9,31 @@
 
     <link rel="shortcut icon" href="{{ url('/assets/site/imagens/icone-imob.png') }}" type="image/x-icon" />
 
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--CSS Personalizado-->
-    <link rel="stylesheet" href="{{ url('/assets/site/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url('/assets/site/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('/assets/site/css/datepicker3.css') }}">
+    <link rel="stylesheet" href="{{ url('/bower_components/materialize/dist/css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ url('/assets/site/css/preloader.css') }}">
 
     <!--JS Personalizado-->
-    <script src="{!! url('/assets/site/js/lumino.glyphs.js') !!}"></script>
+    
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <![endif]-->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 
 @yield('content')
 
 <!--Jquery-->
-<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.min.js"></script>
+<script src="{{ url('/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ url('/bower_components/materialize/dist/js/materialize.min.js') }}"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <!-- scripts -->
 @yield('script')
