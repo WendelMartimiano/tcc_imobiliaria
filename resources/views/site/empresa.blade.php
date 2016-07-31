@@ -1,8 +1,6 @@
 @extends('site.template.empresa')
 
 @section('content')
-
-
     <div class="row container">
       <div class="row">
           <div class="col s6 offset-s3">
@@ -120,67 +118,84 @@
             </div>
           </div>
         </div>  
-
-
-
-
 @endsection
 
-
-<!--MASCARAS DOS CAMPOS E INTEGRAÇÃO COM API DE CEP-->
+{{-- MASCARAS DOS CAMPOS DE CEP E CNPJ --}}
 @section('script')
     <script>
         jQuery(function($){
             $("#cep").mask("99999-999");
             $("#cnpj").mask("99.999.999/9999-99");
-
-
-            var last_cep = 0;
-
-            $('#cep').on('keyup',function(){
-                var cep = $.trim($('#cep').val()).replace('_','');
-                if(cep.length >= 9){
-                    if(cep != last_cep){
-                        busca();
-                    }
-                }
-            });
-
-
-            function busca() {
-                var cep = $.trim($('#cep').val());
-                var url = 'http://clareslab.com.br/ws/cep/json/'+cep+'/';
-
-                $.post(url,{
-                            cep:cep
-                        },
-                        function (rs) {
-                            console.log(rs)
-                            if(rs != 0){
-                                rs = $.parseJSON(rs);
-
-                                $('#rua').val(rs.endereco);
-                                $('#bairro').val(rs.bairro);
-                                $('#cidade').val(rs.cidade);
-                                $('#uf').val(rs.uf);
-                                $('#cep').removeClass('invalid');
-                                $('#num').focus();
-
-                                last_cep = cep;
-                            }
-                            else{
-                                $('#cep').addClass('invalid');
-                                $('#cep').focus();
-                                last_cep = 0;
-                            }
-                        })
-            }
         });
-
-
     </script>
 
-    <!--AJAX DO CADASTRO DE EMPRESA-->
+    {{-- API DE CEP --}}
+    <script>
+
+        $(document).ready(function() {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+            }
+
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#rua").val("...")
+                        $("#bairro").val("...")
+                        $("#cidade").val("...")
+                        $("#uf").val("...")
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                                $("num").focus();
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+    </script>
+
+    {{-- AJAX PARA CADASTRO DE EMPRESA --}}
     <script>
         $(function () {
             jQuery("form").submit(function () {
