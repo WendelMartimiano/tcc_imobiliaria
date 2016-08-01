@@ -51,7 +51,7 @@ class EmpresaController extends Controller
             $displayErrors = '';
 
 
-            foreach($messages->all("<p><strong>:message</strong></p>") as $error){
+            foreach($messages->all("<p>:message</p>") as $error){
                 $displayErrors .= $error;
             }
 

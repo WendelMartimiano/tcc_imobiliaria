@@ -9,7 +9,7 @@
                 <h5 class="card-title indigo-text">Cadastre sua Empresa</h5>
                 <div class="divider"></div>
               </div>              
-              <form method="POST" action="/site/empresa" send="/site/empresa">
+              <form method="POST" id="formValidate" action="/site/empresa" send="/site/empresa">
                 {!! csrf_field() !!}
                 <!--
                 <div class="alert alert-warning mensagem-warning" role="alert" style="display: none"></div>
@@ -105,16 +105,25 @@
                   <i class="material-icons right">send</i>
                 </button>
               </form>
-              <div class="loader" >Enviando os dados, por favor aguarde...
-                <div class='preloader' >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+
+                <div class="row">
+                    <div class="col s12 m12 table-alert" style="display: none">
+                        <div class="card amber lighten-3">
+                            <div class="card-content ">
+                                <div class="message-error" role="alert"></div>
+                            </div>
+                        </div>
                 </div>
-              </div>
+
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                        <p class="center-align">Enviando dados, por favor aguarde..</p>
+                    </div>
+                </div>
             </div>
           </div>
         </div>  
@@ -122,12 +131,6 @@
 
 {{-- MASCARAS DOS CAMPOS DE CEP E CNPJ --}}
 @section('script')
-    <script>
-        jQuery(function($){
-            $("#cep").mask("99999-999");
-            $("#cnpj").mask("99.999.999/9999-99");
-        });
-    </script>
 
     {{-- API DE CEP --}}
     <script>
@@ -195,12 +198,106 @@
         });
     </script>
 
+      {{-- VALIDANDO CAMPOS COM JQUERY --}}
+      <script>
+          jQuery("#formValidate").validate({
+              rules: {
+                  razao_social: {
+                      required: true,
+                      minlength: 6
+                  },
+                  cnpj: "required",
+                  email: {
+                      required: true,
+                      email:true
+                  },
+                  inscricao: "required",
+                  cep: {
+                      required: true,
+                      minlength: 5
+                  },
+                  rua: {
+                      required: true,
+                      minlength: 6
+                  },
+                  numero:"required",
+                  bairro: {
+                      required: true,
+                      minlength: 4
+                  },
+                  cidade: {
+                      required: true,
+                      minlength: 4
+                  },
+                  uf: {
+                      required: true,
+                      minlength: 2
+                  },
+                  creci: {
+                      required: true,
+                      minlength: 2
+                  },
+              },
+              //For custom messages
+              messages: {
+                  razao_social: {
+                      required: "Informe a razão rocial.",
+                      minlength: "Preencha com no minímo 6 caracteres."
+                  },
+                  cnpj: {
+                      required: "Informe o CNPJ."
+                  },
+                  email: {
+                      required: "Informe o e-mail.",
+                      email: "Informe um e-mail válido."
+                  },
+                  inscricao: {
+                      required: "Informe o número de inscrição."
+                  },
+                  cep: {
+                      required: "Informe o CEP.",
+                      minlength: "Preencha com no minímo 5 caracteres."
+                  },
+                  rua: {
+                      required: "Informe a rua.",
+                      minlength: "Preencha com no minímo 6 caracteres."
+                  },
+                  numero: {
+                      required: "Informe o número da residência."
+                  },
+                  bairro: {
+                      required: "Informe o bairro.",
+                      minlength: "Preencha com no minímo 4 caracteres."
+                  },
+                  cidade: {
+                      required: "Informe a cidade.",
+                      minlength: "Preencha com no minímo 4 caracteres."
+                  },
+                  uf: {
+                      required: "Informe o estado.",
+                      minlength: "Preencha com no minímo 2 caracteres."
+                  },
+                  creci: {
+                      required: "Informe o número do creci"
+                  },
+              },
+              errorElement : 'div',
+              errorPlacement: function(error, element) {
+                  var placement = $(element).data('error');
+                  if (placement) {
+                      $(placement).append(error)
+                  } else {
+                      error.insertAfter(element);
+                  }
+              }
+          });
+      </script>
+
     {{-- AJAX PARA CADASTRO DE EMPRESA --}}
     <script>
         $(function () {
             jQuery("form").submit(function () {
-                jQuery(".mensagem-warning").hide();
-                jQuery(".mensagem-success").hide();
+                jQuery(".table-alert").hide();
 
                 var dadosForm = jQuery(this).serialize();
 
@@ -216,10 +313,10 @@
 
                     }else{
                         finalizaPreloader();
-                        jQuery(".mensagem-warning").html(data);
-                        jQuery(".mensagem-warning").show();
-
-                        setTimeout("jQuery('.mensagem-warning').hide();", 5000);
+                        jQuery(".message-error").html(data);
+                        jQuery(".table-alert").show();
+                        jQuery(".table-alert").focus();
+                        setTimeout("jQuery('.table-alert').hide();", 6000);
                     }
                 }).fail(function () {
                     finalizaPreloader();
@@ -232,11 +329,13 @@
         });
         
         function iniciaPreloader() {
-            jQuery(".loader").show();
+            //jQuery(".loader").show();
+            $('#modal1').openModal({dismissible: false});
         }
         
         function finalizaPreloader() {
-            jQuery(".loader").hide();
+            //jQuery(".loader").hide();
+            $('#modal1').closeModal({dismissible: false});
         }
     </script>
 @endsection
