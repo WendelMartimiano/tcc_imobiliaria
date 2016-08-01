@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call('PlanosSeeder');
         $this->call('OpcoesSeeder');
+        $this->call('CargosSeeder');
 
         /*
          * Criar seed da empresa endsystem

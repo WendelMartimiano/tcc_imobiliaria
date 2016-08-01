@@ -11,10 +11,6 @@
               </div>              
               <form method="POST" id="formValidate" action="/site/empresa" send="/site/empresa">
                 {!! csrf_field() !!}
-                <!--
-                <div class="alert alert-warning mensagem-warning" role="alert" style="display: none"></div>
-                <div class="alert alert-success mensagem-success" role="alert" style="display: none"></div>
-                -->
 
                 {{--validando e listando o plano selecionado no site--}}
                 @if($plano->id == 1)
@@ -129,7 +125,7 @@
         </div>  
 @endsection
 
-{{-- MASCARAS DOS CAMPOS DE CEP E CNPJ --}}
+
 @section('script')
 
     {{-- API DE CEP --}}
@@ -327,12 +323,12 @@
                 return false;
             });
         });
-        
+
         function iniciaPreloader() {
             //jQuery(".loader").show();
             $('#modal1').openModal({dismissible: false});
         }
-        
+
         function finalizaPreloader() {
             //jQuery(".loader").hide();
             $('#modal1').closeModal({dismissible: false});
