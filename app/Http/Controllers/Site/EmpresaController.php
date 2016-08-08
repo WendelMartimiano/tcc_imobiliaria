@@ -33,48 +33,69 @@ class EmpresaController extends Controller
     }
 
     /*
-     * VALIDA COM AS REGRAS DA MODEL E EFETUA O CADASTRO DA EMPRESA,
+     * VÁLIDA COM AS REGRAS DA MODEL E EFETUA O CADASTRO DA EMPRESA,
      * RETORNANDO AS DEVIDAS MENSAGENS.
      */
     public function postAdicionarEmpresa() {
         //recebe dados do formulário na view
         $dadosForm = $this->request->all();
 
-        //valida os dados referente as regras na model
-        $validator = $this->validator->make($dadosForm, Empresa::$rules);
+        //válida os dados referente as regras na model
+        $valida_required = $this->validator->make($dadosForm, Empresa::$rules_required);
         $valida_cnpj = $this->validator->make($dadosForm, Empresa::$rules_cnpj);
+        $valida_size = $this->validator->make($dadosForm, Empresa::$rules_size);
+        $valida_type = $this->validator->make($dadosForm, Empresa::$rules_type);
 
-        //valida os dados obrigatórios e retorna as mensagens
-        if($validator->fails()){
-            $messages = $validator->messages();
-
-            $displayErrors = '';
-
-
-            foreach($messages->all("<p>:message</p>") as $error){
-                $displayErrors .= $error;
-            }
+        //válida os campos obrigatórios
+        if($valida_required->fails()){
+            $messages = $valida_required->messages();
 
             /*
-            if($messages->all()){
-                $displayErrors = "É necessário informar todos os campos com ' * ' para prosseguir!";
+            foreach($messages->all("<p>:message<i class='material-icons right'>warning</i></p>") as $error){
+                array_push($displayErrors, $error);
             }
             */
+
+            if($messages->all()){
+                $displayErrors = array("É necessário informar todos os campos com ' * ' para prosseguir!<i class='material-icons right'>warning</i>");
+            }
 
             return $displayErrors;
         };
 
-        //valida se o cnpj é válido
+        //válida o cnpj
         if($valida_cnpj->fails()){
             $messages = $valida_cnpj->messages();
 
-            $displayErrors = '';
-
-
             if($messages->all()){
-                $displayErrors = "Cnpj inválido! Verifique.";
+                $displayErrors = array("Cnpj inválido! Verifique.<i class='material-icons right'>warning</i>");
             }
 
+            return $displayErrors;
+        };
+
+        //válida a quantidade mínima de caracteres por campo
+        if($valida_size->fails()){
+            $messages = $valida_size->messages();
+
+            $displayErrors = array();
+
+            foreach($messages->all("<p>:message<i class='material-icons right'>warning</i></p>") as $error){
+                array_push($displayErrors, $error);
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os tipos dos campos
+        if($valida_type->fails()){
+            $messages = $valida_type->messages();
+
+            $displayErrors = array();
+
+            foreach($messages->all("<p>:message<i class='material-icons right'>warning</i></p>") as $error){
+                array_push($displayErrors, $error);
+            }
 
             return $displayErrors;
         };

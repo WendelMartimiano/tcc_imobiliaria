@@ -12,21 +12,46 @@ class Empresa extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
 
-    static $rules = [
-        'razao_social'      =>'required|min:6',
+    //regra para campos obrigatórios
+    static $rules_required = [
+        'razao_social'      =>'required',
         'cnpj'              =>'required',
         'inscricao'         =>'required',
-        'email'             =>'required|email',
-        'cep'               =>'required|min:5',
-        'rua'               =>'required|min:6',
+        'email'             =>'required',
+        'cep'               =>'required',
+        'rua'               =>'required',
         'numero'            =>'required',
-        'bairro'            =>'required|min:4',
-        'cidade'            =>'required|min:4',
-        'uf'                =>'required|min:2',
+        'bairro'            =>'required',
+        'cidade'            =>'required',
+        'uf'                =>'required',
         'creci'             =>'required',
         'id_plano'          =>'required'
     ];
 
+    //regra para mínimo de caracteres
+    static $rules_size = [
+        'razao_social'      =>'min:6',
+        'inscricao'         =>'min:2',
+        'cep'               =>'min:5',
+        'rua'               =>'min:6',
+        'numero'            =>'min:1',
+        'bairro'            =>'min:4',
+        'cidade'            =>'min:4',
+        'uf'                =>'min:2',
+        'creci'             =>'min:2'
+    ];
+
+    //regra para tipo do campo
+    static $rules_type = [
+        'email'             =>'email',
+        'cnpj'              =>'numeric',
+        'inscricao'         =>'numeric',
+        'cep'               =>'numeric',
+        'numero'            =>'numeric',
+        'creci'             =>'numeric',
+    ];
+
+    //regra para cnpj válido
     static $rules_cnpj = [
         'cnpj'              =>'cnpj'
     ];

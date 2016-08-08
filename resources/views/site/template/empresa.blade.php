@@ -13,10 +13,8 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--CSS Personalizado-->
     <link rel="stylesheet" href="{{ url('/bower_components/materialize/dist/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ url('/assets/site/css/preloader.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/site/css/imobweb.css') }}">
 
-    <!--JS Personalizado-->
-    
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -26,12 +24,13 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
+<body class="fundo">
 
 @yield('content')
 
 <!--Jquery-->
 <script src="{{ url('/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ url('/bower_components/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 <script src="{{ url('/bower_components/materialize/dist/js/materialize.min.js') }}"></script>
 
 

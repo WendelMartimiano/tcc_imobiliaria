@@ -6,9 +6,9 @@
           <div class="col s6 offset-s3">
             <div class="card-panel">
               <div class="row">
-                <h5 class="card-title indigo-text">Cadastre sua Empresa</h5>
-                <div class="divider"></div>
-              </div>              
+                <h5 class="card-title center-align"><strong>Cadastre sua Empresa</strong></h5>
+              </div>
+
               <form method="POST" id="formValidate" action="/site/empresa" send="/site/empresa">
                 {!! csrf_field() !!}
 
@@ -34,70 +34,70 @@
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="razao_social" id="razao_social" type="text" class="validate" value="{{ old('razao_social') }}">
-                    <label for="razao_social">Razão Social</label>
+                    <label for="razao_social">Razão Social <strong style="color: red">*</strong></label>
                   </div>
                 </div>                
                 <div class="row">
                   <div class="input-field col s12">
                     <input name="cnpj" id="cnpj" type="text" class="validate" value="{{ old('cnpj') }}">
-                    <label for="cnpj">CNPJ</label>
+                    <label for="cnpj">CNPJ <strong style="color: red">*</strong></label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input name="email" id="email" type="email" class="validate" value="{{ old('email') }}">
-                    <label for="email">E-mail</label>
+                    <label for="email">E-mail <strong style="color: red">*</strong></label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input name="inscricao" id="inscricao" type="text" class="validate" value="{{ old('inscricao') }}">
-                    <label for="inscricao">Inscrição</label>
+                    <label for="inscricao">Inscrição <strong style="color: red">*</strong></label>
                   </div>
                 </div>
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="cep" id="cep" type="text" class="validate" value="{{ old('cep') }}">
-                    <label for="cep">CEP</label>
+                    <label for="cep">CEP <strong style="color: red">*</strong></label>
                   </div>
                 </div>                 
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="rua" id="rua" type="text" class="validate" value="{{ old('rua') }}">
-                    <label for="rua">Rua</label>
+                    <label for="rua">Rua <strong style="color: red">*</strong></label>
                   </div>
                 </div> 
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="numero" id="num" type="text" class="validate" value="{{ old('numero') }}">
-                    <label for="numero">Número</label>
+                    <label for="numero">Número <strong style="color: red">*</strong></label>
                   </div>
                 </div> 
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="bairro" id="bairro" type="text" class="validate" value="{{ old('bairro') }}">
-                    <label for="bairro">Bairro</label>
+                    <label for="bairro">Bairro <strong style="color: red">*</strong></label>
                   </div>
                 </div> 
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="cidade" id="cidade" type="text" class="validate" value="{{ old('cidade') }}">
-                    <label for="cidade">Cidade</label>
+                    <label for="cidade">Cidade <strong style="color: red">*</strong></label>
                   </div>
                 </div>
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="uf" id="uf" type="text" class="validate" value="{{ old('uf') }}">
-                    <label for="uf">UF</label>
+                    <label for="uf">UF <strong style="color: red">*</strong></label>
                   </div>
                 </div>  
                 <div class="row">                  
                   <div class="input-field col s12">
                     <input name="creci" id="creci" type="text" class="validate" value="{{ old('creci') }}">
-                    <label for="creci">CRECI</label>
+                    <label for="creci">CRECI <strong style="color: red">*</strong></label>
                   </div>
                 </div> 
-                <button class="btn waves-effect waves-light indigo darken-2" type="submit" name="action">Cadastrar Empresa
+                <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar Empresa
                   <i class="material-icons right">send</i>
                 </button>
               </form>
@@ -194,144 +194,48 @@
         });
     </script>
 
-      {{-- VALIDANDO CAMPOS COM JQUERY --}}
-      <script>
-          jQuery("#formValidate").validate({
-              rules: {
-                  razao_social: {
-                      required: true,
-                      minlength: 6
-                  },
-                  cnpj: "required",
-                  email: {
-                      required: true,
-                      email:true
-                  },
-                  inscricao: "required",
-                  cep: {
-                      required: true,
-                      minlength: 5
-                  },
-                  rua: {
-                      required: true,
-                      minlength: 6
-                  },
-                  numero:"required",
-                  bairro: {
-                      required: true,
-                      minlength: 4
-                  },
-                  cidade: {
-                      required: true,
-                      minlength: 4
-                  },
-                  uf: {
-                      required: true,
-                      minlength: 2
-                  },
-                  creci: {
-                      required: true,
-                      minlength: 2
-                  },
-              },
-              //For custom messages
-              messages: {
-                  razao_social: {
-                      required: "Informe a razão rocial.",
-                      minlength: "Preencha com no minímo 6 caracteres."
-                  },
-                  cnpj: {
-                      required: "Informe o CNPJ."
-                  },
-                  email: {
-                      required: "Informe o e-mail.",
-                      email: "Informe um e-mail válido."
-                  },
-                  inscricao: {
-                      required: "Informe o número de inscrição."
-                  },
-                  cep: {
-                      required: "Informe o CEP.",
-                      minlength: "Preencha com no minímo 5 caracteres."
-                  },
-                  rua: {
-                      required: "Informe a rua.",
-                      minlength: "Preencha com no minímo 6 caracteres."
-                  },
-                  numero: {
-                      required: "Informe o número da residência."
-                  },
-                  bairro: {
-                      required: "Informe o bairro.",
-                      minlength: "Preencha com no minímo 4 caracteres."
-                  },
-                  cidade: {
-                      required: "Informe a cidade.",
-                      minlength: "Preencha com no minímo 4 caracteres."
-                  },
-                  uf: {
-                      required: "Informe o estado.",
-                      minlength: "Preencha com no minímo 2 caracteres."
-                  },
-                  creci: {
-                      required: "Informe o número do creci"
-                  },
-              },
-              errorElement : 'div',
-              errorPlacement: function(error, element) {
-                  var placement = $(element).data('error');
-                  if (placement) {
-                      $(placement).append(error)
-                  } else {
-                      error.insertAfter(element);
+              {{-- AJAX PARA CADASTRO DE EMPRESA --}}
+              <script>
+                  $(function () {
+                      jQuery("form").submit(function () {
+                          jQuery(".table-alert").hide();
+
+                          var dadosForm = jQuery(this).serialize();
+
+                          jQuery.ajax({
+                              url: jQuery(this).attr("send"),
+                              data: dadosForm,
+                              type: "POST",
+                              beforeSend: iniciaPreloader()
+                          }).done(function (data) {
+                              if(data == 1){
+
+                                  setTimeout("jQuery(window.document.location).attr('href','/site/usuario');", 5000);
+
+                              }else{
+                                  finalizaPreloader();
+
+                                  for(var t in data){
+                                      console.log(data);
+                                      Materialize.toast(data[t], 4000, "toast-warnning");
+                                  }
+                              }
+                          }).fail(function () {
+                              finalizaPreloader();
+                              alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                              jQuery(window.document.location).attr('href','/site');
+                          });
+
+                          return false;
+                      });
+                  });
+
+                  function iniciaPreloader() {
+                      $('#modal1').openModal({dismissible: false});
                   }
-              }
-          });
-      </script>
 
-    {{-- AJAX PARA CADASTRO DE EMPRESA --}}
-    <script>
-        $(function () {
-            jQuery("form").submit(function () {
-                jQuery(".table-alert").hide();
-
-                var dadosForm = jQuery(this).serialize();
-
-                jQuery.ajax({
-                    url: jQuery(this).attr("send"),
-                    data: dadosForm,
-                    type: "POST",
-                    beforeSend: iniciaPreloader()
-                }).done(function (data) {
-                    if(data == 1){
-
-                        setTimeout("jQuery(window.document.location).attr('href','/site/usuario');", 5000);
-
-                    }else{
-                        finalizaPreloader();
-                        jQuery(".message-error").html(data);
-                        jQuery(".table-alert").show();
-                        jQuery(".table-alert").focus();
-                        setTimeout("jQuery('.table-alert').hide();", 6000);
-                    }
-                }).fail(function () {
-                    finalizaPreloader();
-                    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
-                    jQuery(window.document.location).attr('href','/site');
-                });
-
-                return false;
-            });
-        });
-
-        function iniciaPreloader() {
-            //jQuery(".loader").show();
-            $('#modal1').openModal({dismissible: false});
-        }
-
-        function finalizaPreloader() {
-            //jQuery(".loader").hide();
-            $('#modal1').closeModal({dismissible: false});
-        }
-    </script>
+                  function finalizaPreloader() {
+                      $('#modal1').closeModal({dismissible: false});
+                  }
+              </script>
 @endsection
