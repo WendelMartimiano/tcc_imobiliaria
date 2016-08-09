@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'site'], function () {
-    Route::get('usuario', 'Site\UsuarioController@getIndex');
+    Route::get('usuario/{id}', 'Site\UsuarioController@getIndex');
     Route::get('empresa/{id}', 'Site\EmpresaController@getIndex');
     Route::post('empresa', 'Site\EmpresaController@postAdicionarEmpresa');
     Route::post('send_mail', 'Site\MailController@mailContato');

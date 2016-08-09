@@ -22,8 +22,10 @@ class CreateUsersTable extends Migration
             $table->integer('id_empresa')->unsigned();
             $table->foreign('id_empresa')->references('id')->on('empresas');
 
+            /*
             $table->integer('id_plano')->unsigned();
             $table->foreign('id_plano')->references('id')->on('planos');
+            */
 
             $table->integer('id_cargo')->unsigned();
             $table->foreign('id_cargo')->references('id')->on('cargos');

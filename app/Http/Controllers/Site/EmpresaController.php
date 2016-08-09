@@ -101,8 +101,8 @@ class EmpresaController extends Controller
         };
 
         //efetua o cadastro da empresa
-        $this->empresa->create($dadosForm);
+        $lastId = $this->empresa->create($dadosForm)->id;
 
-        return 1;
+        return $lastId;
     }
 }

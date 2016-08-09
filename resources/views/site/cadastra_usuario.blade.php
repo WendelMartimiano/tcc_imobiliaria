@@ -6,34 +6,35 @@
             <div class="col s6 offset-s3">
                 <div class="card-panel">
                     <div class="row">
-                        <h5 class="card-title indigo-text">Cadastre seu usuário na imobweb</h5>
-                        <div class="divider"></div>
+                        <h5 class="card-title center-align"><strong>Cadastre seu Usuário</strong></h5>
+
                     </div>
+
                     <form method="POST" id="formValidate" action="" send="">
                         {!! csrf_field() !!}
 
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="name" id="nome" type="text" class="validate" value="{{ old('name') }}">
-                                <label for="nome">Nome</label>
+                                <label for="nome">Nome <strong style="color: red">*</strong></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="email" id="email" type="email" class="validate" value="{{ old('email') }}">
-                                <label for="email">E-mail</label>
+                                <label for="email">E-mail <strong style="color: red">*</strong></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="password" id="senha" type="password" class="validate" value="{{ old('password') }}">
-                                <label for="senha">Senha</label>
+                                <label for="senha">Senha <strong style="color: red">*</strong></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="password_confirmation" id="confirma_senha" type="password" class="validate" >
-                                <label for="confirma_senha">Confirmar Senha</label>
+                                <label for="confirma_senha">Confirmar Senha <strong style="color: red">*</strong></label>
                             </div>
                         </div>
                         <div class="row">
@@ -44,17 +45,17 @@
                                     <option value="2">Option 2</option>
                                     <option value="3">Option 3</option>
                                 </select>
-                                <label for="cargo">Cargo</label>
+                                <label for="cargo">Cargo <strong style="color: red">*</strong></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input name="empresa" id="empresa" type="text" class="validate" value="{{ old('id_empresa') }}">
+                                <input disabled name="empresa" id="empresa" type="text" class="validate" value="{{$empresa->razao_social }}">
                                 <label for="empresa">Empresa</label>
                             </div>
                         </div>
 
-                        <button class="btn waves-effect waves-light indigo darken-2" type="submit" name="action">Cadastrar Usuário
+                        <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar Usuário
                             <i class="material-icons right">send</i>
                         </button>
                     </form>

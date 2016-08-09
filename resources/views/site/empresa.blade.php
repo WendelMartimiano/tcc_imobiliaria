@@ -102,15 +102,6 @@
                 </button>
               </form>
 
-                <div class="row">
-                    <div class="col s12 m12 table-alert" style="display: none">
-                        <div class="card amber lighten-3">
-                            <div class="card-content ">
-                                <div class="message-error" role="alert"></div>
-                            </div>
-                        </div>
-                </div>
-
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal">
                     <div class="modal-content">
@@ -208,9 +199,9 @@
                               type: "POST",
                               beforeSend: iniciaPreloader()
                           }).done(function (data) {
-                              if(data == 1){
-
-                                  setTimeout("jQuery(window.document.location).attr('href','/site/usuario');", 5000);
+                              if(!isNaN(data)){
+                                    console.log(data);
+                                  setTimeout("jQuery(window.document.location).attr('href','/site/usuario/');", 5000);
 
                               }else{
                                   finalizaPreloader();
