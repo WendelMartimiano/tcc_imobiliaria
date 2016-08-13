@@ -55,4 +55,10 @@ class Empresa extends Model
     static $rules_cnpj = [
         'cnpj'              =>'cnpj'
     ];
+
+    //regra para registro duplicado
+    static $rules_duplicated = [
+        'cnpj'              =>'unique:empresas,cnpj',
+        'email'             =>'unique:empresas,email'
+    ];
 }

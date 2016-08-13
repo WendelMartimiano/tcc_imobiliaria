@@ -185,48 +185,47 @@
         });
     </script>
 
-              {{-- AJAX PARA CADASTRO DE EMPRESA --}}
-              <script>
-                  $(function () {
-                      jQuery("form").submit(function () {
-                          jQuery(".table-alert").hide();
+      {{-- AJAX PARA CADASTRO DE EMPRESA --}}
+      <script>
+          $(function () {
+              jQuery("form").submit(function () {
 
-                          var dadosForm = jQuery(this).serialize();
+                  var dadosForm = jQuery(this).serialize();
 
-                          jQuery.ajax({
-                              url: jQuery(this).attr("send"),
-                              data: dadosForm,
-                              type: "POST",
-                              beforeSend: iniciaPreloader()
-                          }).done(function (data) {
-                              if(!isNaN(data)){
-                                    console.log(data);
-                                  setTimeout("jQuery(window.document.location).attr('href','/site/usuario/');", 5000);
+                  jQuery.ajax({
+                      url: jQuery(this).attr("send"),
+                      data: dadosForm,
+                      type: "POST",
+                      beforeSend: iniciaPreloader()
+                  }).done(function (data) {
+                      if(!isNaN(data)){
 
-                              }else{
-                                  finalizaPreloader();
+                          $(window.document.location).attr('href', "/site/usuario/" + data);
 
-                                  for(var t in data){
-                                      console.log(data);
-                                      Materialize.toast(data[t], 4000, "toast-warnning");
-                                  }
-                              }
-                          }).fail(function () {
-                              finalizaPreloader();
-                              alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
-                              jQuery(window.document.location).attr('href','/site');
-                          });
+                      }else{
+                          finalizaPreloader();
 
-                          return false;
-                      });
+                          for(var t in data){
+                              console.log(data);
+                              Materialize.toast(data[t], 4000, "toast-warnning");
+                          }
+                      }
+                  }).fail(function () {
+                      finalizaPreloader();
+                      alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                     jQuery(window.document.location).attr('href','/site');
                   });
 
-                  function iniciaPreloader() {
-                      $('#modal1').openModal({dismissible: false});
-                  }
+                  return false;
+              });
+          });
 
-                  function finalizaPreloader() {
-                      $('#modal1').closeModal({dismissible: false});
-                  }
-              </script>
+          function iniciaPreloader() {
+              $('#modal1').openModal({dismissible: false});
+          }
+
+          function finalizaPreloader() {
+              $('#modal1').closeModal({dismissible: false});
+          }
+      </script>
 @endsection

@@ -17,19 +17,29 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'site'], function () {
     Route::get('usuario/{id}', 'Site\UsuarioController@getIndex');
+    Route::post('usuario', 'Site\UsuarioController@postAdicionarUsuario');
+
     Route::get('empresa/{id}', 'Site\EmpresaController@getIndex');
     Route::post('empresa', 'Site\EmpresaController@postAdicionarEmpresa');
-    Route::post('send_mail', 'Site\MailController@mailContato');
+
+    Route::post('send_mail', 'Site\EmpresaController@postMailContato');
+    //Route::post('send_mail', 'Site\MailController@mailContato');
+
     Route::controller('/', 'Site\PlanoController');
 });
 
+Route::get('email', function (){
+    Mail::raw('Mensagem de teste', function ($m){
+       $m->to('wendelprogrammer@gmail.com', 'Fulano')->subject('Tcc teste');
+    });
+});
 
 
 /*
- * Teste de submissão de formulario
+ Teste de submissão de formulario
 Route::post('/site/send_mail', function(Illuminate\Http\Request $request){
     dd($request->all());
-});*/
+});
 
 Route::get('empresa/{titulo?}', function ($titulo = 'Cadastro de Empresa') {
     return view('site.empresa', compact('titulo'));

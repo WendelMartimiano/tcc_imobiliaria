@@ -260,8 +260,9 @@
 
                         setTimeout("jQuery('.message-danger').hide();", 5000);
                     }
-                }).fail(function () {
+                }).fail(function (xhr) {
                     finalizaPreloader();
+                    console.log(xhr.responseText);
                     alert("Falha ao enviar a mensagem! Informe o erro a ImobWeb no contato (16)99999-9999.");
                 });
 
