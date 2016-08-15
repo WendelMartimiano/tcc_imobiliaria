@@ -88,6 +88,7 @@
             jQuery("form").submit(function () {
 
                 var dadosForm = jQuery(this).serialize();
+                console.log(dadosForm);
 
                 jQuery.ajax({
                     url: jQuery(this).attr("send"),
@@ -100,7 +101,7 @@
                     }else{
                         finalizaPreloader();
                         for(var t in data){
-                            Materialize.toast(data[t], 10000, "toast-warnning");
+                            Materialize.toast(data[t], 5000, "toast-warnning");
                         }
                     }
                 }).fail(function () {

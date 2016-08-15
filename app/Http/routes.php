@@ -22,16 +22,9 @@ Route::group(['prefix' => 'site'], function () {
     Route::get('empresa/{id}', 'Site\EmpresaController@getIndex');
     Route::post('empresa', 'Site\EmpresaController@postAdicionarEmpresa');
 
-    Route::post('send_mail', 'Site\EmpresaController@postMailContato');
-    //Route::post('send_mail', 'Site\MailController@mailContato');
+    Route::post('send_mail', 'Site\PlanoController@postMailContato');
 
     Route::controller('/', 'Site\PlanoController');
-});
-
-Route::get('email', function (){
-    Mail::raw('Mensagem de teste', function ($m){
-       $m->to('wendelprogrammer@gmail.com', 'Fulano')->subject('Tcc teste');
-    });
 });
 
 

@@ -207,7 +207,7 @@
 
                           for(var t in data){
                               console.log(data);
-                              Materialize.toast(data[t], 4000, "toast-warnning");
+                              Materialize.toast(data[t], 5000, "toast-warnning");
                           }
                       }
                   }).fail(function () {

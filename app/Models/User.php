@@ -37,4 +37,34 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    //regra para campos obrigatórios
+    static $rules_required = [
+        'name'                      =>'required',
+        'email'                     =>'required',
+        'password'                  =>'required',
+        'password_confirmation'     =>'required',
+        'id_empresa'                =>'required',
+        'id_cargo'                  =>'required'
+    ];
+
+    //regra para mínimo de caracteres
+    static $rules_size = [
+        'password'                  =>'min:6',
+    ];
+
+    //regra para tipo do campo
+    static $rules_type = [
+        'email'                     =>'email'
+    ];
+
+    //regra para registro duplicado
+    static $rules_duplicated = [
+        'email'                     =>'unique:users,email'
+    ];
+
+    //validando a confirmação de senha
+    static $rules_confirmation = [
+        'password'                  =>'confirmed'
+    ];
 }
