@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use App\Models\Cargo;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Factory;
 use Validator;
 
@@ -25,7 +26,6 @@ class UsuarioController extends Controller
     }
 
     public function getIndex($param){
-        //dd($param);
         $titulo = 'Cadastro de Usuário';
         $empresa = Empresa::all()->find($param);
         $cargos = Cargo::all();
@@ -114,6 +114,17 @@ class UsuarioController extends Controller
             'id_cargo' => $dadosForm['id_cargo']
         ]);
 
+        //chama método de envio de e-mail com os dados recem cadastrados
+        $this->postMailConfirmacao($dadosForm);
+
         return 1;
+    }
+
+    //envia e-mail de confirmação para o usuário recem cadastrado
+    private function postMailConfirmacao($params){
+        Mail::send('site.emails.confirmacao', $params, function ($m) use ($params){
+            $m->to($params['email'])
+                ->subject('Teste de confirmação de email');
+        });
     }
 }

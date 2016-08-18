@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'site'], function () {
+
+   // Route::get('teste/{mensagem}', 'Site\UsuarioController@postMailConfirmacao');
+
+    Route::get('confirmacao/{titulo?}', function ($titulo = 'Confirmação de E-mail') {
+        return view('site.confirma_email', compact('titulo'));
+    });
+
     Route::get('usuario/{id}', 'Site\UsuarioController@getIndex');
     Route::post('usuario', 'Site\UsuarioController@postAdicionarUsuario');
 

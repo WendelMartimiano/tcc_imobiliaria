@@ -56,8 +56,8 @@
                             </div>
                         </div>
 
-                        <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar Usuário
-                            <i class="material-icons right">send</i>
+                        <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar
+
                         </button>
                     </form>
 
@@ -96,8 +96,8 @@
                     type: "POST",
                     beforeSend: iniciaPreloader()
                 }).done(function (data) {
-                    if(!isNaN(data)){
-                        $(window.document.location).attr('href', "/site");
+                    if(data == 1){
+                        $(window.document.location).attr('href', "/site/confirmacao");
                     }else{
                         finalizaPreloader();
                         for(var t in data){
