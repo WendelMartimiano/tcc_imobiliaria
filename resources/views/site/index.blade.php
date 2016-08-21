@@ -31,7 +31,7 @@
 <section class="parallax text-center background-parallax color-white" id="home">
     <h1 class="titulo-parallax">ImobWeb</h1>
     <p class="descricao-parallax">Perfeito para apoio a gestão de vendas de sua imobiliária.</p>
-    <p class="descricao-parallax2">Já é nosso cliente? Efetue seu acesso ao login<a class="login" href="#">clicando aqui.</a></p>
+    <p class="descricao-parallax2">Já é nosso cliente? Efetue seu acesso ao login<a class="login" href="/auth/login">clicando aqui.</a></p>
 
     <a class="btn-escolha-plano scroll" href="#planos">
         <i class="fa fa-shopping-cart fa-lg carrinho-compra" aria-hidden="true"></i>Escolha seu Plano</a>

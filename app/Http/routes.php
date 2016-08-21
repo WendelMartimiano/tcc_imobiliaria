@@ -1,6 +1,17 @@
 <?php
 
-//Grupo de rota do site
+//Grupo de rotas do sistema
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
+    
+    
+    
+    
+    Route::get('/', function () {
+        return view('imobweb.dashboard');
+    });
+});
+
+//Grupo de rotas do site
 Route::group(['prefix' => 'site'], function () {
 
    // Route::get('teste/{mensagem}', 'Site\UsuarioController@postMailConfirmacao');
@@ -29,10 +40,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-//Rota do dashboard da imobweb
-Route::get('/dashboard', function () {
-    return view('imobweb.dashboard');
-});
 
 Route::get('/', function () {
     return view('welcome');
