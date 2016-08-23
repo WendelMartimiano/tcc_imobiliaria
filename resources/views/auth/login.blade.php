@@ -8,7 +8,7 @@
 
     <link href="{{url('assets/imobweb/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/datepicker3.css')}}" rel="stylesheet">
-    <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">
+    <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">    
 
     <!--[if lt IE 9]>
     <script src="{{url('assets/imobweb/js/html5shiv.js')}}"></script>
@@ -24,7 +24,16 @@
         <div class="login-panel panel panel-default">
             <div class="panel-heading">Login ImobWeb</div>
             <div class="panel-body">
-                <form role="form" method="POST" action="/auth/login">
+
+            @if (count($errors))
+                <p class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    {{$error}} </br>
+                @endforeach
+                </p>
+            @endif               
+            
+                <form role="form" id="formValidate" method="POST" action="/auth/login">
                     {!! csrf_field() !!}
                     <fieldset>
                         <div class="form-group">
@@ -38,7 +47,7 @@
                                 <input name="remember" type="checkbox" >Continuar conectado
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-success btn-lg btn-block active">Acessar</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block active btn-enviar">Acessar</button>
                     </fieldset>
                 </form>
             </div>
@@ -50,11 +59,11 @@
 
 <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{url('assets/imobweb/js/bootstrap.min.js')}}"></script>
-<script src="{{url('assets/imobweb/js/chart.min.js')}}"></script>
+<!--<script src="{{url('assets/imobweb/js/chart.min.js')}}"></script>
 <script src="{{url('assets/imobweb/js/chart-data.js')}}"></script>
 <script src="{{url('assets/imobweb/js/easypiechart.js')}}"></script>
 <script src="{{url('assets/imobweb/js/easypiechart-data.js')}}"></script>
-<script src="{{url('assets/imobweb/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{url('assets/imobweb/js/bootstrap-datepicker.js')}}"></script>-->
 <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
@@ -68,8 +77,11 @@
     })
     $(window).on('resize', function () {
         if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-    })
+    })    
 </script>
+       
+</script>
+
 </body>
 
 </html>

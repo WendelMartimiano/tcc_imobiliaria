@@ -3,9 +3,24 @@
 //Grupo de rotas do sistema
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     
-    
-    
-    
+    Route::get('imobiliaria', function () {
+        return view('imobweb.imobiliaria');
+    });
+    Route::get('relatorios', function () {
+        return view('imobweb.relatorios');
+    });
+    Route::get('contratos', function () {
+        return view('imobweb.contratos');
+    });
+    Route::get('clientes', function () {
+        return view('imobweb.clientes');
+    });
+    Route::get('funcionarios', function () {
+        return view('imobweb.funcionarios');
+    });
+    Route::get('imoveis', function () {
+        return view('imobweb.imoveis');
+    });
     Route::get('/', function () {
         return view('imobweb.dashboard');
     });
@@ -43,22 +58,4 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-/*
- Teste de submissão de formulario
-Route::post('/site/send_mail', function(Illuminate\Http\Request $request){
-    dd($request->all());
-});
-
-Route::get('empresa/{titulo?}', function ($titulo = 'Cadastro de Empresa') {
-    return view('site.empresa', compact('titulo'));
-});
-
-Route::get('site/empresas/{id}/{nome?}', function ($id, $nome = 'Wendel') {
-    dd($id, $nome);
-});
-
-Route::get('relacionamentos', function (){
-    //dd(App\Models\Plano::find(\App\Models\OpcoesMenu::all()->count())->getOpcoes()->get()->toArray());
 });
