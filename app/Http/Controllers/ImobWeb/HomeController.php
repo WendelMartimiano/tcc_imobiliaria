@@ -17,7 +17,9 @@ class HomeController extends Controller
     }
 
     public function getIndex(){
+
         $titulo = 'ImobWeb - Home';
+
         return view('imobweb.home', compact('titulo'));
     }
 

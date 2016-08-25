@@ -3,9 +3,8 @@
 //Grupo de rotas do sistema
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     
-    Route::get('imobiliaria', function () {
-        return view('imobweb.imobiliaria');
-    });
+    Route::get('imobiliaria', 'ImobWeb\ImobiliariaController@getIndex');
+
     Route::get('relatorios', function () {
         return view('imobweb.relatorios');
     });
@@ -22,7 +21,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
         return view('imobweb.imoveis');
     });
 
-    Route::get('sair', 'ImobWeb\HomeController@getLogout');
+
     Route::get('/', 'ImobWeb\HomeController@getIndex');
 });
 
