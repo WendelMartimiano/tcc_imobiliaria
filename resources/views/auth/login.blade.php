@@ -33,7 +33,7 @@
                 </p>
             @endif               
             
-                <form role="form" id="formValidate" method="POST" action="/auth/login">
+                <form role="form" id="formValidate" method="POST" action="/login">
                     {!! csrf_field() !!}
                     <fieldset>
                         <div class="form-group">

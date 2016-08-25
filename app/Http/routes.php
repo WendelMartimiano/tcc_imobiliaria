@@ -21,9 +21,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     Route::get('imoveis', function () {
         return view('imobweb.imoveis');
     });
-    Route::get('/', function () {
-        return view('imobweb.dashboard');
-    });
+
+    Route::get('sair', 'ImobWeb\HomeController@getLogout');
+    Route::get('/', 'ImobWeb\HomeController@getIndex');
 });
 
 //Grupo de rotas do site
@@ -47,9 +47,9 @@ Route::group(['prefix' => 'site'], function () {
 });
 
 // Rotas de autenticação
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Rotas de registro de usuários
 Route::get('auth/register', 'Auth\AuthController@getRegister');
