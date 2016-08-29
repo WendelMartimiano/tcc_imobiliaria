@@ -18,6 +18,7 @@ class Empresa extends Model
         'cnpj'              =>'required',
         'inscricao'         =>'required',
         'email'             =>'required',
+        'telefone'          =>'required',
         'cep'               =>'required',
         'rua'               =>'required',
         'numero'            =>'required',
@@ -31,6 +32,7 @@ class Empresa extends Model
     //regra para mínimo de caracteres
     static $rules_size = [
         'razao_social'      =>'min:6',
+        'telefone'          =>'min:8',
         'inscricao'         =>'min:2',
         'cep'               =>'min:5',
         'rua'               =>'min:6',
@@ -44,6 +46,7 @@ class Empresa extends Model
     //regra para tipo do campo
     static $rules_type = [
         'email'             =>'email',
+        'telefone'          =>'numeric',
         'cnpj'              =>'numeric',
         'inscricao'         =>'numeric',
         'cep'               =>'numeric',

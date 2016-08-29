@@ -570,7 +570,7 @@ a.bg-danger:hover {
 .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
 	color: #fff;
 	background-color: #30a5ff;
-}*/
+}
 
 .sidebar ul.nav ul,
 .sidebar ul.nav ul li {
@@ -930,15 +930,8 @@ h1.page-header {
 }
 
 
-/*Login Styles*/
-#email-error{
-	font-size: 12px;
-	color: #fd1201;
-}
-#password-error{
-	font-size: 12px;
-	color: #fd1201;
-}
+
+
 
 
 

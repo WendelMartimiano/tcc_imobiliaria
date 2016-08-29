@@ -14,9 +14,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     Route::get('clientes', function () {
         return view('imobweb.clientes');
     });
-    Route::get('funcionarios', function () {
-        return view('imobweb.funcionarios');
-    });
+
+    Route::get('cadastra-funcionarios', 'ImobWeb\FuncionarioController@getCadastraFuncionario');
+    Route::get('funcionarios', 'ImobWeb\FuncionarioController@getIndex');
+
     Route::get('imoveis', function () {
         return view('imobweb.imoveis');
     });

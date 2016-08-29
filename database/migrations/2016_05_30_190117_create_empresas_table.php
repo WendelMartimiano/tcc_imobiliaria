@@ -18,6 +18,7 @@ class CreateEmpresasTable extends Migration
             $table->string('cnpj', 14)->unique()->nullable();
             $table->string('inscricao', 12)->nullable();
             $table->string('email')->unique()->nullable();
+            $table->string('telefone')->nullable();
             $table->string('cep', 10)->nullable();
             $table->string('rua', 100)->nullable();
             $table->integer('numero')->nullable();

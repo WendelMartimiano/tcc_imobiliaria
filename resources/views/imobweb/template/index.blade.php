@@ -8,7 +8,8 @@
 
     <link href="{{url('assets/imobweb/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/datepicker3.css')}}" rel="stylesheet">
-    <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">  
+    <link href="{{url('assets/imobweb/css/bootstrap-table.css')}}" rel="stylesheet">
+    <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">
 
     <!--Icons-->
     <script src="{{url('assets/imobweb/js/lumino.glyphs.js')}}"></script>
@@ -55,6 +56,7 @@
     <script src="{{url('assets/imobweb/js/easypiechart.js')}}"></script>
     <script src="{{url('assets/imobweb/js/easypiechart-data.js')}}"></script>
     <script src="{{url('assets/imobweb/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('assets/imobweb/js/bootstrap-table.js')}}"></script>
 	<script>
 		$('#calendar').datepicker({
 		});

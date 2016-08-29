@@ -51,6 +51,12 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
+                    <input name="telefone" id="telefone" type="text" class="validate" value="{{ old('telefone') }}">
+                    <label for="telefone">Telefone / Celular: <strong style="color: red">*</strong></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
                     <input name="inscricao" id="inscricao" type="text" class="validate" value="{{ old('inscricao') }}">
                     <label for="inscricao">Inscrição <strong style="color: red">*</strong></label>
                   </div>
