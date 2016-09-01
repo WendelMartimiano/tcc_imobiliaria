@@ -109,12 +109,10 @@ class UsuarioController extends Controller
         User::create([
             'name' => $dadosForm['name'],
             'email' => $dadosForm['email'],
-            'password' => bcrypt($dadosForm['password']),
-            'id_empresa' => $dadosForm['id_empresa'],
-            'id_cargo' => $dadosForm['id_cargo']
+            'password' => bcrypt($dadosForm['password'])
         ]);
 
-        //chama método de envio de e-mail com os dados recem cadastrados
+        //chama método de envio de e-mail passando os dados recem cadastrados
         $this->postMailConfirmacao($dadosForm);
 
         return 1;

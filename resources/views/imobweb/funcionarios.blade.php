@@ -30,24 +30,38 @@
 				<h1 class="page-header">Funcionários</h1>
 			</div>
 		</div><!--/.row-->
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Consulta de Funcionários.</div>
 					<div class="panel-body">
-						<label class="col-md-3 control-label" for="name">CPF: </label>
-						<div class="col-md-9">
-							<input id="name" name="name" type="text" placeholder="Digite o CPF" class="form-control">
-						</div>
-						<label class="col-md-3 control-label" for="name">Nome: </label>
-						<div class="col-md-9">
-							<input id="name" name="name" type="text" placeholder="Digite o Nome" class="form-control">
-						</div>
-						<div class="col-md-12 widget-right">
-							<button type="submit" class="btn btn-primary">Buscar</button>
-							<a href="/dashboard/cadastra-funcionarios" class="btn btn-default">Novo</a>
-						</div>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF/CNPJ" value="{{ old('cpf_cnpj') }}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="nome">Nome:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="nome" placeholder="Digite o nome" value="{{old('nome')}}">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary">Buscar</button>
+									<a href="/dashboard/cadastra-funcionario" class="btn btn-default">Novo</a>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

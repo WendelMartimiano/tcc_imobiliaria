@@ -22,10 +22,13 @@ class ImobiliariaController extends Controller
 
     public function getIndex(){
 
+        //retorna o id da empresa do usuário autenticado
         $user = Auth::user()->id_empresa;
 
+        //retorna os dados da empresa de acordo a empresa do usuário autenticado
         $imobiliaria = $this->empresa->all()->find($user);
 
+        //retorna os dados do plano de acordo com a empresa do usuário autenticado
         $plano = Plano::all()->find($imobiliaria->id_plano);
 
         $titulo = 'ImobWeb - Imobiliaria';

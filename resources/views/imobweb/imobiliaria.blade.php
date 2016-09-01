@@ -34,86 +34,98 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Dados Imobiliária!</div>
+					<div class="panel-heading">Dados {{$imobiliaria->razao_social}}.</div>
 					<div class="panel-body">
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Razão Social: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->razao_social}}" class="form-control" readonly>
+
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="razao_social">Razão Social:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="razao_social" placeholder="{{$imobiliaria->razao_social}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">CNPJ: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->cnpj}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="cnpj">CNPJ:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="cnpj" placeholder="{{$imobiliaria->cnpj}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">E-Mail: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->email}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="email">E-mail:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="email" placeholder="{{$imobiliaria->email}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Telefone: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->telefone}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="telefone">Telefone:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="telefone" placeholder="{{$imobiliaria->telefone}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Inscrição: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->inscricao}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="inscricao">Inscrição:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="inscricao" placeholder="{{$imobiliaria->inscricao}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">CRECI: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->creci}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="creci">CRECI:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="creci" placeholder="{{$imobiliaria->creci}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">CEP: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->cep}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="cep">CEP:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="cep" placeholder="{{$imobiliaria->cep}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Rua: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->rua}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="rua">Rua:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="rua" placeholder="{{$imobiliaria->rua}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Número: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->numero}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="numero">Número:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="numero" placeholder="{{$imobiliaria->numero}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Bairro: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->bairro}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="bairro">Bairro:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="bairro" placeholder="{{$imobiliaria->bairro}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Cidade: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->cidade}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="cidade">Cidade:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="cidade" placeholder="{{$imobiliaria->cidade}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Estado: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$imobiliaria->uf}}" class="form-control" readonly>
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="uf">Estado:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="uf" placeholder="{{$imobiliaria->uf}}" readonly>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-3 control-label" for="name">Plano Vigente: </label>
-							<div class="col-md-9">
-								<input id="name" name="name" type="text" placeholder="{{$plano->nome}} - R$ {{$plano->valor}}" class="form-control" readonly>
-							</div>
-						</div>
+							@if($plano->id == 1)
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="plano">Plano Vigente:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="plano" placeholder="{{$plano->nome}} - 100% {{$plano->valor}}" readonly>
+									</div>
+								</div>
+							@else
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="plano">Plano Vigente:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="plano" placeholder="{{$plano->nome}} - R$ {{$plano->valor}}" readonly>
+									</div>
+								</div>
+							@endif
+						</form>
 
 					</div>
 				</div>

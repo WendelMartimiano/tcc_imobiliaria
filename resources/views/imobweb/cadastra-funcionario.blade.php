@@ -35,74 +35,170 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Informe os dados do Funcionário.</div>
+                    <div class="panel-heading">Informe os dados do novo funcionário.</div>
                     <div class="panel-body">
-
-                        <!--  Para o usuario não preencher na primeira linha do formulario (codigo do imovel) -->
-                        <fieldset disabled>
-                            <label class="col-md-3 control-label" for="disabledTextInput">Codigo do Funcionário: </label>
-                            <div class="col-md-9">
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Preenchimento automatico">
+                        <form class="form-horizontal" method="post" action="/dashboard/cadastra-funcionario">
+                            {!! csrf_field() !!}
+                            <div class="form-group form-inline">
+                                <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
+                                <label class="form-check-inline col-sm-1">
+                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cpf" > CPF
+                                </label>
+                                <label class="form-check-inline ">
+                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cnpj" > CNPJ
+                                </label>
                             </div>
-                        </fieldset>
-
-                        <div class="col-md-3 control-label">
-                            <label>Função:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-control">
-                                <option> Escolha uma opção</option>
-                                <option>Administrativo</option>
-                                <option>Auxiliar</option>
-                                <option>Corretor</option>
-                            </select>
-                        </div>
-
-                        <!--   Se for corretor habilita para colocar o Creci, se não for correto opção fica bloqueada ou não diponivel-->
-                        <label class="col-md-3 control-label" for="name">Creci: </label>
-                        <div class="col-md-9">
-                            <input id="creci" name="creci" type="text" placeholder="Digite o Creci" class="form-control">
-                        </div>
-
-                        <label class="col-md-3 control-label" for="name">CPF / CNPJ: </label>
-                        <div class="col-md-9">
-                            <input id="cpf" name="cpf" type="text" placeholder="Digite o CFP ou CNPJ" class="form-control">
-                        </div>
-                        <label class="col-md-3 control-label" for="name">RG / Inscrição: </label>
-                        <div class="col-md-9">
-                            <input id="rg" name="rg" type="text" placeholder="Digite o RG ou Inscrição" class="form-control">
-                        </div>
-                        <label class="col-md-3 control-label" for="name">Data Nascimento: </label>
-                        <div class="col-md-9">
-                            <input id="dataNasc" name="dataNasc" type="text" placeholder="Informe a Data de Nascimento" class="form-control">
-                        </div>
-                        <label class="col-md-3 control-label" for="name">Nome: </label>
-                        <div class="col-md-9">
-                            <input id="nome" name="nome" type="text" placeholder="Nome completo" class="form-control">
-                        </div>
-                        <label class="col-md-3 control-label" for="name">Endereço: </label>
-                        <div class="col-md-9">
-                            <input id="endreco" name="endereco" type="text" placeholder="Digite o endereço" class="form-control">
-                        </div>
-                        <label class="col-md-3 control-label" for="name">Telefone / Celular: </label>
-                        <div class="col-md-9">
-                            <input id="telefone" name="telefone" type="text" placeholder="Digite o Telefone ou Celular" class="form-control">
-                        </div>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                                Demitido (Este funcionário será inativado e todo seu acesso bloqueado)
-                            </label>
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                        <a href="/dashboard/funcionarios" class="btn btn-default">Voltar</a>
+                            <div id="tipo_cpf" style="display: none;">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="nome">Nome:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="nome" placeholder="Digite o nome" value="{{old('nome')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="cpf">CPF:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="cpf" placeholder="Digite o CPF" value="{{old('cpf')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="rg">RG:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{old('rg')}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tipo_cnpj" style="display: none;">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="razao_social">Razão Social:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" value="{{old('razao_social')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="cnpj">CNPJ:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="cnpj" placeholder="Digite o CNPJ" value="{{old('cnpj')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="rep_legal">Representante legal:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="rep_legal" placeholder="Digite o representante legal" value="{{old('rep_legal')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="inscricao">Inscrição:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="inscricao" placeholder="Digite o número de inscrição" value="{{old('inscricao')}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="creci">CRECI:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="creci" placeholder="Digite o número de creci" value="{{old('creci')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{old('data_nascimento')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="telefone">Telefone:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="telefone" placeholder="Digite o número de telefone" value="{{old('telefone')}}">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label for="cargo" class="control-label col-sm-2">Cargo:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="select_cargo" onchange="pegaCargo(this)">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($cargos as $cargo)
+                                            <option value="{{$cargo->id}}">{{$cargo->nome}}</option>
+                                        @endforeach
+                                    </select>
+                                    <input name="id_cargo" value="" type="hidden">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="empresa">empresa:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{Auth::user()->id_empresa}}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="cep">CEP:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="cep" placeholder="Digite o número de cep" value="{{old('cep')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="rua">Rua:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="rua" placeholder="Digite a rua" value="{{old('rua')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="numero">Número:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="numero" placeholder="Digite o número da residência" value="{{old('numero')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="bairro">Bairro:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="bairro" placeholder="Digite o bairro" value="{{old('bairro')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="cidade">Cidade:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" value="{{old('cidade')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="uf">Estado:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="uf" placeholder="Digite o estado" value="{{old('uf')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <a href="/dashboard/funcionarios" class="btn btn-default">Voltar</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+
+@endsection
+
+@section('script_cadFunc')
+    <script>
+        jQuery(document).ready(function(){
+
+           $("#radio_cpf").click(function () {
+               jQuery("#tipo_cnpj").hide();
+               jQuery("#tipo_cpf").show();
+           });
+           $("#radio_cnpj").click(function () {
+               jQuery("#tipo_cpf").hide();
+               jQuery("#tipo_cnpj").show();
+            });
+
+        });
+
+        function pegaCargo(param) {
+            $('[name=id_cargo]').val($(param).val());
+        }
+    </script>
 @endsection

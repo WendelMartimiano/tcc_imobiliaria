@@ -36,29 +36,8 @@
                                 <label for="confirma_senha">Confirmar Senha <strong style="color: red">*</strong></label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <select id="select_cargo" onchange="pegaCargo(this)">
-                                    <option value="">Selecione uma opção</option>
-                                    @foreach($cargos as $cargo)
-                                        <option value="{{$cargo->id}}">{{$cargo->nome}}</option>
-                                    @endforeach
-                                </select>
-                                <input name="id_cargo" value="" type="hidden">
-                                <label for="cargo">Cargo <strong style="color: red">*</strong></label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input disabled name="empresa" id="empresa" type="text" class="validate" value="{{$empresa->razao_social }}">
-                                <input name="id_empresa" value="{{$empresa->id}}" type="hidden">
-                                <label for="empresa">Empresa</label>
-                            </div>
-                        </div>
 
-                        <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar
-
-                        </button>
+                        <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar </button>
                     </form>
 
                     <!-- Modal Structure -->
@@ -120,10 +99,6 @@
             $('#modal1').closeModal({dismissible: false});
         }
 
-        function pegaCargo(param) {
-
-            $('[name=id_cargo]').val($(param).val());
-        }
     </script>
 
 @endsection
