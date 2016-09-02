@@ -32,11 +32,15 @@ class CreateFuncionariosTable extends Migration
             $table->string('uf', 2)->nullable();
             $table->char('tipo_pessoa', 1)->nullable();
 
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+
             $table->integer('id_empresa')->unsigned();
             $table->foreign('id_empresa')->references('id')->on('empresas');
 
             $table->integer('id_cargo')->unsigned();
             $table->foreign('id_cargo')->references('id')->on('cargos');
+
             $table->timestamps();
             $table->softDeletes();
         });

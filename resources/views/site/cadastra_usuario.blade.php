@@ -36,6 +36,13 @@
                                 <label for="confirma_senha">Confirmar Senha <strong style="color: red">*</strong></label>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input disabled value="{{$empresa->razao_social}}" id="disabled" type="text" class="validate">
+                                <input name="id_empresa" id="id_empresa" type="hidden" class="validate" value="{{ $empresa->id }}">
+                                <label for="empresa">Empresa</label>
+                            </div>
+                        </div>
 
                         <button class="btn waves-effect waves-light blue darken-1" type="submit" name="action">Cadastrar </button>
                     </form>
@@ -67,7 +74,7 @@
             jQuery("form").submit(function () {
 
                 var dadosForm = jQuery(this).serialize();                
-
+                console.log(dadosForm);
                 jQuery.ajax({
                     url: jQuery(this).attr("send"),
                     data: dadosForm,

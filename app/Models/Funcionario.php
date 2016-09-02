@@ -12,4 +12,12 @@ class Funcionario extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
 
+
+    public function getUser($param){
+        return User::all()->where('id_empresa', $param);
+    }
+
+    public function getFuncionario($param){
+        return $this->all()->where('id_empresa', $param);
+    }
 }

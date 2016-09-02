@@ -42,23 +42,23 @@
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
                                 <label class="form-check-inline col-sm-1">
-                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cpf" > CPF
+                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cpf" value="F"> CPF
                                 </label>
                                 <label class="form-check-inline ">
-                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cnpj" > CNPJ
+                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cnpj" value="J"> CNPJ
                                 </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF/CNPJ" value="{{old('cpf_cnpj')}}">
+                                </div>
                             </div>
                             <div id="tipo_cpf" style="display: none;">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="nome">Nome:</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="nome" placeholder="Digite o nome" value="{{old('nome')}}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="cpf">CPF:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="cpf" placeholder="Digite o CPF" value="{{old('cpf')}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -73,12 +73,6 @@
                                     <label class="control-label col-sm-2" for="razao_social">Razão Social:</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" value="{{old('razao_social')}}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="cnpj">CNPJ:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="cnpj" placeholder="Digite o CNPJ" value="{{old('cnpj')}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -113,6 +107,18 @@
                                 </div>
                             </div>
                             <div class="form-group form-inline">
+                                <label for="usuario" class="control-label col-sm-2">Usuário do Sistema:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="select_user" onchange="pegaUser(this)">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($users as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <input name="id_user" value="" type="hidden">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
                                 <label for="cargo" class="control-label col-sm-2">Cargo:</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" id="select_cargo" onchange="pegaCargo(this)">
@@ -124,10 +130,10 @@
                                     <input name="id_cargo" value="" type="hidden">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="empresa">empresa:</label>
+                            <div class="form-group" hidden>
+                                <label class="control-label col-sm-2" for="empresa">Empresa:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{Auth::user()->id_empresa}}" readonly>
+                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{$empresa->id}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -199,6 +205,9 @@
 
         function pegaCargo(param) {
             $('[name=id_cargo]').val($(param).val());
+        }
+        function pegaUser(param) {
+            $('[name=id_user]').val($(param).val());
         }
     </script>
 @endsection

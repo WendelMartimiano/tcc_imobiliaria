@@ -64,4 +64,5 @@ class Empresa extends Model
         'cnpj'              =>'unique:empresas,cnpj',
         'email'             =>'unique:empresas,email'
     ];
+
 }

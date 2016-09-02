@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Funcionario;
 use App\Models\Cargo;
+use App\Models\Empresa;
 use Illuminate\Validation\Factory;
 
 class FuncionarioController extends Controller
@@ -26,7 +27,11 @@ class FuncionarioController extends Controller
 
         $titulo = 'ImobWeb - Funcionários';
 
-        return view('imobweb.funcionarios', compact('titulo'));
+        $empresaUserAtual = Auth::user()->id_empresa;
+
+        $funcionarios = $this->funcionario->getFuncionario($empresaUserAtual);
+
+        return view('imobweb.funcionarios', compact('titulo', 'funcionarios'));
     }
 
     public function getCadastraFuncionario(){
@@ -35,7 +40,14 @@ class FuncionarioController extends Controller
 
         $cargos = Cargo::all();
 
-        return view('imobweb.cadastra-funcionario', compact('titulo', 'cargos'));
+        $empresaUserAtual = Auth::user()->id_empresa;
+
+        $empresa = Empresa::all()->find($empresaUserAtual);
+
+        $users = $this->funcionario->getUser($empresaUserAtual);
+
+
+        return view('imobweb.cadastra-funcionario', compact('titulo', 'cargos', 'users', 'empresa'));
     }
 
     public function postCadastraFuncionario(){

@@ -45,7 +45,7 @@ class PlanoController extends Controller
         $opcoesfree = $this->plano->getOpcoesPlanos($free);
         $opcoesbasico = $this->plano->getOpcoesPlanos($basico);
         $opcoescompleto = $this->plano->getOpcoesPlanos($completo);
-        //dd($opcoesfree);
+
         return view('site.index', compact('planos', 'opcoes', 'cor', 'icone', 'opcoesfree', 'opcoesbasico', 'opcoescompleto'));
     }
 

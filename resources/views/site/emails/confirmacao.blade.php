@@ -1,4 +1,4 @@
-<p>{{$name}}</p>
-<p>{{$email}}</p>
-<p>{{$password}}</p>
-<p>Link para o login da imobweb</p>
+<p><strong>{{$name}}</strong></p>
+<p><strong>{{$email}}</strong></p>
+<p><strong>{{$password}}</strong></p>
+<p>Link de acesso ao sistema: http://tcc.dev/login</p>

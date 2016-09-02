@@ -75,26 +75,24 @@
 						<table data-toggle="table" >
 							<thead>
 							<tr>
-								<th data-field="state" data-checkbox="true" >Item ID</th>
-								<th data-field="nome" data-sortable="true">Nome</th>
-								<th data-field="cpf"  data-sortable="true">CPF</th>
-								<th data-field="telefone" data-sortable="true">Telefone</th>
+								<th data-field="nome">Nome</th>
+								<th data-field="cpf">CPF</th>
+								<th data-field="telefone">Telefone</th>
 							</tr>
 							</thead>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
-							</tr>
+							@forelse($funcionarios as $funcionario)
+								<tr>
+								@if($funcionario->tipo_pessoa = "J")
+										<td>{{$funcionario->razao_social}}</td>
+								@else
+										<td>{{$funcionario->nome}}</td>
+								@endif
+									<td>{{$funcionario->cpf_cnpj}}</td>
+									<td>{{$funcionario->telefone}}</td>
+								</tr>
+							@empty
+								<p>Nenhum registro encontrado!</p>
+							@endforelse
 						</table>
 					</div>
 				</div>

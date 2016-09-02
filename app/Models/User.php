@@ -29,7 +29,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'id_empresa'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -43,7 +43,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'name'                      =>'required',
         'email'                     =>'required',
         'password'                  =>'required',
-        'password_confirmation'     =>'required'
+        'password_confirmation'     =>'required',
+        'id_empresa'                =>'required'
     ];
 
     //regra para mínimo de caracteres

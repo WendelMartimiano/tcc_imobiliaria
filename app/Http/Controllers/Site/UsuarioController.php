@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
-use App\Models\Cargo;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Factory;
 use Validator;
@@ -28,9 +27,8 @@ class UsuarioController extends Controller
     public function getIndex($param){
         $titulo = 'Cadastro de Usuário';
         $empresa = Empresa::all()->find($param);
-        $cargos = Cargo::all();
 
-        return view('site.cadastra_usuario', compact('titulo', 'empresa', 'cargos'));
+        return view('site.cadastra_usuario', compact('titulo', 'empresa'));
 
     }
 
@@ -109,11 +107,12 @@ class UsuarioController extends Controller
         User::create([
             'name' => $dadosForm['name'],
             'email' => $dadosForm['email'],
-            'password' => bcrypt($dadosForm['password'])
+            'password' => bcrypt($dadosForm['password']),
+            'id_empresa' => $dadosForm['id_empresa']
         ]);
 
         //chama método de envio de e-mail passando os dados recem cadastrados
-        $this->postMailConfirmacao($dadosForm);
+        //$this->postMailConfirmacao($dadosForm);
 
         return 1;
     }
