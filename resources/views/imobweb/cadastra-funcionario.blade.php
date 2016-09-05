@@ -175,7 +175,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Salvar</button>
-                                    <a href="/dashboard/funcionarios" class="btn btn-default">Voltar</a>
+                                    <a href="/dashboard/funcionarios" class="btn btn-default">Cancelar</a>
                                 </div>
                             </div>
                         </form>

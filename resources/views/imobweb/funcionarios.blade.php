@@ -70,33 +70,48 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Resultados da Pesquisa.</div>
+					<div class="panel-heading">Funcionários:</div>
 					<div class="panel-body">
-						<table data-toggle="table" >
+						<table class="table" data-toggle="table" data-url="{{url('assets/imobweb/tables/data1.json')}}tables/data1.json"  data-show-refresh="true" data-show-columns="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
 							<tr>
-								<th data-field="nome">Nome</th>
-								<th data-field="cpf">CPF</th>
-								<th data-field="telefone">Telefone</th>
+								<th data-field="id">Item ID</th>
+								<th data-field="nome" data-sortable="true">Nome</th>
+								<th data-field="cpf_cnpj"  data-sortable="true">CPF/CNPJ</th>
+								<th data-field="telefone" data-sortable="true">Telefone</th>
+								<th></th>
 							</tr>
 							</thead>
+							<tbody>
 							@forelse($funcionarios as $funcionario)
 								<tr>
-								@if($funcionario->tipo_pessoa = "J")
-										<td>{{$funcionario->razao_social}}</td>
+								<td data-field="id">{{$funcionario->id}}</td>
+								@if($funcionario->tipo_pessoa == "F")
+									<td data-field="nome" data-sortable="true">{{$funcionario->nome}}</td>
 								@else
-										<td>{{$funcionario->nome}}</td>
+									<td data-field="razao_social" data-sortable="true">{{$funcionario->razao_social}}</td>
 								@endif
-									<td>{{$funcionario->cpf_cnpj}}</td>
-									<td>{{$funcionario->telefone}}</td>
-								</tr>
+								
+								<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
+								<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
+								<td>
+									<a href="" class="btn btn-success btn-xs">
+										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									</a>
+									<a href="" class="btn btn-danger btn-xs">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									</a>									
+								</td>
+							</tr>
 							@empty
-								<p>Nenhum registro encontrado!</p>
-							@endforelse
+								<p>"Nenhum registro encontrado!"</p>
+							@endforelse								
+							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div><!--/.row-->
+
 	</div>
 @endsection

@@ -30,7 +30,7 @@ class FuncionarioController extends Controller
         $empresaUserAtual = Auth::user()->id_empresa;
 
         $funcionarios = $this->funcionario->getFuncionario($empresaUserAtual);
-
+        
         return view('imobweb.funcionarios', compact('titulo', 'funcionarios'));
     }
 
