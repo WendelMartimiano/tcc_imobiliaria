@@ -75,7 +75,9 @@
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
 	</script>
-@yield('script_cadFunc')
-</body>
 
+@yield('cadastra-funcionario')
+@yield('demite-funcionario')
+
+</body>
 </html>

@@ -72,7 +72,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Funcionários:</div>
 					<div class="panel-body">
-						<table class="table" data-toggle="table" data-url="{{url('assets/imobweb/tables/data1.json')}}tables/data1.json"  data-show-refresh="true" data-show-columns="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table class="table" data-toggle="table" data-show-refresh="true" data-show-columns="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
 							<tr>
 								<th data-field="id">Item ID</th>
@@ -98,7 +98,7 @@
 									<a href="" class="btn btn-success btn-xs">
 										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									</a>
-									<a href="" class="btn btn-danger btn-xs">
+									<a href="" onclick="demiteFuncionario('{{$funcionario->nome}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
 										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 									</a>									
 								</td>
@@ -112,6 +112,35 @@
 				</div>
 			</div>
 		</div><!--/.row-->
-
 	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Demissão de Funcionário</h4>
+		</div>
+		<div class="modal-body">
+			Deseja realmente demitir o funcionário(a) <span id="name-funcionario"></span>?
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			<button type="button" class="btn btn-primary">Confirmar</button>
+		</div>
+		</div>
+	</div>
+	</div>
+@endsection
+
+@section('demite-funcionario')
+<script>
+	function demiteFuncionario(nome){	
+		$('#myModal').on('shown.bs.modal', function () {
+  			$('#myInput').focus()
+			$('#name-funcionario').html(nome)
+		})
+	}
+</script>
 @endsection

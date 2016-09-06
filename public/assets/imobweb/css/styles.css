@@ -929,6 +929,19 @@ h1.page-header {
 	overflow: scroll;
 }
 
+/*Modal*/
+.modal-header{
+	background-color: #d32f2f;	
+}
+
+.modal-title{
+	color: #fff;
+}
+
+.close{
+	font-size: 28px;
+	color: #fff;
+}
 
 
 

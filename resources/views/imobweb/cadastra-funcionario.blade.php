@@ -174,7 +174,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <button type="submit" class="btn btn-primary">Confirmar</button>
                                     <a href="/dashboard/funcionarios" class="btn btn-default">Cancelar</a>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@
 
 @endsection
 
-@section('script_cadFunc')
+@section('cadastra-funcionario')
     <script>
         jQuery(document).ready(function(){
 
