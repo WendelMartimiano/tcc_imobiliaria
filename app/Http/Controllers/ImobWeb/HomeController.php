@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $titulo = 'ImobWeb - Home';
 
-        return view('imobweb.home', compact('titulo'));
+        return view('imobweb.home.index', compact('titulo'));
     }
 
 }

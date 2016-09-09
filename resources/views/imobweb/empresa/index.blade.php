@@ -34,7 +34,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Dados {{$imobiliaria->razao_social}}.</div>
+					<div class="panel-heading">{{$imobiliaria->razao_social}}.</div>
 					<div class="panel-body">
 
 						<form class="form-horizontal">

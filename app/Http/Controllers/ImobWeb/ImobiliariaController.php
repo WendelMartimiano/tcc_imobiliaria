@@ -33,7 +33,7 @@ class ImobiliariaController extends Controller
 
         $titulo = 'ImobWeb - Imobiliaria';
 
-        return view('imobweb.imobiliaria', compact('titulo', 'imobiliaria', 'plano'));
+        return view('imobweb.empresa.index', compact('titulo', 'imobiliaria', 'plano'));
     }
 
 }
