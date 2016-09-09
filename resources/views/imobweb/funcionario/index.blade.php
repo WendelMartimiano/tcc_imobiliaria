@@ -95,7 +95,7 @@
 									<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
 									<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
 									<td>
-										<a href="/dashboard/edita-funcionario" class="btn btn-success btn-xs">
+										<a href="/dashboard/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
 											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 										</a>
 										<a href="" onclick="modalDeleta('/dashboard/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
@@ -107,7 +107,7 @@
 									<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
 									<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
 									<td>
-										<a href="/dashboard/edita-funcionario" class="btn btn-success btn-xs">
+										<a href="/dashboard/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
 											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 										</a>
 										<a href="" onclick="modalDeleta('/dashboard/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">

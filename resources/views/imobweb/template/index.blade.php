@@ -78,7 +78,7 @@
 
 @yield('funcionario')
 @yield('cadastra-funcionario')
-
+@yield('edita-funcionario')
 
 </body>
 </html>

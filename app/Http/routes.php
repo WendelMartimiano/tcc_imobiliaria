@@ -16,6 +16,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     });
 
     Route::get('demite-funcionario/{id}', 'ImobWeb\FuncionarioController@getDemiteFuncionario');
+    Route::post('edita-funcionario', 'ImobWeb\FuncionarioController@postEditaFuncionario');
+    Route::get('edita-funcionario/{id}', 'ImobWeb\FuncionarioController@getEditaFuncionario');
     Route::post('cadastra-funcionario', 'ImobWeb\FuncionarioController@postCadastraFuncionario');
     Route::get('cadastra-funcionario', 'ImobWeb\FuncionarioController@getCadastraFuncionario');
     Route::get('funcionarios', 'ImobWeb\FuncionarioController@getIndex');

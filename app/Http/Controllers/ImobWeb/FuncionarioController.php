@@ -50,6 +50,18 @@ class FuncionarioController extends Controller
         return redirect('/dashboard/funcionarios')->with('status', 'Funcionário Cadastrado com Sucesso!');
     }
 
+    public function getEditaFuncionario($id){
+
+        $funcionario = $this->funcionario->all()->find($id);        
+        dd($funcionario);
+        $titulo = 'ImobWeb - Edição de Funcionário';
+        $cargos = Cargo::all();
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $empresa = Empresa::all()->find($empresaUserAtual);
+        $users = $this->funcionario->getUser($empresaUserAtual);
+
+        return view('imobweb.funcionario.edita-funcionario', compact('titulo', 'cargos', 'users', 'empresa', 'funcionario'));
+    }
 
     public function getDemiteFuncionario($id){        
 
