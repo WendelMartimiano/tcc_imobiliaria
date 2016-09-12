@@ -49,7 +49,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ:</label>
+                                <label class="control-label col-sm-2" id="label_tipoPessoa"  for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF/CNPJ" value="{{old('cpf_cnpj')}}">
                                 </div>
@@ -189,25 +189,38 @@
 @endsection
 
 @section('cadastra-funcionario')
-    <script>
-        jQuery(document).ready(function(){
+<script>
+    $(document).ready(function(){
+         $("#radio_cpf").attr('checked', true);
 
-           $("#radio_cpf").click(function () {
-               jQuery("#tipo_cnpj").hide();
-               jQuery("#tipo_cpf").show();
-           });
-           $("#radio_cnpj").click(function () {
-               jQuery("#tipo_cpf").hide();
-               jQuery("#tipo_cnpj").show();
-            });
+         if ($("#radio_cpf").prop("checked")){
+             $("#tipo_cnpj").hide();
+             $("#tipo_cpf").show();
+             $("#label_tipoPessoa").html('CPF:');
+         }else{
+             $("#tipo_cpf").hide();
+             $("#tipo_cnpj").show();
+             $("#label_tipoPessoa").html('CNPJ:');
+         }
 
+        $("#radio_cpf").click(function () {
+            $("#tipo_cnpj").hide();
+            $("#tipo_cpf").show();
+            $("#label_tipoPessoa").html('CPF:');
         });
+        $("#radio_cnpj").click(function () {
+            $("#tipo_cpf").hide();
+            $("#tipo_cnpj").show();
+            $("#label_tipoPessoa").html('CNPJ:');
+        });           
 
-        function pegaCargo(param) {
-            $('[name=id_cargo]').val($(param).val());
-        }
-        function pegaUser(param) {
-            $('[name=id_user]').val($(param).val());
-        }
-    </script>
+    });
+
+    function pegaCargo(param) {
+        $('[name=id_cargo]').val($(param).val());
+    }
+    function pegaUser(param) {
+        $('[name=id_user]').val($(param).val());
+    }
+</script>
 @endsection
