@@ -47,7 +47,8 @@ class FuncionarioController extends Controller
         $dadosForm = $this->request->all();
         $this->funcionario->create($dadosForm);
 
-        return redirect('/dashboard/funcionarios')->with('status', 'Funcionário Cadastrado com Sucesso!');
+       // return redirect('/dashboard/funcionarios')->with('status', 'Funcionário Cadastrado com Sucesso!');
+       return 1;
     }
 
     public function getEditaFuncionario($id){

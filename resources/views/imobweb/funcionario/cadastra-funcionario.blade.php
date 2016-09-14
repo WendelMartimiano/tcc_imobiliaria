@@ -17,7 +17,7 @@
         </ul>
 
     </div><!--/.sidebar-->
-
+    
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
@@ -32,12 +32,16 @@
             </div>
         </div><!--/.row-->
 
+        <!--Messages 
+        <div class="alert alert-success" id="message-success" role="alert" style="display: none"></div>
+        <div class="alert alert-danger" id="message-danger" role="alert" style="display: none"></div> -->
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados do novo funcionário.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/cadastra-funcionario">
+                        <form class="form-horizontal" method="post" action="/dashboard/cadastra-funcionario" send="/dashboard/cadastra-funcionario">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
@@ -51,7 +55,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_tipoPessoa"  for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF/CNPJ" value="{{old('cpf_cnpj')}}">
+                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{old('cpf_cnpj')}}">
                                 </div>
                             </div>
                             <div id="tipo_cpf" style="display: none;">
@@ -179,39 +183,79 @@
                                 </div>
                             </div>
                         </form>
+                        </div>                                               
                     </div>
                 </div>
+            </div>            
+        </div>        
+    </div>
+    
+    <!-- Modal Preloader -->
+    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+            <div class="spinner"></div>
+            <p class="spinner-text">carregando..</p>
             </div>
         </div>
     </div>
 
+    <!-- Modal Status Success-->
+	<div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header header-success">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>					 
+                    <h4 class="modal-title" id="message-success"></h4>
+				</div>								
+			</div>
+		</div>
+	</div>
+
+    <!-- Modal Status Warning-->
+	<div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header header-warning">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>					 
+                    <h4 class="modal-title" id="message-warning"></h4>
+				</div>								
+			</div>
+		</div>
+	</div>
 
 @endsection
 
 @section('cadastra-funcionario')
 <script>
     $(document).ready(function(){
+        
+
          $("#radio_cpf").attr('checked', true);
 
          if ($("#radio_cpf").prop("checked")){
              $("#tipo_cnpj").hide();
              $("#tipo_cpf").show();
              $("#label_tipoPessoa").html('CPF:');
+             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
          }else{
              $("#tipo_cpf").hide();
              $("#tipo_cnpj").show();
              $("#label_tipoPessoa").html('CNPJ:');
+             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
          }
 
         $("#radio_cpf").click(function () {
             $("#tipo_cnpj").hide();
             $("#tipo_cpf").show();
             $("#label_tipoPessoa").html('CPF:');
+            $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
         });
         $("#radio_cnpj").click(function () {
             $("#tipo_cpf").hide();
             $("#tipo_cnpj").show();
             $("#label_tipoPessoa").html('CNPJ:');
+            $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
         });           
 
     });
@@ -221,6 +265,44 @@
     }
     function pegaUser(param) {
         $('[name=id_user]').val($(param).val());
+    }
+</script>
+
+<script>
+    $(function(){
+        $("form").submit(function(){
+            var dadosForm = $(this).serialize();
+
+            jQuery.ajax({
+                method:"POST",
+                url: jQuery(this).attr("send"),
+                data: dadosForm,
+                beforeSend: iniciaPreloader()
+            }).done(function(data){
+                finalizaPreloader();
+
+                if(data == 1){                                       
+                    $('#message-success').html("Funcionário cadastrado com sucesso!");
+                    $('#modalSuccess').modal('show');                     				    	
+                }else{
+                    $('#message-warning').html(data);
+                    $('#modalWarning').modal('show');	
+                }
+                
+            }).fail(function(){
+                finalizaPreloader();			    
+			    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+            });
+            return false;
+        });
+    });
+
+    function iniciaPreloader(){
+        $('#myModal').modal({backdrop: 'static',  keyboard: false})
+    }
+
+    function finalizaPreloader(){        
+        $('#myModal').modal('hide');
     }
 </script>
 @endsection

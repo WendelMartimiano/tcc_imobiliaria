@@ -10,6 +10,8 @@
     <link href="{{url('assets/imobweb/css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/bootstrap-table.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">	
+	<link href="{{url('assets/imobweb/css/preloader.css')}}" rel="stylesheet">
+	
 
     <!--Icons-->
     <script src="{{url('assets/imobweb/js/lumino.glyphs.js')}}"></script>

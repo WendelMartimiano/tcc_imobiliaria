@@ -29,14 +29,9 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Funcionários</h1>
 			</div>
-		</div><!--/.row-->
-        @if (session('status'))            
-			<div class="alert alert-success alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				 {{ session('status') }}
-			</div>
-        @endif
+		</div><!--/.row-->        
 
+		<!--Messages -->
 		<div class="alert alert-success" id="message-success" role="alert" style="display: none"></div>
 		<div class="alert alert-danger" id="message-danger" role="alert" style="display: none"></div>
 
@@ -132,7 +127,7 @@
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header header-danger">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Demissão de Funcionário</h4>
 				</div>
@@ -141,7 +136,7 @@
 						<input type="text" id="url-demitir" class="form-control" name="id" value="" style="display: none">
 					</form>					
 					<p>Deseja realmente demitir o funcionário(a)?</p>					
-					<div class="alert alert-warning preloader-demitir" role="alert" style="display: none">Demitindo funcinário, por favor aguarde...</div>
+					<div class="text-warning preloader-demitir" role="alert" style="display: none">Demitindo funcinário, por favor aguarde...</div>
 				</div>
 				<div class="modal-footer">					
 					<button type="button" class="btn btn-primary" id="demiteFuncionario">Confirmar</button>
@@ -178,7 +173,7 @@
 			
 			if(data == "1"){
 				$('#myModal').modal('hide');
-				$('#message-success').html("Não foi possível demitir o funcionário!");
+				$('#message-success').html("Funcionário demitido com sucesso!");
 				$('#message-success').show();
 				setTimeout("location.reload();", 5000);				
 			}else{
@@ -191,7 +186,7 @@
 		});
 		request.fail(function(){
 			finalizaPreloaderDemitir();
-			$('#message-success').hide();
+			
 			alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
 		});
 	});

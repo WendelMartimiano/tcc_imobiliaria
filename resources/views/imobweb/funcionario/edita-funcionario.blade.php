@@ -51,7 +51,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_tipoPessoa" for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF/CNPJ" value="{{$funcionario->cpf_cnpj}}">
+                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$funcionario->cpf_cnpj}}">
                                 </div>
                             </div>
                             <div id="tipo_cpf" style="display: none;">
@@ -196,21 +196,25 @@
              $("#tipo_cnpj").hide();
              $("#tipo_cpf").show();
              $("#label_tipoPessoa").html('CPF:');
+             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
          }else{
              $("#tipo_cpf").hide();
              $("#tipo_cnpj").show();
              $("#label_tipoPessoa").html('CNPJ:');
+             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
          }
 
         $("#radio_cpf").click(function () {
             $("#tipo_cnpj").hide();
             $("#tipo_cpf").show();
             $("#label_tipoPessoa").html('CPF:');
+            $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
         });
         $("#radio_cnpj").click(function () {
             $("#tipo_cpf").hide();
             $("#tipo_cnpj").show();
             $("#label_tipoPessoa").html('CNPJ:');
+            $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
         });           
 
     });

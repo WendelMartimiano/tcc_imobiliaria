@@ -74,7 +74,7 @@
             jQuery("form").submit(function () {
 
                 var dadosForm = jQuery(this).serialize();                
-                console.log(dadosForm);
+                
                 jQuery.ajax({
                     url: jQuery(this).attr("send"),
                     data: dadosForm,
