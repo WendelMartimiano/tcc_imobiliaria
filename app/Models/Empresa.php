@@ -51,7 +51,7 @@ class Empresa extends Model
         'inscricao'         =>'numeric',
         'cep'               =>'numeric',
         'numero'            =>'numeric',
-        'creci'             =>'numeric',
+        'creci'             =>'numeric'
     ];
 
     //regra para cnpj válido

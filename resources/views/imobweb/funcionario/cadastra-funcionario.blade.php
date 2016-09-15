@@ -281,12 +281,16 @@
             }).done(function(data){
                 finalizaPreloader();
 
-                if(data == 1){                                       
+                if(data == 1){                                                       
                     $('#message-success').html("Funcionário cadastrado com sucesso!");
-                    $('#modalSuccess').modal('show');                     				    	
-                }else{
-                    $('#message-warning').html(data);
-                    $('#modalWarning').modal('show');	
+                    $('#modalSuccess').modal('show');  
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/funcionarios'); ", 3000);                   				    	
+                }else{ 
+                    for(var t in data){
+                        console.log(data);                              
+                        $('#message-warning').html(data[t]);
+                        $('#modalWarning').modal('show');
+                    }	
                 }
                 
             }).fail(function(){
