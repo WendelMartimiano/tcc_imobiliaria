@@ -184,13 +184,8 @@ class FuncionarioController extends Controller
         return view('imobweb.funcionario.edita-funcionario', compact('titulo', 'cargos', 'users', 'empresa', 'funcionario'));
     }
 
-    public function postEditaFuncionario(){
-        $dadosForm = $this->request->all();
-        dd($dadosForm);
-        $this->funcionario->fill($dadosForm);
-        $this->funcionario->save();
-
-        return redirect('/dashboard/funcionarios')->with('status', 'Funcionário editado com sucesso!');
+    public function postEditaFuncionario(){  
+        dd($dadosForm);    
     }
 
     public function getDemiteFuncionario($id){        

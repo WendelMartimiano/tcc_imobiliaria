@@ -31,9 +31,10 @@
 			</div>
 		</div><!--/.row-->        
 
-		<!--Messages -->
+		<!--Messages 
 		<div class="alert alert-success" id="message-success" role="alert" style="display: none"></div>
 		<div class="alert alert-danger" id="message-danger" role="alert" style="display: none"></div>
+		-->
 
 		<div class="row">
 			<div class="col-lg-12">

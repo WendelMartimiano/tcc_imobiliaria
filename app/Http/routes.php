@@ -3,18 +3,25 @@
 //Grupo de rotas do sistema
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     
+    //Rotas para a rotina de empresa
     Route::get('imobiliaria', 'ImobWeb\ImobiliariaController@getIndex');
 
+    //Rotas para a rotina de relatórios
     Route::get('relatorios', function () {
         return view('imobweb.relatorios');
     });
+
+    //Rotas para a rotina de contratos
     Route::get('contratos', function () {
         return view('imobweb.contratos');
     });
+
+    //Rotas para a rotina de clientes
     Route::get('clientes', function () {
         return view('imobweb.clientes');
     });
 
+    //Rotas para a rotina de funcionários
     Route::get('demite-funcionario/{id}', 'ImobWeb\FuncionarioController@getDemiteFuncionario');
     Route::post('edita-funcionario', 'ImobWeb\FuncionarioController@postEditaFuncionario');
     Route::get('edita-funcionario/{id}', 'ImobWeb\FuncionarioController@getEditaFuncionario');
@@ -22,11 +29,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     Route::get('cadastra-funcionario', 'ImobWeb\FuncionarioController@getCadastraFuncionario');
     Route::get('funcionarios', 'ImobWeb\FuncionarioController@getIndex');
 
+    //Rotas para a rotina de imóveis
     Route::get('imoveis', function () {
         return view('imobweb.imoveis');
     });
 
-
+    //Rota Home do Sistema
     Route::get('/', 'ImobWeb\HomeController@getIndex');
 });
 
@@ -35,18 +43,23 @@ Route::group(['prefix' => 'site'], function () {
 
    // Route::get('teste/{mensagem}', 'Site\UsuarioController@postMailConfirmacao');
 
+    //Rota da tela de confirmação de e-mail
     Route::get('confirmacao/{titulo?}', function ($titulo = 'Confirmação de E-mail') {
         return view('site.confirma_email', compact('titulo'));
     });
 
+    //Rotas de cadastro de usuário
     Route::get('usuario/{id}', 'Site\UsuarioController@getIndex');
     Route::post('usuario', 'Site\UsuarioController@postAdicionarUsuario');
 
+    //Rotas de cadastro de empresa
     Route::get('empresa/{id}', 'Site\EmpresaController@getIndex');
     Route::post('empresa', 'Site\EmpresaController@postAdicionarEmpresa');
 
+    //Rota de envio de e-mail de contato do site
     Route::post('send_mail', 'Site\PlanoController@postMailContato');
 
+    //Rota base do site
     Route::controller('/', 'Site\PlanoController');
 });
 

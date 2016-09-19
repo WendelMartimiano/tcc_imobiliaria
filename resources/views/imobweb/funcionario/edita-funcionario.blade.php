@@ -37,7 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados a serem alterados.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/edita-funcionario">
+                        <form class="form-horizontal" method="post" action="/dashboard/edita-funcionario" send="/dashboard/edita-funcionario">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
@@ -49,7 +49,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" id="label_tipoPessoa" for="cpf_cnpj"></label>
+                                <label class="control-label col-sm-2" id="label_cpfCnpj" for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$funcionario->cpf_cnpj}}">
                                 </div>
@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{$funcionario->data_nascimento}}">
+                                    <input type="date" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{$funcionario->data_nascimento}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -185,6 +185,39 @@
         </div>
     </div>
 
+    <!-- Modal Preloader -->
+    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+            <div class="spinner"></div>
+            <p class="spinner-text">carregando..</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Status Success-->
+	<div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header header-success">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>					 
+                    <h4 class="modal-title" id="message-success"></h4>
+				</div>								
+			</div>
+		</div>
+	</div>
+
+    <!-- Modal Status Warning-->
+	<div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header header-warning">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>					 
+                    <h4 class="modal-title" id="message-warning"></h4>
+				</div>								
+			</div>
+		</div>
+	</div>
 
 @endsection
 
@@ -193,27 +226,37 @@
     $(document).ready(function(){         
 
          if ($("#radio_cpf").prop("checked")){
+
+             $("#tipo_cnpj input").val("");
              $("#tipo_cnpj").hide();
              $("#tipo_cpf").show();
-             $("#label_tipoPessoa").html('CPF:');
+             $("#label_cpfCnpj").html('CPF:');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
+
          }else{
+
+             $("#tipo_cpf input").val("");
              $("#tipo_cpf").hide();
              $("#tipo_cnpj").show();
-             $("#label_tipoPessoa").html('CNPJ:');
+             $("#label_cpfCnpj").html('CNPJ:');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
          }
 
         $("#radio_cpf").click(function () {
+            $(".cpf_cnpj").val("");
+            $("#tipo_cnpj input").val("");
             $("#tipo_cnpj").hide();
             $("#tipo_cpf").show();
-            $("#label_tipoPessoa").html('CPF:');
+            $("#label_cpfCnpj").html('CPF:');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
         });
+
         $("#radio_cnpj").click(function () {
+            $(".cpf_cnpj").val("");
+            $("#tipo_cpf input").val("");
             $("#tipo_cpf").hide();
             $("#tipo_cnpj").show();
-            $("#label_tipoPessoa").html('CNPJ:');
+            $("#label_cpfCnpj").html('CNPJ:');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
         });           
 
@@ -226,4 +269,47 @@
         $('[name=id_user]').val($(param).val());
     }
 </script>
+
+<script>
+    $(function(){
+        $("form").submit(function(){
+            var dadosForm = $(this).serialize();
+
+            jQuery.ajax({
+                method:"POST",
+                url: jQuery(this).attr("send"),
+                data: dadosForm,
+                beforeSend: iniciaPreloader()
+            }).done(function(data){
+                finalizaPreloader();
+
+                if(data == 1){                                                       
+                    $('#message-success').html("Funcionário alterado com sucesso!");
+                    $('#modalSuccess').modal('show');  
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/funcionarios'); ", 3000);                   				    	
+                }else{ 
+                    for(var t in data){
+                        console.log(data);                              
+                        $('#message-warning').html(data[t]);
+                        $('#modalWarning').modal('show');
+                    }	
+                }
+                
+            }).fail(function(){
+                finalizaPreloader();			    
+			    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+            });
+            return false;
+        });
+    });
+
+    function iniciaPreloader(){
+        $('#myModal').modal({backdrop: 'static',  keyboard: false})
+    }
+
+    function finalizaPreloader(){        
+        $('#myModal').modal('hide');
+    }
+</script>
+
 @endsection

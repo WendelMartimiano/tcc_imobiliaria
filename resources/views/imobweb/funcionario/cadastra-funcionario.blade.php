@@ -32,10 +32,6 @@
             </div>
         </div><!--/.row-->
 
-        <!--Messages 
-        <div class="alert alert-success" id="message-success" role="alert" style="display: none"></div>
-        <div class="alert alert-danger" id="message-danger" role="alert" style="display: none"></div> -->
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -53,7 +49,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" id="label_tipoPessoa"  for="cpf_cnpj"></label>
+                                <label class="control-label col-sm-2" id="label_cpfCnpj"  for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{old('cpf_cnpj')}}">
                                 </div>
@@ -101,7 +97,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{old('data_nascimento')}}">
+                                    <input type="date" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{old('data_nascimento')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -234,27 +230,37 @@
          $("#radio_cpf").attr('checked', true);
 
          if ($("#radio_cpf").prop("checked")){
+
+             $("#tipo_cnpj input").val("");
              $("#tipo_cnpj").hide();
              $("#tipo_cpf").show();
-             $("#label_tipoPessoa").html('CPF:');
+             $("#label_cpfCnpj").html('CPF:');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
+
          }else{
+
+             $("#tipo_cpf input").val("");
              $("#tipo_cpf").hide();
              $("#tipo_cnpj").show();
-             $("#label_tipoPessoa").html('CNPJ:');
+             $("#label_cpfCnpj").html('CNPJ:');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
          }
 
         $("#radio_cpf").click(function () {
+            $(".cpf_cnpj").val("");
+            $("#tipo_cnpj input").val("");
             $("#tipo_cnpj").hide();
             $("#tipo_cpf").show();
-            $("#label_tipoPessoa").html('CPF:');
+            $("#label_cpfCnpj").html('CPF:');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
         });
+
         $("#radio_cnpj").click(function () {
+            $(".cpf_cnpj").val("");
+            $("#tipo_cpf input").val("");
             $("#tipo_cpf").hide();
             $("#tipo_cnpj").show();
-            $("#label_tipoPessoa").html('CNPJ:');
+            $("#label_cpfCnpj").html('CNPJ:');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
         });           
 

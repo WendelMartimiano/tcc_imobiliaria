@@ -94,7 +94,7 @@ class Funcionario extends Model
 
    //regra para rg duplicado
     static $rules_duplicatedRG = [
-        'rg'          =>'unique:funcionarios,rg'
+        'rg'                =>'unique:funcionarios,rg'
     ];
 
    //regra para usuário duplicado
