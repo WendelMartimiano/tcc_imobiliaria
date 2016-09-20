@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 
 class Funcionario extends Model
 {
@@ -109,6 +110,6 @@ class Funcionario extends Model
     }
 
     public function getFuncionario($param){
-        return $this->all()->where('id_empresa', $param);
+        return $this->where('id_empresa', $param)->paginate(1);        
     }
 }

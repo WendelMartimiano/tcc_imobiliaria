@@ -36,7 +36,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Consulta de Funcionários.</div>
 					<div class="panel-body">
-						<form class="form-horizontal">
+						<form class="form-horizontal" send="/dashboard/funcionarios/pesquisar">
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ:</label>
 								<div class="col-sm-10">
@@ -65,9 +65,9 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Funcionários:</div>					
+					<div class="panel-heading">{{$tituloTabela or 'Todos os Funcionários:'}}</div>					
 					<div class="panel-body">
-						<table class="table" data-toggle="table" id="funcionarios-table">
+						<table class="table"  id="funcionarios-table">
 							<thead>
 							<tr>
 								<th data-field="id">Item ID</th>
@@ -78,7 +78,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							@forelse($funcionarios as $funcionario)
+							@foreach($funcionarios as $funcionario)
 								<tr>
 								<td data-field="id">{{$funcionario->id}}</td>
 								@if($funcionario->tipo_pessoa == "F")
@@ -104,16 +104,13 @@
 										<a href="" onclick="modalDeleta('/dashboard/funcionarios/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 										</a>									
-									</td>
+									</td>									
 								@endif
-								
-								
-							</tr>
-							@empty
-								<p>"Nenhum registro encontrado!"</p>
-							@endforelse								
-							</tbody>
+							</tr>														
+							@endforeach														
+							</tbody>								
 						</table>
+						{!! $funcionarios->render() !!}
 					</div>
 				</div>
 			</div>

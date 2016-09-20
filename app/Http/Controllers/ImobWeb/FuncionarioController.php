@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ImobWeb;
 
 use App\Http\Middleware\Authenticate;
 use Illuminate\Http\Request;
+use DB;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,12 @@ use Illuminate\Validation\Factory;
 
 class FuncionarioController extends Controller
 {
+
+    private $totalItensPorPagina = 1;
+
+    private $request;
+    private $funcionario;
+    private $validator;
 
     public function __construct(Request $request, Funcionario $funcionario, Factory $validator)
     {
@@ -27,8 +34,13 @@ class FuncionarioController extends Controller
 
         $titulo = 'ImobWeb - Funcionários';
         $empresaUserAtual = Auth::user()->id_empresa;
-        $funcionarios = $this->funcionario->getFuncionario($empresaUserAtual);        
-        return view('imobweb.funcionario.index', compact('titulo', 'funcionarios'));
+        $funcionarios = $this->funcionario->getFuncionario($empresaUserAtual);
+
+        if(count($funcionarios) == 0){
+            $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';
+        }
+                      
+        return view('imobweb.funcionario.index', compact('titulo', 'funcionarios', 'tituloTabela'));
     }
 
     public function getCadastraFuncionario(){
@@ -320,6 +332,21 @@ class FuncionarioController extends Controller
         $this->funcionario->find($id)->delete();        
         return 1;
     }
+
+    public function getPesquisar($palavraChave){
+
+       $funcionarios = $this->funcionario->where('nome', 'LIKE', "%{$palavraChave}%")->paginate($this->totalItensPorPagina);
+
+       if(count($funcionarios) == 0){
+            $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';
+       }else{
+            $tituloTabela = "Resultados da pesquisa para: $palavraChave";
+       }
+        
+        $titulo = 'ImobWeb - Funcionários';              
+        return view('imobweb.funcionario.index', compact('titulo', 'funcionarios', 'tituloTabela'));
+    }
+
 
     /*
     * CASO A URL ESTEJA INCORRETA, RETORNA ERRO 404.
