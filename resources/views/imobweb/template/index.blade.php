@@ -78,9 +78,7 @@
 		})
 	</script>
 
-@yield('funcionario')
-@yield('cadastra-funcionario')
-@yield('edita-funcionario')
+@yield('scripts')
 
 </body>
 </html>

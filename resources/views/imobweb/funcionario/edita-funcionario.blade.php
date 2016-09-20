@@ -37,7 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados a serem alterados.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/edita-funcionario" send="/dashboard/edita-funcionario">
+                        <form class="form-horizontal" method="post" action="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" send="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
@@ -221,7 +221,7 @@
 
 @endsection
 
-@section('edita-funcionario')
+@section('scripts')
 <script>
     $(document).ready(function(){         
 

@@ -29,12 +29,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Funcionários</h1>
 			</div>
-		</div><!--/.row-->        
-
-		<!--Messages 
-		<div class="alert alert-success" id="message-success" role="alert" style="display: none"></div>
-		<div class="alert alert-danger" id="message-danger" role="alert" style="display: none"></div>
-		-->
+		</div><!--/.row-->    
 
 		<div class="row">
 			<div class="col-lg-12">
@@ -58,7 +53,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-primary">Buscar</button>
-									<a href="/dashboard/cadastra-funcionario" class="btn btn-default">Novo</a>
+									<a href="/dashboard/funcionarios/cadastra-funcionario" class="btn btn-default">Novo</a>
 								</div>
 							</div>
 						</form>
@@ -91,10 +86,10 @@
 									<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
 									<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
 									<td>
-										<a href="/dashboard/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
+										<a href="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
 											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 										</a>
-										<a href="" onclick="modalDeleta('/dashboard/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+										<a href="" onclick="modalDeleta('/dashboard/funcionarios/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 										</a>									
 									</td>
@@ -103,10 +98,10 @@
 									<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
 									<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
 									<td>
-										<a href="/dashboard/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
+										<a href="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
 											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 										</a>
-										<a href="" onclick="modalDeleta('/dashboard/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+										<a href="" onclick="modalDeleta('/dashboard/funcionarios/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 										</a>									
 									</td>
@@ -148,7 +143,7 @@
 	</div>	
 @endsection
 
-@section('funcionario')
+@section('scripts')
 <script>
 	//Chama modal de demissão
 	function modalDeleta(url){

@@ -37,7 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados do novo funcionário.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/cadastra-funcionario" send="/dashboard/cadastra-funcionario">
+                        <form class="form-horizontal" method="post" action="/dashboard/funcionarios/cadastra-funcionario" send="/dashboard/funcionarios/cadastra-funcionario">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
@@ -222,7 +222,7 @@
 
 @endsection
 
-@section('cadastra-funcionario')
+@section('scripts')
 <script>
     $(document).ready(function(){
         

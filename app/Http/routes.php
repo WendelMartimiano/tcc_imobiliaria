@@ -4,7 +4,7 @@
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     
     //Rotas para a rotina de empresa
-    Route::get('imobiliaria', 'ImobWeb\ImobiliariaController@getIndex');
+    Route::controller('imobiliaria', 'ImobWeb\ImobiliariaController');
 
     //Rotas para a rotina de relatórios
     Route::get('relatorios', function () {
@@ -21,13 +21,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
         return view('imobweb.clientes');
     });
 
-    //Rotas para a rotina de funcionários
-    Route::get('demite-funcionario/{id}', 'ImobWeb\FuncionarioController@getDemiteFuncionario');
-    Route::post('edita-funcionario', 'ImobWeb\FuncionarioController@postEditaFuncionario');
-    Route::get('edita-funcionario/{id}', 'ImobWeb\FuncionarioController@getEditaFuncionario');
-    Route::post('cadastra-funcionario', 'ImobWeb\FuncionarioController@postCadastraFuncionario');
-    Route::get('cadastra-funcionario', 'ImobWeb\FuncionarioController@getCadastraFuncionario');
-    Route::get('funcionarios', 'ImobWeb\FuncionarioController@getIndex');
+    //Rotas para a rotina de funcionários     
+    Route::controller('funcionarios', 'ImobWeb\FuncionarioController');
 
     //Rotas para a rotina de imóveis
     Route::get('imoveis', function () {
@@ -35,7 +30,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     });
 
     //Rota Home do Sistema
-    Route::get('/', 'ImobWeb\HomeController@getIndex');
+    Route::controller('/', 'ImobWeb\HomeController');
 });
 
 //Grupo de rotas do site
