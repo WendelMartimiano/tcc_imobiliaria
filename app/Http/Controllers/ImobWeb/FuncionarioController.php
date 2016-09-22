@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Funcionario;
 use App\Models\Cargo;
 use App\Models\Empresa;
+use App\Models\User;
 use Illuminate\Validation\Factory;
 
 class FuncionarioController extends Controller
@@ -48,10 +49,9 @@ class FuncionarioController extends Controller
         $titulo = 'ImobWeb - Cadastro de Funcionário';
         $cargos = Cargo::all();
         $empresaUserAtual = Auth::user()->id_empresa;
-        $empresa = Empresa::all()->find($empresaUserAtual);
         $users = $this->funcionario->getUser($empresaUserAtual);
 
-        return view('imobweb.funcionario.cadastra-funcionario', compact('titulo', 'cargos', 'users', 'empresa'));
+        return view('imobweb.funcionario.cadastra-funcionario', compact('titulo', 'cargos', 'users'));
     }
 
     public function postCadastraFuncionario(){
@@ -185,19 +185,17 @@ class FuncionarioController extends Controller
 
     public function getEditaFuncionario($id){
 
-        $funcionario = $this->funcionario->all()->find($id);        
-        //dd($funcionario);
+        $funcionario = $this->funcionario->all()->find($id);
         $titulo = 'ImobWeb - Edição de Funcionário';
         $cargos = Cargo::all();
-        $empresaUserAtual = Auth::user()->id_empresa;
-        $empresa = Empresa::all()->find($empresaUserAtual);
-        $users = $this->funcionario->getUser($empresaUserAtual);
+        $user = User::all()->find($funcionario->id_user);
 
-        return view('imobweb.funcionario.edita-funcionario', compact('titulo', 'cargos', 'users', 'empresa', 'funcionario'));
+        return view('imobweb.funcionario.edita-funcionario', compact('titulo', 'cargos', 'user', 'funcionario'));
     }
 
     public function postEditaFuncionario($id){
         $funcionario = $this->funcionario->all()->find($id);
+
         $dadosForm = $this->request->all();
 
         $valida_requiredPessoaF = $this->validator->make($dadosForm, Funcionario::$rules_requiredPessoaF);
@@ -206,9 +204,6 @@ class FuncionarioController extends Controller
         $valida_cpf = $this->validator->make($dadosForm, Funcionario::$rules_cpf);
         $valida_size = $this->validator->make($dadosForm, Funcionario::$rules_size);
         $valida_type = $this->validator->make($dadosForm, Funcionario::$rules_type);
-        $valida_duplicatedCpfCnpj = $this->validator->make($dadosForm, Funcionario::$rules_duplicatedCpfCnpj);
-        $valida_duplicatedRG = $this->validator->make($dadosForm, Funcionario::$rules_duplicatedRG);
-        $valida_duplicatedUser = $this->validator->make($dadosForm, Funcionario::$rules_duplicatedUser);
 
         //válida os campos obrigatórios tipo pessoa fisíca
         if ($dadosForm["tipo_pessoa"] == "F"){
@@ -288,39 +283,6 @@ class FuncionarioController extends Controller
             return $displayErrors;
         };
 
-        //válida os cpf ou cnpj duplicados
-        if ($valida_duplicatedCpfCnpj->fails()) {
-            $messages = $valida_duplicatedCpfCnpj->messages();
-
-            if ($messages->all()) {
-                $displayErrors = array("CPF ou CNPJ já cadastrado no sistema! Verifique.");
-            }
-
-            return $displayErrors;
-        };
-
-        //válida os rg duplicados
-        if ($valida_duplicatedRG->fails()) {
-            $messages = $valida_duplicatedRG->messages();
-
-            if ($messages->all()) {
-                $displayErrors = array("RG já cadastrado no sistema! Verifique.");
-            }
-
-            return $displayErrors;
-        };        
-
-        //válida os usuários duplicados
-        if ($valida_duplicatedUser->fails()) {
-            $messages = $valida_duplicatedUser->messages();
-
-            if ($messages->all()) {
-                $displayErrors = array("Usuário vinculado a outro funcionário! Verifique.");
-            }
-
-            return $displayErrors;
-        };
-
         $funcionario->fill($dadosForm);
         $funcionario->save();
 
@@ -333,9 +295,9 @@ class FuncionarioController extends Controller
         return 1;
     }
 
-    public function getPesquisar($palavraChave){
+    public function getPesquisar($palavraChave = ''){
 
-       $funcionarios = $this->funcionario->where('nome', 'LIKE', "%{$palavraChave}%")->paginate($this->totalItensPorPagina);
+       $funcionarios = $this->funcionario->where('nome_razao', 'LIKE', "%{$palavraChave}%")->paginate($this->totalItensPorPagina);
 
        if(count($funcionarios) == 0){
             $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';

@@ -112,7 +112,7 @@ class UsuarioController extends Controller
         ]);
 
         //chama método de envio de e-mail passando os dados recem cadastrados
-        //$this->postMailConfirmacao($dadosForm);
+        $this->postMailConfirmacao($dadosForm);
 
         return 1;
     }

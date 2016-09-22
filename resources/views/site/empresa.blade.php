@@ -36,7 +36,13 @@
                     <input name="razao_social" id="razao_social" type="text" class="validate" value="{{ old('razao_social') }}">
                     <label for="razao_social">Razão Social <strong style="color: red">*</strong></label>
                   </div>
-                </div>                
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input name="nome_fantasia" id="nome_fantasia" type="text" class="validate" value="{{ old('nome_fantasia') }}">
+                    <label for="nome_fantasia">Nome Fantasia </label>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input name="cnpj" id="cnpj" type="text" class="validate" value="{{ old('cnpj') }}">

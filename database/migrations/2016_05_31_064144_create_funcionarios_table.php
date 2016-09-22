@@ -16,10 +16,9 @@ class CreateFuncionariosTable extends Migration
             $table->increments('id');
             $table->string('cpf_cnpj', 14)->unique()->nullable();
             $table->string('rg', 9)->unique()->nullable();
-            $table->string('nome', 60)->nullable();
-            $table->string('sexo', 10)->nullable();
+            $table->string('nome_razao', 100)->nullable();
+            $table->string('nome_fantasia', 100)->nullable();
             $table->date('data_nascimento')->nullable();
-            $table->string('razao_social', 100)->nullable();
             $table->string('rep_legal', 60)->nullable();
             $table->string('inscricao', 12)->nullable();
             $table->integer('creci')->nullable();

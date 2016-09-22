@@ -45,6 +45,12 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="control-label col-sm-2" for="nome_fantasia">Nome Fantasia:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="nome_fantasia" placeholder="{{$imobiliaria->nome_fantasia}}" readonly>
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="control-label col-sm-2" for="cnpj">CNPJ:</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" name="cnpj" placeholder="{{$imobiliaria->cnpj}}" readonly>

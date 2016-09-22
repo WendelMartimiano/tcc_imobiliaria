@@ -36,17 +36,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Consulta de Funcionários.</div>
 					<div class="panel-body">
-						<form class="form-horizontal" send="/dashboard/funcionarios/pesquisar">
+						<form class="form-horizontal form-pesquisa" method="post" send="/dashboard/funcionarios/pesquisar/">
 							<div class="form-group">
-								<label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ:</label>
+								<label class="control-label col-sm-2" for="nome">Nome/Razão Social:</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF/CNPJ" value="{{ old('cpf_cnpj') }}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="nome">Nome:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" name="nome" placeholder="Digite o nome" value="{{old('nome')}}">
+									<input type="text" class="form-control" id="nome_razao" name="nome_razao" placeholder="Digite o nome" value="">
 								</div>
 							</div>
 
@@ -65,47 +59,41 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">{{$tituloTabela or 'Todos os Funcionários:'}}</div>					
+					<div class="panel-heading">{{$tituloTabela or 'Todos os Funcionários:'}}</div>
 					<div class="panel-body">
-						<table class="table"  id="funcionarios-table">
+						<table class="table table-hover"  id="funcionarios-table">
 							<thead>
 							<tr>
 								<th data-field="id">Item ID</th>
-								<th data-field="nome" data-sortable="true">Nome</th>
+								<th data-field="nome_razao" data-sortable="true">Nome/Razão Social</th>
+								<th data-field="nome_fantasia" data-sortable="true">Nome Fantasia</th>
 								<th data-field="cpf_cnpj"  data-sortable="true">CPF/CNPJ</th>
 								<th data-field="telefone" data-sortable="true">Telefone</th>
-								<th></th>
+								<th>Ações</th>
 							</tr>
 							</thead>
 							<tbody>
 							@foreach($funcionarios as $funcionario)
-								<tr>
+							<tr>
 								<td data-field="id">{{$funcionario->id}}</td>
-								@if($funcionario->tipo_pessoa == "F")
-									<td data-field="nome" data-sortable="true">{{$funcionario->nome}}</td>
-									<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
-									<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
-									<td>
-										<a href="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
-											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-										</a>
-										<a href="" onclick="modalDeleta('/dashboard/funcionarios/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
-											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-										</a>									
-									</td>
-								@else
-									<td data-field="razao_social" data-sortable="true">{{$funcionario->razao_social}}</td>
-									<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
-									<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
-									<td>
-										<a href="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
-											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-										</a>
-										<a href="" onclick="modalDeleta('/dashboard/funcionarios/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
-											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-										</a>									
-									</td>									
-								@endif
+								<td data-field="nome_razao" data-sortable="true">{{$funcionario->nome_razao}}</td>
+								<td data-field="nome_fantasia" data-sortable="true">
+									@if($funcionario->nome_fantasia)
+										{{$funcionario->nome_fantasia}}
+									@else
+										-----
+									@endif
+								</td>
+								<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
+								<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
+								<td>
+									<a href="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
+										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									</a>
+									<a href="" onclick="modalDeleta('/dashboard/funcionarios/demite-funcionario/{{$funcionario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									</a>
+								</td>
 							</tr>														
 							@endforeach														
 							</tbody>								
@@ -182,6 +170,8 @@
 			
 			alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
 		});
+
+		return false;
 	});
 
 	function iniciaPreloaderDemitir(){
@@ -192,5 +182,12 @@
 		$('.preloader-demitir').hide();
 	}
 
+	$("form.form-pesquisa").submit(function(){
+		var palavraChave = $("#nome_razao").val();
+		var url = $(this).attr("send");
+
+		location.href = url+palavraChave;
+		return false;
+	});
 </script>
 @endsection

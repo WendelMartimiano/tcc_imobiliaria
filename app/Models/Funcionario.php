@@ -17,7 +17,7 @@ class Funcionario extends Model
     static $rules_requiredPessoaF = [
         'cpf_cnpj'          =>'required',
         'rg'                =>'required',
-        'nome'              =>'required',
+        'nome_razao'        =>'required',
         'data_nascimento'   =>'required',        
         'creci'             =>'required',
         'telefone'          =>'required',
@@ -36,7 +36,7 @@ class Funcionario extends Model
     //regra para campos obrigatórios do tipo pessoa jurídica
     static $rules_requiredPessoaJ = [
         'cpf_cnpj'          =>'required',       
-        'razao_social'      =>'required',
+        'nome_razao'        =>'required',
         'rep_legal'         =>'required',
         'inscricao'         =>'required',
         'data_nascimento'   =>'required',
@@ -57,7 +57,7 @@ class Funcionario extends Model
     //regra para mínimo de caracteres
     static $rules_size = [
         'rg'                =>'min:9|max:9',
-        'razao_social'      =>'min:6',
+        'nome_razao'        =>'min:6',
         'telefone'          =>'min:8',
         'inscricao'         =>'min:2',
         'cep'               =>'min:5',

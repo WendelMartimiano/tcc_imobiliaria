@@ -54,13 +54,13 @@
                                     <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{old('cpf_cnpj')}}">
                                 </div>
                             </div>
-                            <div id="tipo_cpf" style="display: none;">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="nome">Nome:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="nome" placeholder="Digite o nome" value="{{old('nome')}}">
-                                    </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" id="label_nomeRazao"  for="nome_razao"></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control nome_razao" name="nome_razao" placeholder="" value="{{old('nome_razao')}}">
                                 </div>
+                            </div>
+                            <div id="tipo_cpf" style="display: none;">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="rg">RG:</label>
                                     <div class="col-sm-10">
@@ -70,9 +70,9 @@
                             </div>
                             <div id="tipo_cnpj" style="display: none;">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="razao_social">Razão Social:</label>
+                                    <label class="control-label col-sm-2" for="nome_fantasia">Nome Fantasia:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" value="{{old('razao_social')}}">
+                                        <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia" value="{{old('nome_fantasia')}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -109,31 +109,29 @@
                             <div class="form-group form-inline">
                                 <label for="usuario" class="control-label col-sm-2">Usuário do Sistema:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" id="select_user" onchange="pegaUser(this)">
+                                    <select class="form-control" name="id_user">
                                         <option value="">Selecione uma opção</option>
                                         @foreach($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                         @endforeach
                                     </select>
-                                    <input name="id_user" value="" type="hidden">
                                 </div>
                             </div>
                             <div class="form-group form-inline">
                                 <label for="cargo" class="control-label col-sm-2">Cargo:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" id="select_cargo" onchange="pegaCargo(this)">
+                                    <select class="form-control" name="id_cargo">
                                         <option value="">Selecione uma opção</option>
                                         @foreach($cargos as $cargo)
                                             <option value="{{$cargo->id}}">{{$cargo->nome}}</option>
                                         @endforeach
                                     </select>
-                                    <input name="id_cargo" value="" type="hidden">
                                 </div>
                             </div>
                             <div class="form-group" hidden>
                                 <label class="control-label col-sm-2" for="empresa">Empresa:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{$empresa->id}}" readonly>
+                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{Auth::user()->id_empresa}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -236,6 +234,8 @@
              $("#tipo_cpf").show();
              $("#label_cpfCnpj").html('CPF:');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
+             $("#label_nomeRazao").html('Nome:');
+             $(".nome_razao").attr('placeholder', 'Digite o nome');
 
          }else{
 
@@ -244,6 +244,8 @@
              $("#tipo_cnpj").show();
              $("#label_cpfCnpj").html('CNPJ:');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
+             $("#label_nomeRazao").html('Razão Social:');
+             $(".nome_razao").attr('placeholder', 'Digite a razão social');
          }
 
         $("#radio_cpf").click(function () {
@@ -253,6 +255,8 @@
             $("#tipo_cpf").show();
             $("#label_cpfCnpj").html('CPF:');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
+            $("#label_nomeRazao").html('Nome:');
+            $(".nome_razao").attr('placeholder', 'Digite o nome');
         });
 
         $("#radio_cnpj").click(function () {
@@ -262,16 +266,11 @@
             $("#tipo_cnpj").show();
             $("#label_cpfCnpj").html('CNPJ:');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
+            $("#label_nomeRazao").html('Razão Social:');
+            $(".nome_razao").attr('placeholder', 'Digite a razão social');
         });           
 
     });
-
-    function pegaCargo(param) {
-        $('[name=id_cargo]').val($(param).val());
-    }
-    function pegaUser(param) {
-        $('[name=id_user]').val($(param).val());
-    }
 </script>
 
 <script>
