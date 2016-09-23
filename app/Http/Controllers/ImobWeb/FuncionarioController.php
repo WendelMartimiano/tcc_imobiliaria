@@ -295,7 +295,7 @@ class FuncionarioController extends Controller
         return 1;
     }
 
-    public function getPesquisar($palavraChave = ''){
+    public function getPesquisar($palavraChave = 'vazio'){
 
        $funcionarios = $this->funcionario->where('nome_razao', 'LIKE', "%{$palavraChave}%")->paginate($this->totalItensPorPagina);
 

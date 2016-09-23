@@ -62,7 +62,7 @@
                             </div>
                             <div id="tipo_cpf" style="display: none;">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="rg">RG:</label>
+                                    <label class="control-label col-sm-2" for="rg">RG: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{old('rg')}}">
                                     </div>
@@ -76,38 +76,38 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="rep_legal">Representante legal:</label>
+                                    <label class="control-label col-sm-2" for="rep_legal">Representante legal: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="rep_legal" placeholder="Digite o representante legal" value="{{old('rep_legal')}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="inscricao">Inscrição:</label>
+                                    <label class="control-label col-sm-2" for="inscricao">Inscrição: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="inscricao" placeholder="Digite o número de inscrição" value="{{old('inscricao')}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="creci">CRECI:</label>
+                                <label class="control-label col-sm-2" for="creci">CRECI: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="creci" placeholder="Digite o número de creci" value="{{old('creci')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento:</label>
+                                <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{old('data_nascimento')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="telefone">Telefone:</label>
+                                <label class="control-label col-sm-2" for="telefone">Telefone: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="telefone" placeholder="Digite o número de telefone" value="{{old('telefone')}}">
                                 </div>
                             </div>
                             <div class="form-group form-inline">
-                                <label for="usuario" class="control-label col-sm-2">Usuário do Sistema:</label>
+                                <label for="usuario" class="control-label col-sm-2">Usuário do Sistema: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name="id_user">
                                         <option value="">Selecione uma opção</option>
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="form-group form-inline">
-                                <label for="cargo" class="control-label col-sm-2">Cargo:</label>
+                                <label for="cargo" class="control-label col-sm-2">Cargo: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name="id_cargo">
                                         <option value="">Selecione uma opção</option>
@@ -135,37 +135,37 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="cep">CEP:</label>
+                                <label class="control-label col-sm-2" for="cep">CEP: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="cep" placeholder="Digite o número de cep" value="{{old('cep')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="rua">Rua:</label>
+                                <label class="control-label col-sm-2" for="rua">Rua: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="rua" placeholder="Digite a rua" value="{{old('rua')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="numero">Número:</label>
+                                <label class="control-label col-sm-2" for="numero">Número: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="numero" placeholder="Digite o número da residência" value="{{old('numero')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="bairro">Bairro:</label>
+                                <label class="control-label col-sm-2" for="bairro">Bairro: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="bairro" placeholder="Digite o bairro" value="{{old('bairro')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="cidade">Cidade:</label>
+                                <label class="control-label col-sm-2" for="cidade">Cidade: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" value="{{old('cidade')}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="uf">Estado:</label>
+                                <label class="control-label col-sm-2" for="uf">Estado: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="uf" placeholder="Digite o estado" value="{{old('uf')}}">
                                 </div>
@@ -232,9 +232,9 @@
              $("#tipo_cnpj input").val("");
              $("#tipo_cnpj").hide();
              $("#tipo_cpf").show();
-             $("#label_cpfCnpj").html('CPF:');
+             $("#label_cpfCnpj").html('CPF: <strong class="color-red">*</strong>');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
-             $("#label_nomeRazao").html('Nome:');
+             $("#label_nomeRazao").html('Nome: <strong class="color-red">*</strong>');
              $(".nome_razao").attr('placeholder', 'Digite o nome');
 
          }else{
@@ -242,9 +242,9 @@
              $("#tipo_cpf input").val("");
              $("#tipo_cpf").hide();
              $("#tipo_cnpj").show();
-             $("#label_cpfCnpj").html('CNPJ:');
+             $("#label_cpfCnpj").html('CNPJ: <strong class="color-red">*</strong>');
              $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
-             $("#label_nomeRazao").html('Razão Social:');
+             $("#label_nomeRazao").html('Razão Social: <strong class="color-red">*</strong>');
              $(".nome_razao").attr('placeholder', 'Digite a razão social');
          }
 
@@ -253,9 +253,9 @@
             $("#tipo_cnpj input").val("");
             $("#tipo_cnpj").hide();
             $("#tipo_cpf").show();
-            $("#label_cpfCnpj").html('CPF:');
+            $("#label_cpfCnpj").html('CPF: <strong class="color-red">*</strong>');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CPF');
-            $("#label_nomeRazao").html('Nome:');
+            $("#label_nomeRazao").html('Nome: <strong class="color-red">*</strong>');
             $(".nome_razao").attr('placeholder', 'Digite o nome');
         });
 
@@ -264,9 +264,9 @@
             $("#tipo_cpf input").val("");
             $("#tipo_cpf").hide();
             $("#tipo_cnpj").show();
-            $("#label_cpfCnpj").html('CNPJ:');
+            $("#label_cpfCnpj").html('CNPJ: <strong class="color-red">*</strong>');
             $(".cpf_cnpj").attr('placeholder', 'Digite o número do CNPJ');
-            $("#label_nomeRazao").html('Razão Social:');
+            $("#label_nomeRazao").html('Razão Social: <strong class="color-red">*</strong>');
             $(".nome_razao").attr('placeholder', 'Digite a razão social');
         });           
 

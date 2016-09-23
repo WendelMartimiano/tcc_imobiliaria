@@ -37,13 +37,12 @@
 					<div class="panel-heading">Consulta de Funcionários.</div>
 					<div class="panel-body">
 						<form class="form-horizontal form-pesquisa" method="post" send="/dashboard/funcionarios/pesquisar/">
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="nome">Nome/Razão Social:</label>
+                            <div class="form-group">
+								<label class="control-label col-sm-2" for="nome_razao">Nome/Razão Social:</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="nome_razao" name="nome_razao" placeholder="Digite o nome" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-primary">Buscar</button>
@@ -183,7 +182,8 @@
 	}
 
 	$("form.form-pesquisa").submit(function(){
-		var palavraChave = $("#nome_razao").val();
+
+        var palavraChave = $("#nome_razao").val();
 		var url = $(this).attr("send");
 
 		location.href = url+palavraChave;
