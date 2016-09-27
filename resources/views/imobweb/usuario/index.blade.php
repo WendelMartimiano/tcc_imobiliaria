@@ -77,10 +77,10 @@
                                     <td>{{$usuario->name}}</td>
                                     <td>{{$usuario->email}}</td>
                                     <td>
-                                        <a href="" class="btn btn-success btn-xs">
+                                        <a href="/dashboard/usuarios/edita-usuario/{{$usuario->id}}" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
-                                        <a href="" onclick="modalDeleta('dashboard/usuarios/exclui-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                        <a href="" onclick="modalDeleta('/dashboard/usuarios/exclui-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </a>
                                     </td>

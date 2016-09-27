@@ -22,45 +22,45 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="#"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg></a></li>
-                <li class="active">Usuários / Cadastro de Usuário</li>
+                <li class="active">Usuários / Edição de Usuário</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Cadastro de Usuários</h1>
+                <h1 class="page-header">Edição de Usuários</h1>
             </div>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Informe os dados do novo usuário.</div>
+                    <div class="panel-heading">Informe os dados a serem alterados.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/usuarios/cadastra-usuario" send="/dashboard/usuarios/cadastra-usuario">
+                        <form class="form-horizontal" method="post" action="/dashboard/usuarios/edita-usuario/{{$usuario->id}}" send="/dashboard/usuarios/edita-usuario/{{$usuario->id}}">
                             {!! csrf_field() !!}
                             <div class="form-group" hidden>
                                 <label class="control-label col-sm-2" for="empresa">Empresa:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{Auth::user()->id_empresa}}" readonly>
+                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{$usuario->id_empresa}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="nome">Nome: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="name" placeholder="Digite o nome de usuário" value="{{old('name')}}">
+                                    <input type="text" class="form-control" name="name" placeholder="Digite o nome de usuário" value="{{$usuario->name}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">E-mail: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" name="email" placeholder="Digite o e-mail" value="{{old('email')}}">
+                                    <input type="email" class="form-control" name="email" placeholder="Digite o e-mail" value="{{$usuario->email}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="senha">Senha: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" name="password" placeholder="Digite a senha" value="{{old('password')}}">
+                                    <input type="password" class="form-control" name="password" placeholder="Digite a nova senha" value="{{old('password')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -132,12 +132,12 @@
                     finalizaPreloader();
 
                     if(data == 1){
-                        $('#message-success').html("Usuário cadastrado com sucesso!");
+                        $('#message-success').html("Usuário alterado com sucesso!");
                         $('#modalSuccess').modal('show');
                         setTimeout("$(window.document.location).attr('href', '/dashboard/usuarios'); ", 3000);
                     }else{
                         for(var t in data){
-                            console.log(data);
+
                             $('#message-warning').html(data[t]);
                             $('#modalWarning').modal('show');
                         }
@@ -159,4 +159,5 @@
             $('#modalPreloader').modal('hide');
         }
     </script>
+
 @endsection
