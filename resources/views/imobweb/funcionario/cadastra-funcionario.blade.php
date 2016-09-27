@@ -186,7 +186,7 @@
     </div>
     
     <!-- Modal Preloader -->
-    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
             <div class="spinner"></div>
@@ -293,7 +293,6 @@
                     setTimeout("$(window.document.location).attr('href', '/dashboard/funcionarios'); ", 3000);                   				    	
                 }else{ 
                     for(var t in data){
-                        console.log(data);                              
                         $('#message-warning').html(data[t]);
                         $('#modalWarning').modal('show');
                     }	
@@ -308,11 +307,11 @@
     });
 
     function iniciaPreloader(){
-        $('#myModal').modal({backdrop: 'static',  keyboard: false})
+        $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
     }
 
     function finalizaPreloader(){        
-        $('#myModal').modal('hide');
+        $('#modalPreloader').modal('hide');
     }
 </script>
 @endsection

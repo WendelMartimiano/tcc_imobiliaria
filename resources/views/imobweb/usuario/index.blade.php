@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Buscar</button>
-                                    <a href="" class="btn btn-default">Novo</a>
+                                    <a href="/dashboard/usuarios/cadastra-usuario" class="btn btn-default">Novo</a>
                                 </div>
                             </div>
                         </form>
@@ -88,6 +88,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {!! $usuarios->render() !!}
                     </div>
                 </div>
             </div>
