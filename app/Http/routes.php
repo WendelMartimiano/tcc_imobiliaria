@@ -2,29 +2,32 @@
 
 //Grupo de rotas do sistema
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
+
+    //Rota para a rotina de usuário
+    Route::controller('usuarios', 'ImobWeb\UsuarioController');
     
-    //Rotas para a rotina de empresa
+    //Rota para a rotina de empresa
     Route::controller('imobiliaria', 'ImobWeb\ImobiliariaController');
 
-    //Rotas para a rotina de relatórios
+    //Rota para a rotina de relatórios
     Route::get('relatorios', function () {
         return view('imobweb.relatorios');
     });
 
-    //Rotas para a rotina de contratos
+    //Rota para a rotina de contratos
     Route::get('contratos', function () {
         return view('imobweb.contratos');
     });
 
-    //Rotas para a rotina de clientes
+    //Rota para a rotina de clientes
     Route::get('clientes', function () {
         return view('imobweb.clientes');
     });
 
-    //Rotas para a rotina de funcionários     
+    //Rota para a rotina de funcionários
     Route::controller('funcionarios', 'ImobWeb\FuncionarioController');
 
-    //Rotas para a rotina de imóveis
+    //Rota para a rotina de imóveis
     Route::get('imoveis', function () {
         return view('imobweb.imoveis');
     });

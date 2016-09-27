@@ -13,6 +13,7 @@
 			
 			<li role="presentation" class="divider"></li>
 			<li class="active"><a href="/dashboard/imobiliaria"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Imobiliaria</a></li>
+			<li><a href="/dashboard/usuarios"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Usuários</a></li>
 		</ul>
 
 	</div><!--/.sidebar-->

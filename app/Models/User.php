@@ -66,4 +66,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     static $rules_confirmation = [
         'password'                  =>'confirmed'
     ];
+
+
+    public function getUser($param){
+        return $this->where('id_empresa', $param)->paginate(1);
+    }
 }
