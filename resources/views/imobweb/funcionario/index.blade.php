@@ -105,7 +105,7 @@
 		</div><!--/.row-->
 
 	<!-- Modal de Demissão -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="modalDemissao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header header-danger">
@@ -116,8 +116,7 @@
 					<form action="">
 						<input type="text" id="url-demitir" class="form-control" name="id" value="" style="display: none">
 					</form>					
-					<p>Deseja realmente demitir o funcionário(a)?</p>					
-					<div class="text-warning preloader-demitir" role="alert" style="display: none">Demitindo funcinário, por favor aguarde...</div>
+					<p>Deseja realmente demitir o funcionário(a)?</p>
 				</div>
 				<div class="modal-footer">					
 					<button type="button" class="btn btn-primary" id="demiteFuncionario">Confirmar</button>
@@ -125,7 +124,41 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+
+		<!-- Modal Preloader -->
+		<div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<div class="spinner"></div>
+					<p class="spinner-text">carregando..</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Status Success-->
+		<div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header header-success">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="message-success"></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Status Warning-->
+		<div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header header-warning">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="message-warning"></h4>
+					</div>
+				</div>
+			</div>
+		</div>
 @endsection
 
 @section('scripts')
@@ -133,11 +166,8 @@
 	//Chama modal de demissão
 	function modalDeleta(url){
 				
-			$('#url-demitir').val(url)		
-
-			$('#myModal').on('shown.bs.modal', function () {
-				$('#myInput').focus()
-			})	
+			$('#url-demitir').val(url);
+			$('#modalDemissao').modal('show');
 	}
 
 	//Efetua a demissão do funcionário
@@ -147,26 +177,25 @@
 		var request = $.ajax({			
 			url: url,
 			method: "GET",
-			beforeSend: iniciaPreloaderDemitir()
+			beforeSend: iniciaPreloader()
 		});
 		request.done(function(data){
-			finalizaPreloaderDemitir();
+			finalizaPreloader();
 			
 			if(data == "1"){
-				$('#myModal').modal('hide');
+				$('#modalDemissao').modal('hide');
 				$('#message-success').html("Funcionário demitido com sucesso!");
-				$('#message-success').show();
-				setTimeout("location.reload();", 5000);				
+				$('#modalSuccess').modal('show');
+				setTimeout("$(window.document.location).attr('href', '/dashboard/funcionarios'); ", 3000);
 			}else{
-				$('#myModal').modal('hide');
-				$('#message-danger').html("Não foi possível demitir o funcionário!");
-				$('#message-danger').show();
-				setTimeout("jQuery('#message-danger').hide();", 5000);
+				$('#modalDemissao').modal('hide');
+				$('#message-warning').html("Falha ao demitir funcionário! Informe o erro a ImobWeb no contato (16)99999-9999.");
+				$('#modalWarning').modal('show');
 			}
 			
 		});
 		request.fail(function(){
-			finalizaPreloaderDemitir();
+			finalizaPreloader();
 			
 			alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
 		});
@@ -174,12 +203,12 @@
 		return false;
 	});
 
-	function iniciaPreloaderDemitir(){
-		$('.preloader-demitir').show();
+	function iniciaPreloader(){
+		$('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
 	}
 
-	function finalizaPreloaderDemitir(){
-		$('.preloader-demitir').hide();
+	function finalizaPreloader(){
+		$('#modalPreloader').modal('hide');
 	}
 
 	$("form.form-pesquisa").submit(function(){

@@ -201,4 +201,9 @@ class UsuarioController extends Controller
 
         return 1;
     }
+
+    public function getExcluiUsuario($id){
+        $this->usuario->find($id)->delete();
+        return 1;
+    }
 }
