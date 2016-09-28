@@ -16,9 +16,6 @@ use Illuminate\Validation\Factory;
 
 class FuncionarioController extends Controller
 {
-
-    private $totalItensPorPagina = 1;
-
     private $request;
     private $funcionario;
     private $validator;
@@ -297,7 +294,7 @@ class FuncionarioController extends Controller
 
     public function getPesquisar($palavraChave = 'vazio'){
 
-       $funcionarios = $this->funcionario->where('nome_razao', 'LIKE', "%{$palavraChave}%")->paginate($this->totalItensPorPagina);
+       $funcionarios = $this->funcionario->getResultadoPesquisa($palavraChave);
 
        if(count($funcionarios) == 0){
             $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';

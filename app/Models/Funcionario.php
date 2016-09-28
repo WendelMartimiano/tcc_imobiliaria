@@ -112,4 +112,8 @@ class Funcionario extends Model
     public function getFuncionario($param){
         return $this->where('id_empresa', $param)->paginate(1);        
     }
+
+    public function getResultadoPesquisa($param){
+        return $this->where('nome_razao', 'LIKE', "%{$param}%")->paginate(1);
+    }
 }

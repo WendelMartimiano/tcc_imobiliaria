@@ -37,7 +37,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Consulta de Funcionários.</div>
 					<div class="panel-body">
-						<form class="form-horizontal form-pesquisa" method="post" send="/dashboard/funcionarios/pesquisar/">
+						<form class="form-horizontal form-pesquisa" method="post" action="/dashboard/funcionarios/pesquisar/" send="/dashboard/funcionarios/pesquisar/">
                             <div class="form-group">
 								<label class="control-label col-sm-2" for="nome_razao">Nome/Razão Social:</label>
 								<div class="col-sm-10">

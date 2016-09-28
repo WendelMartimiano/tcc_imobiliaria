@@ -37,11 +37,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Consulta de Usuários!</div>
                     <div class="panel-body">
-                        <form class="form-horizontal form-pesquisa" method="post" action="" send="">
+                        <form class="form-horizontal form-pesquisa" method="post" action="/dashboard/usuarios/pesquisar/" send="/dashboard/usuarios/pesquisar/">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="name">Nome de Usuário:</label>
                                 <div class="col-sm-10">
-                                    <input id="name" name="name" type="text" placeholder="Digite o nome de usuário" class="form-control">
+                                    <input id="nome_usuario" name="name" type="text" placeholder="Digite o nome de usuário" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -80,7 +80,7 @@
                                         <a href="/dashboard/usuarios/edita-usuario/{{$usuario->id}}" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
-                                        <a href="" onclick="modalDeleta('/dashboard/usuarios/exclui-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                        <a href="" onclick="modalDeleta('/dashboard/usuarios/deleta-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </a>
                                     </td>
@@ -95,8 +95,8 @@
         </div><!--/.row-->
     </div>
 
-    <!-- Modal de Exclusão -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Modal de Deletar -->
+    <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header header-danger">
@@ -105,30 +105,110 @@
                 </div>
                 <div class="modal-body">
                     <form action="">
-                        <input type="text" id="url-excluir" class="form-control" name="id" value="" style="display: none">
+                        <input type="text" id="url-deletar" class="form-control" name="id" value="" style="display: none">
                     </form>
-                    <p>Deseja realmente excluir este usuário(a)?</p>
-                    <div class="text-warning preloader-demitir" role="alert" style="display: none">Excluindo usuário, por favor aguarde...</div>
+                    <p>Deseja realmente excluir o usuário(a)?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="excluiUsuario">Confirmar</button>
+                    <button type="button" class="btn btn-primary" id="deletaUsuario">Confirmar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal Preloader -->
+    <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="spinner"></div>
+                <p class="spinner-text">carregando..</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Status Success-->
+    <div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="message-success"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Status Warning-->
+    <div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header header-warning">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="message-warning"></h4>
+                </div>
+            </div>
+        </div>
+    </div>>
 @endsection
 
 @section('scripts')
     <script>
-        //Chama modal de exclusão
+        //Chama modal de excluir
         function modalDeleta(url){
 
-            $('#url-excluir').val(url)
-
-            $('#myModal').on('shown.bs.modal', function () {
-                $('#myInput').focus()
-            })
+            $('#url-deletar').val(url);
+            $('#modalDeletar').modal('show');
         }
+
+        //Efetua a exclusão do usuário
+        $("#deletaUsuario").click(function() {
+            var url = $("#url-deletar").val();
+
+            var request = $.ajax({
+                url: url,
+                method: "GET",
+                beforeSend: iniciaPreloader()
+            });
+            request.done(function(data){
+                finalizaPreloader();
+
+                if(data == "1"){
+                    $('#modalDeletar').modal('hide');
+                    $('#message-success').html("Usuário excluído com sucesso!");
+                    $('#modalSuccess').modal('show');
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/usuarios'); ", 3000);
+                }else{
+                    $('#modalDeletar').modal('hide');
+                    $('#message-warning').html("Falha ao excluir usuário! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                    $('#modalWarning').modal('show');
+                }
+
+            });
+            request.fail(function(){
+                finalizaPreloader();
+
+                alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+            });
+
+            return false;
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+
+        $("form.form-pesquisa").submit(function(){
+
+            var palavraChave = $("#nome_usuario").val();
+            var url = $(this).attr("send");
+
+            location.href = url+palavraChave;
+            return false;
+        });
     </script>
 @endsection

@@ -202,8 +202,22 @@ class UsuarioController extends Controller
         return 1;
     }
 
-    public function getExcluiUsuario($id){
+    public function getDeletaUsuario($id){
         $this->usuario->find($id)->delete();
         return 1;
+    }
+
+    public function getPesquisar($palavraChave = 'vazio'){
+
+        $usuarios = $this->usuario->getResultadoPesquisa($palavraChave);
+
+        if(count($usuarios) == 0){
+            $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';
+        }else{
+            $tituloTabela = "Resultados da pesquisa para: $palavraChave";
+        }
+
+        $titulo = 'ImobWeb - Usuários';
+        return view('imobweb.usuario.index', compact('titulo', 'usuarios', 'tituloTabela'));
     }
 }
