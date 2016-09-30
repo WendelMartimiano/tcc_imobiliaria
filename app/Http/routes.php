@@ -20,9 +20,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     });
 
     //Rota para a rotina de clientes
-    Route::get('clientes', function () {
-        return view('imobweb.clientes');
-    });
+    Route::controller('clientes', 'ImobWeb\ClienteController');
 
     //Rota para a rotina de funcionários
     Route::controller('funcionarios', 'ImobWeb\FuncionarioController');

@@ -21,7 +21,6 @@ class CreateClientesTable extends Migration
             $table->date('data_nascimento')->nullable();
             $table->string('rep_legal', 60)->nullable();
             $table->string('inscricao', 12)->nullable();
-            $table->integer('creci')->nullable();
             $table->string('telefone', 15)->nullable();
             $table->string('cep', 10)->nullable();
             $table->string('rua', 100)->nullable();
@@ -32,9 +31,12 @@ class CreateClientesTable extends Migration
             $table->char('tipo_pessoa', 1)->nullable();
 
 
+            $table->integer('id_tipo_cliente')->unsigned();
+            $table->foreign('id_tipo_cliente')->references('id')->on('tipos_clientes');
             $table->integer('id_empresa')->unsigned();
             $table->foreign('id_empresa')->references('id')->on('empresas');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }
