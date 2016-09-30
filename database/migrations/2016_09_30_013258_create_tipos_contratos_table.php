@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoContratosTable extends Migration
+class CreateTiposContratosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateTipoContratosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_contratos', function (Blueprint $table) {
+        Schema::create('tipos_contratos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo_contrato', 50)->nullable();
 
@@ -32,6 +32,6 @@ class CreateTipoContratosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tipo_contratos');
+        Schema::drop('tipos_contratos');
     }
 }

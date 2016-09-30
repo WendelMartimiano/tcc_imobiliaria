@@ -11,7 +11,7 @@ class CargosSeeder extends Seeder
      */
     public function run()
     {
-        $planos = [
+        $cargos = [
             0   =>  [
                 'nome'              =>  'MASTER',
                 'data_cadastro'     =>  '01082016'
@@ -27,9 +27,9 @@ class CargosSeeder extends Seeder
             3   =>  [
                 'nome'              =>  'AUXILIAR GERENTE',
                 'data_cadastro'     =>  '01082016'
-            ],
+            ]
         ];
 
-        DB::table('cargos')->insert($planos);
+        DB::table('cargos')->insert($cargos);
     }
 }

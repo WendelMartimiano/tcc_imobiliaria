@@ -27,7 +27,7 @@ class CreateEmpresasTable extends Migration
             $table->string('cidade', 50)->nullable();
             $table->string('uf', 2)->nullable();
             $table->integer('creci')->nullable();
-            //$table->char('ativo', 1);
+            $table->date('data_confirmacao')->nullable();
 
             $table->integer('id_plano')->unsigned();
             $table->foreign('id_plano')->references('id')->on('planos');

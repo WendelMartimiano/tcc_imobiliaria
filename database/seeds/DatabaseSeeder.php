@@ -20,15 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call('OpcoesSeeder');
         $this->call('CargosSeeder');
         $this->call('OpcoesPlanosSeeder');
+        $this->call('TiposClientesSeeder');
+        $this->call('EmpresasSeeder');
+        $this->call('UsuariosSeeder');
 
-        /*
-         * Criar seed da empresa endsystem
-         * Criar seed dos planos
-         * Criar seed das opções
-         * Criar seed das opções por planos
-         * Criar seed de cargos da endsystem
-         * Criar seed de usuários da endsystem
-         * */
         Model::reguard();
     }
 }
