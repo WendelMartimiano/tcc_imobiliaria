@@ -9,6 +9,7 @@
     <link href="{{url('assets/imobweb/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">    
+    {{--<link href="{{url('assets/imobweb/imagens/login/cidade.jpg')}}" rel="stylesheet">--}}
 
     <!--[if lt IE 9]>
     <script src="{{url('assets/imobweb/js/html5shiv.js')}}"></script>
@@ -22,9 +23,8 @@
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
         <div class="login-panel panel panel-default">
-            <div class="panel-heading">Login ImobWeb</div>
+            <div class="panel-heading text-center">Login ImobWeb</div>
             <div class="panel-body">
-
             @if (count($errors))
                 <p class="alert alert-danger">
                 @foreach($errors->all() as $error)
@@ -40,7 +40,7 @@
                             <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Password" name="password" type="password" id="password">
+                            <input class="form-control" placeholder="Senha" name="password" type="password" id="password">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -79,9 +79,5 @@
         if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })    
 </script>
-       
-</script>
-
 </body>
-
 </html>

@@ -51,11 +51,11 @@
                             <div class="form-group form-inline">
                                 <label for="cargo" class="control-label col-sm-2">Tipo Cliente: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="id_cargo">
+                                    <select class="form-control" name="id_tipo_cliente">
                                         <option value="">Selecione uma opção</option>
-                                        <option value="">VENDEDOR</option>
-                                        <option value="">COMPRADOR</option>
-                                        <option value="">COMPRADOR E VENDEDOR</option>
+                                        @foreach($tiposClientes as $tipo)
+                                            <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

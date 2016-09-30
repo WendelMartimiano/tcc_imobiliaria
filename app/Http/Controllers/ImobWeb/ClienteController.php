@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ImobWeb;
 
 use App\Models\Cliente;
+use App\Models\TipoCliente;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -40,10 +41,8 @@ class ClienteController extends Controller
     public function getCadastraCliente(){
 
         $titulo = 'ImobWeb - Cadastro de Cliente';
-        /*$cargos = Cargo::all();
-        $empresaUserAtual = Auth::user()->id_empresa;
-        $users = $this->funcionario->getUser($empresaUserAtual);*/
+        $tiposClientes = TipoCliente::all();
 
-        return view('imobweb.cliente.cadastra-cliente', compact('titulo'));
+        return view('imobweb.cliente.cadastra-cliente', compact('titulo', 'tiposClientes'));
     }
 }

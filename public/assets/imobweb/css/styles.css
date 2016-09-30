@@ -7,8 +7,12 @@ Version 1.0
 /*Global Styles*/
 
 body {
-	background: #f1f4f7;
-	padding-top: 50px;
+	background: url("../imagens/login/cidade.jpg") no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	padding-top: 100px;
+	width: 98%;
 	color: #5f6468;
 }
 
@@ -99,6 +103,11 @@ h3, h4 {
 }
 
 /*Buttons*/
+
+.btn-enviar{
+	background-color: #607D8B !important;
+	border-color: #607D8B !important;
+}
 
 a.btn:hover,
 button:hover {
@@ -302,9 +311,10 @@ a.bg-danger:hover {
 }
 
 .panel-default .panel-heading {
-	background: #fff;
+	background: #2196F3;
 	border-bottom: 1px solid #eee;
-	color: #5f6468;
+	color: #fff;
+	font-size: 22px;
 }
 
 .panel-footer {
@@ -327,7 +337,7 @@ a.bg-danger:hover {
 	margin: 0 -5px;
 }
 
-.panel-footer .input-group-btn:last-child>.btn, 
+.panel-footer .input-group-btn:last-child>.btn,
 .panel-footer .input-group-btn:last-child>.btn-group {
 	margin: 0;
 }
@@ -349,8 +359,8 @@ a.bg-danger:hover {
 .panel-blue .panel-body p,
 .panel-teal .panel-body p,
 .panel-orange .panel-body p,
-.panel-red .panel-body p { 
-	color: #fff; 
+.panel-red .panel-body p {
+	color: #fff;
 	color: rgba(255, 255, 255, .8);
 }
 
@@ -364,8 +374,8 @@ a.bg-danger:hover {
 .panel-blue .text-muted,
 .panel-teal .text-muted,
 .panel-orange .text-muted,
-.panel-red .text-muted { 
-	color: rgba(255, 255, 255, .5); 
+.panel-red .text-muted {
+	color: rgba(255, 255, 255, .5);
 }
 
 .dark-overlay {
@@ -396,22 +406,22 @@ a.bg-danger:hover {
 
 @media (max-width: 768px) {
 	.widget-right {
-	width: 100%;
-	margin: 0;
-	text-align: center;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
+		width: 100%;
+		margin: 0;
+		text-align: center;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
 	}
 }
 
 @media (max-width: 768px) {
 	.widget-left {
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
 	}
 }
 
@@ -541,7 +551,7 @@ a.bg-danger:hover {
 @media (min-width: 768px) {
 	.sidebar {
 		display: block;
-  		position: fixed;
+		position: fixed;
 		top: 50px;
 		bottom: 0;
 		left: 0;
@@ -550,16 +560,16 @@ a.bg-danger:hover {
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
-		overflow-y: auto; 
+		overflow-y: auto;
 		background-color: #fff;
 		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
 	}
-	.navbar-header {		
-		width: 100%;		
+	.navbar-header {
+		width: 100%;
 	}
 }
 
-.sidebar ul.nav a:hover, 
+.sidebar ul.nav a:hover,
 .sidebar ul.nav li.parent ul li a:hover {
 	text-decoration: none;
 	background-color: #e9ecf2;
@@ -737,17 +747,17 @@ h1.page-header {
 
 /*Todo List Widget*/
 
-.todo-list-item .glyphicon { 
-	margin-right:5px; 
-	color: #9fadbb; 
+.todo-list-item .glyphicon {
+	margin-right:5px;
+	color: #9fadbb;
 }
 
-.todo-list-item .glyphicon:hover { 
-	margin-right:5px; 
-	color: #1b3548; 
+.todo-list-item .glyphicon:hover {
+	margin-right:5px;
+	color: #1b3548;
 }
 
-.todo-list { 
+.todo-list {
 	padding: 0;
 	margin: -15px;
 	background: #fff;
@@ -758,14 +768,14 @@ h1.page-header {
 	margin: 0;
 }
 
-.todo-list .checkbox { 
-	display:inline-block; 
+.todo-list .checkbox {
+	display:inline-block;
 	margin: 0px;
 }
 
-.panel-body input[type=checkbox]:checked + label { 
+.panel-body input[type=checkbox]:checked + label {
 	text-decoration: line-through;
-	color: #777; 
+	color: #777;
 }
 
 .todo-list-item {
@@ -850,8 +860,8 @@ h1.page-header {
 }
 
 .fixed-table-pagination .pagination {
-    margin-top: 10px;
-    margin-bottom: 0px;
+	margin-top: 10px;
+	margin-bottom: 0px;
 }
 .fixed-table-pagination .pagination-detail {
 	margin-top: 20px;
@@ -931,7 +941,7 @@ h1.page-header {
 
 /*Modal*/
 .header-danger{
-	background-color: #d32f2f;	
+	background-color: #d32f2f;
 }
 
 .modal-title{
@@ -940,7 +950,7 @@ h1.page-header {
 
 
 .close{
-	font-size: 28px;	
+	font-size: 28px;
 }
 
 .header-success{
