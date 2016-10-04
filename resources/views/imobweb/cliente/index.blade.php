@@ -69,6 +69,7 @@
                                 <th data-field="nome_fantasia" data-sortable="true">Nome Fantasia</th>
                                 <th data-field="cpf_cnpj"  data-sortable="true">CPF/CNPJ</th>
                                 <th data-field="telefone" data-sortable="true">Telefone</th>
+                                <th data-field="tipo_cliente" data-sortable="true">Tipo</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
@@ -86,6 +87,7 @@
                                     </td>
                                     <td data-field="cpf_cnpj"  data-sortable="true">{{$cliente->cpf_cnpj}}</td>
                                     <td data-field="telefone" data-sortable="true">{{$cliente->telefone}}</td>
+                                    <td data-field="tipo_cliente" data-sortable="true">{{$cliente->descricao}}</td>
                                     <td>
                                         <a href="" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

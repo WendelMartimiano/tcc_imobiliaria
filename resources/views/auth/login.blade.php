@@ -9,7 +9,6 @@
     <link href="{{url('assets/imobweb/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">    
-    {{--<link href="{{url('assets/imobweb/imagens/login/cidade.jpg')}}" rel="stylesheet">--}}
 
     <!--[if lt IE 9]>
     <script src="{{url('assets/imobweb/js/html5shiv.js')}}"></script>
@@ -18,7 +17,7 @@
 
 </head>
 
-<body>
+<body class="fundo-login">
 
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">

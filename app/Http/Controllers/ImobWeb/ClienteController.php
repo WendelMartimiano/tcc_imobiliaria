@@ -45,4 +45,10 @@ class ClienteController extends Controller
 
         return view('imobweb.cliente.cadastra-cliente', compact('titulo', 'tiposClientes'));
     }
+
+    public function postCadastraCliente(){
+        $dadosForm = $this->request->all();
+        $this->cliente->create($dadosForm);
+        return 1;
+    }
 }

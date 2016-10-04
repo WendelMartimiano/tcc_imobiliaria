@@ -16,6 +16,9 @@ class Cliente extends Model
     protected $guarded = ['id'];
 
     public function getCliente($param){
-        return $this->where('id_empresa', '=', $param)->paginate(1);
+        return $this->join('tipos_clientes', 'clientes.id_tipo_cliente', '=', 'tipos_clientes.id')
+            ->where('clientes.id_empresa', '=', $param)
+            ->select('clientes.*', 'tipos_clientes.descricao')
+            ->paginate(1);
     }
 }

@@ -37,7 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados do novo cliente.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="" send="">
+                        <form class="form-horizontal" method="post" action="/dashboard/clientes/cadastra-cliente" send="/dashboard/clientes/cadastra-cliente">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
@@ -255,4 +255,44 @@
         });
     </script>
 
+    <script>
+        $(function(){
+            $("form").submit(function(){
+                var dadosForm = $(this).serialize();
+                console.log(dadosForm);
+                jQuery.ajax({
+                    method:"POST",
+                    url: jQuery(this).attr("send"),
+                    data: dadosForm,
+                    beforeSend: iniciaPreloader()
+                }).done(function(data){
+                    finalizaPreloader();
+
+                    if(data == 1){
+                        $('#message-success').html("Cliente cadastrado com sucesso!");
+                        $('#modalSuccess').modal('show');
+                        setTimeout("$(window.document.location).attr('href', '/dashboard/clientes'); ", 3000);
+                    }else{
+                        for(var t in data){
+                            $('#message-warning').html(data[t]);
+                            $('#modalWarning').modal('show');
+                        }
+                    }
+
+                }).fail(function(){
+                    finalizaPreloader();
+                    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                });
+                return false;
+            });
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+    </script>
 @endsection
