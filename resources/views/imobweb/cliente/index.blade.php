@@ -64,32 +64,30 @@
                         <table class="table table-hover"  id="clientes-table">
                             <thead>
                             <tr>
-                                <th data-field="id">Item ID</th>
-                                <th data-field="nome_razao" data-sortable="true">Nome/Razão Social</th>
-                                <th data-field="nome_fantasia" data-sortable="true">Nome Fantasia</th>
-                                <th data-field="cpf_cnpj"  data-sortable="true">CPF/CNPJ</th>
-                                <th data-field="telefone" data-sortable="true">Telefone</th>
-                                <th data-field="tipo_cliente" data-sortable="true">Tipo</th>
+                                <th>Nome/Razão Social</th>
+                                <th>Nome Fantasia</th>
+                                <th>CPF/CNPJ</th>
+                                <th>Telefone</th>
+                                <th>Tipo</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($clientes as $cliente)
                                 <tr>
-                                    <td data-field="id">{{$cliente->id}}</td>
-                                    <td data-field="nome_razao" data-sortable="true">{{$cliente->nome_razao}}</td>
-                                    <td data-field="nome_fantasia" data-sortable="true">
+                                    <td>{{$cliente->nome_razao}}</td>
+                                    <td>
                                         @if($cliente->nome_fantasia)
                                             {{$cliente->nome_fantasia}}
                                         @else
                                             -----
                                         @endif
                                     </td>
-                                    <td data-field="cpf_cnpj"  data-sortable="true">{{$cliente->cpf_cnpj}}</td>
-                                    <td data-field="telefone" data-sortable="true">{{$cliente->telefone}}</td>
-                                    <td data-field="tipo_cliente" data-sortable="true">{{$cliente->descricao}}</td>
+                                    <td>{{$cliente->cpf_cnpj}}</td>
+                                    <td>{{$cliente->telefone}}</td>
+                                    <td>{{$cliente->descricao}}</td>
                                     <td>
-                                        <a href="" class="btn btn-success btn-xs">
+                                        <a href="/dashboard/clientes/edita-cliente/{{$cliente->id}}" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
                                         <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">

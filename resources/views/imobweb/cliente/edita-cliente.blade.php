@@ -22,30 +22,30 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></a></li>
-                <li class="active">Clientes / Cadastro de Cliente</li>
+                <li class="active">Clientes / Edição de Cliente</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Cadastro de Cliente</h1>
+                <h1 class="page-header">Edição de Cliente</h1>
             </div>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Informe os dados do novo cliente.</div>
+                    <div class="panel-heading">Informe os dados a serem alterados.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/clientes/cadastra-cliente" send="/dashboard/clientes/cadastra-cliente">
+                        <form class="form-horizontal" method="post" action="" send="">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
                                 <label class="form-check-inline col-sm-1">
-                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cpf" value="F"> CPF
+                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cpf" value="F" @if($cliente->tipo_pessoa == "F") checked="checked" @endif> CPF
                                 </label>
                                 <label class="form-check-inline ">
-                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cnpj" value="J"> CNPJ
+                                    <input class="form-check-input" type="radio" name="tipo_pessoa" id="radio_cnpj" value="J" @if($cliente->tipo_pessoa == "J") checked="checked" @endif> CNPJ
                                 </label>
                             </div>
                             <div class="form-group form-inline">
@@ -54,7 +54,7 @@
                                     <select class="form-control" name="id_tipo_cliente">
                                         <option value="">Selecione uma opção</option>
                                         @foreach($tiposClientes as $tipo)
-                                            <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
+                                            <option value="{{$tipo->id}}" @if($tipo->id == $cliente->id_tipo_cliente) selected="selected" @endif>{{$tipo->descricao}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -62,20 +62,20 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_cpfCnpj"  for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{old('cpf_cnpj')}}">
+                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$cliente->cpf_cnpj}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_nomeRazao"  for="nome_razao"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control nome_razao" name="nome_razao" placeholder="" value="{{old('nome_razao')}}">
+                                    <input type="text" class="form-control nome_razao" name="nome_razao" placeholder="" value="{{$cliente->nome_razao}}">
                                 </div>
                             </div>
                             <div id="tipo_cpf" style="display: none;">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="rg">RG: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{old('rg')}}">
+                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$cliente->rg}}">
                                     </div>
                                 </div>
                             </div>
@@ -83,74 +83,74 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="nome_fantasia">Nome Fantasia:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia" value="{{old('nome_fantasia')}}">
+                                        <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia" value="{{$cliente->nome_fantasia}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="rep_legal">Representante legal: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="rep_legal" placeholder="Digite o representante legal" value="{{old('rep_legal')}}">
+                                        <input type="text" class="form-control" name="rep_legal" placeholder="Digite o representante legal" value="{{$cliente->rep_legal}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="inscricao">Inscrição: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="inscricao" placeholder="Digite o número de inscrição" value="{{old('inscricao')}}">
+                                        <input type="text" class="form-control" name="inscricao" placeholder="Digite o número de inscrição" value="{{$cliente->inscricao}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{old('data_nascimento')}}">
+                                    <input type="date" class="form-control" name="data_nascimento" placeholder="Digite a data de nascimento" value="{{$cliente->data_nascimento}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="telefone">Telefone: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="telefone" placeholder="Digite o número de telefone" value="{{old('telefone')}}">
+                                    <input type="text" class="form-control" name="telefone" placeholder="Digite o número de telefone" value="{{$cliente->telefone}}">
                                 </div>
                             </div>
                             <div class="form-group" hidden>
                                 <label class="control-label col-sm-2" for="empresa">Empresa:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{Auth::user()->id_empresa}}" readonly>
+                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{$cliente->id_empresa}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="cep">CEP: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="cep" placeholder="Digite o número de cep" value="{{old('cep')}}">
+                                    <input type="text" class="form-control" name="cep" placeholder="Digite o número de cep" value="{{$cliente->cep}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="rua">Rua: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="rua" placeholder="Digite a rua" value="{{old('rua')}}">
+                                    <input type="text" class="form-control" name="rua" placeholder="Digite a rua" value="{{$cliente->rua}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="numero">Número: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="numero" placeholder="Digite o número da residência" value="{{old('numero')}}">
+                                    <input type="text" class="form-control" name="numero" placeholder="Digite o número da residência" value="{{$cliente->numero}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="bairro">Bairro: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="bairro" placeholder="Digite o bairro" value="{{old('bairro')}}">
+                                    <input type="text" class="form-control" name="bairro" placeholder="Digite o bairro" value="{{$cliente->bairro}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="cidade">Cidade: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" value="{{old('cidade')}}">
+                                    <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" value="{{$cliente->cidade}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="uf">Estado: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="uf" placeholder="Digite o estado" value="{{old('uf')}}">
+                                    <input type="text" class="form-control" name="uf" placeholder="Digite o estado" value="{{$cliente->uf}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -165,7 +165,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Modal Preloader -->
     <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -200,17 +199,16 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('scripts')
     <script>
         $(document).ready(function(){
 
-
-            $("#radio_cpf").attr('checked', true);
-
             if ($("#radio_cpf").prop("checked")){
 
+                $("#radio_cnpj").attr('disabled', true);
                 $("#tipo_cnpj input").val("");
                 $("#tipo_cnpj").hide();
                 $("#tipo_cpf").show();
@@ -221,6 +219,7 @@
 
             }else{
 
+                $("#radio_cpf").attr('disabled', true);
                 $("#tipo_cpf input").val("");
                 $("#tipo_cpf").hide();
                 $("#tipo_cnpj").show();
@@ -253,46 +252,5 @@
             });
 
         });
-    </script>
-
-    <script>
-        $(function(){
-            $("form").submit(function(){
-                var dadosForm = $(this).serialize();
-                console.log(dadosForm);
-                jQuery.ajax({
-                    method:"POST",
-                    url: jQuery(this).attr("send"),
-                    data: dadosForm,
-                    beforeSend: iniciaPreloader()
-                }).done(function(data){
-                    finalizaPreloader();
-
-                    if(data == 1){
-                        $('#message-success').html("Cliente cadastrado com sucesso!");
-                        $('#modalSuccess').modal('show');
-                        setTimeout("$(window.document.location).attr('href', '/dashboard/clientes'); ", 3000);
-                    }else{
-                        for(var t in data){
-                            $('#message-warning').html(data[t]);
-                            $('#modalWarning').modal('show');
-                        }
-                    }
-
-                }).fail(function(){
-                    finalizaPreloader();
-                    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
-                });
-                return false;
-            });
-        });
-
-        function iniciaPreloader(){
-            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
-        }
-
-        function finalizaPreloader(){
-            $('#modalPreloader').modal('hide');
-        }
     </script>
 @endsection

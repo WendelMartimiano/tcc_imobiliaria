@@ -64,16 +64,14 @@
                         <table class="table table-hover"  id="usuarios-table">
                             <thead>
                             <tr>
-                                <th>Item ID</th>
                                 <th>Nome do Usuário</th>
-                                <th>Email</th>
+                                <th>E-mail</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($usuarios as $usuario)
                                 <tr>
-                                    <td>{{$usuario->id}}</td>
                                     <td>{{$usuario->name}}</td>
                                     <td>{{$usuario->email}}</td>
                                     <td>

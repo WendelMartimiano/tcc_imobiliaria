@@ -64,28 +64,26 @@
 						<table class="table table-hover"  id="funcionarios-table">
 							<thead>
 							<tr>
-								<th data-field="id">Item ID</th>
-								<th data-field="nome_razao" data-sortable="true">Nome/Razão Social</th>
-								<th data-field="nome_fantasia" data-sortable="true">Nome Fantasia</th>
-								<th data-field="cpf_cnpj"  data-sortable="true">CPF/CNPJ</th>
-								<th data-field="telefone" data-sortable="true">Telefone</th>
+								<th>Nome/Razão Social</th>
+								<th>Nome Fantasia</th>
+								<th>CPF/CNPJ</th>
+								<th>Telefone</th>
 								<th>Ações</th>
 							</tr>
 							</thead>
 							<tbody>
 							@foreach($funcionarios as $funcionario)
 							<tr>
-								<td data-field="id">{{$funcionario->id}}</td>
-								<td data-field="nome_razao" data-sortable="true">{{$funcionario->nome_razao}}</td>
-								<td data-field="nome_fantasia" data-sortable="true">
+								<td>{{$funcionario->nome_razao}}</td>
+								<td>
 									@if($funcionario->nome_fantasia)
 										{{$funcionario->nome_fantasia}}
 									@else
 										-----
 									@endif
 								</td>
-								<td data-field="cpf_cnpj"  data-sortable="true">{{$funcionario->cpf_cnpj}}</td>
-								<td data-field="telefone" data-sortable="true">{{$funcionario->telefone}}</td>
+								<td>{{$funcionario->cpf_cnpj}}</td>
+								<td>{{$funcionario->telefone}}</td>
 								<td>
 									<a href="/dashboard/funcionarios/edita-funcionario/{{$funcionario->id}}" class="btn btn-success btn-xs">
 										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
