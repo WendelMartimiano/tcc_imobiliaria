@@ -37,7 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados a serem alterados.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="" send="">
+                        <form class="form-horizontal" method="post" action="/dashboard/clientes/edita-cliente/{{$cliente->id}}" send="/dashboard/clientes/edita-cliente/{{$cliente->id}}">
                             {!! csrf_field() !!}
                             <div class="form-group form-inline">
                                 <label for="tipo_pessoa" class="control-label col-sm-2">Tipo Pessoa: </label>
@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_cpfCnpj"  for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$cliente->cpf_cnpj}}">
+                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$cliente->cpf_cnpj}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="rg">RG: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$cliente->rg}}">
+                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$cliente->rg}}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -253,4 +253,47 @@
 
         });
     </script>
+
+<script>
+    $(function(){
+        $("form").submit(function(){
+            var dadosForm = $(this).serialize();
+
+            jQuery.ajax({
+                method:"POST",
+                url: jQuery(this).attr("send"),
+                data: dadosForm,
+                beforeSend: iniciaPreloader()
+            }).done(function(data){
+                finalizaPreloader();
+
+                if(data == 1){                                                       
+                    $('#message-success').html("Cliente alterado com sucesso!");
+                    $('#modalSuccess').modal('show');  
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/clientes'); ", 3000);                   				    	
+                }else{ 
+                    for(var t in data){
+
+                        $('#message-warning').html(data[t]);
+                        $('#modalWarning').modal('show');
+                    }	
+                }
+                
+            }).fail(function(){
+                finalizaPreloader();			    
+			    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+            });
+            return false;
+        });
+    });
+
+    function iniciaPreloader(){
+        $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+    }
+
+    function finalizaPreloader(){        
+        $('#modalPreloader').modal('hide');
+    }
+</script>
+
 @endsection

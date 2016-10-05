@@ -90,7 +90,7 @@
                                         <a href="/dashboard/clientes/edita-cliente/{{$cliente->id}}" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
-                                        <a href="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                        <a href="" onclick="modalDeleta('/dashboard/clientes/deleta-cliente/{{$cliente->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </a>
                                     </td>
@@ -105,7 +105,7 @@
         </div><!--/.row-->
 
         <!-- Modal de Exclusão -->
-        <div class="modal fade" id="modalDeleta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header header-danger">
@@ -159,4 +159,65 @@
                 </div>
             </div>
         </div>
+@endsection
+
+@section('scripts')
+    <script>
+        //Chama modal de excluir
+        function modalDeleta(url){
+
+            $('#url-deletar').val(url);
+            $('#modalDeletar').modal('show');
+        }
+
+        //Efetua a exclusão do cliente
+        $("#deletaCliente").click(function() {
+            var url = $("#url-deletar").val();
+
+            var request = $.ajax({
+                url: url,
+                method: "GET",
+                beforeSend: iniciaPreloader()
+            });
+            request.done(function(data){
+                finalizaPreloader();
+
+                if(data == "1"){
+                    $('#modalDeletar').modal('hide');
+                    $('#message-success').html("Cliente excluído com sucesso!");
+                    $('#modalSuccess').modal('show');
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/clientes'); ", 3000);
+                }else{
+                    $('#modalDeletar').modal('hide');
+                    $('#message-warning').html("Falha ao excluir cliente! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                    $('#modalWarning').modal('show');
+                }
+
+            });
+            request.fail(function(){
+                finalizaPreloader();
+
+                alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+            });
+
+            return false;
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+
+        $("form.form-pesquisa").submit(function(){
+
+            var palavraChave = $("#nome_usuario").val();
+            var url = $(this).attr("send");
+
+            location.href = url+palavraChave;
+            return false;
+        });
+    </script>
 @endsection

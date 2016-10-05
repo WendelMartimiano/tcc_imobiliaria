@@ -305,13 +305,4 @@ class FuncionarioController extends Controller
         $titulo = 'ImobWeb - Funcionários';              
         return view('imobweb.funcionario.index', compact('titulo', 'funcionarios', 'tituloTabela'));
     }
-
-
-    /*
-    * CASO A URL ESTEJA INCORRETA, RETORNA ERRO 404.
-    */
-    public function missingMethod($parameters = [])
-    {
-        return view('errors.404');
-    }
 }

@@ -23,4 +23,12 @@ class HomeController extends Controller
         return view('imobweb.home.index', compact('titulo'));
     }
 
+   /*
+    * CASO A URL ESTEJA INCORRETA, RETORNA ERRO 404.
+    */
+    public function missingMethod($parameters = [])
+    {
+        return view('errors.404');
+    }
+
 }
