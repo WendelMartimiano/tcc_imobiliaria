@@ -259,7 +259,7 @@
         $(function(){
             $("form").submit(function(){
                 var dadosForm = $(this).serialize();
-                console.log(dadosForm);
+                
                 jQuery.ajax({
                     method:"POST",
                     url: jQuery(this).attr("send"),

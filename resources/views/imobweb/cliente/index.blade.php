@@ -37,11 +37,18 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Consulta de Clientes.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal form-pesquisa" method="post" action="" send="">
+                        <form class="form-horizontal form-pesquisa" method="post" action="/dashboard/clientes/pesquisar" send="/dashboard/clientes/pesquisar">
+                            {!! csrf_field() !!}
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="cpf_cnpj" name="cpf_cnpj" placeholder="Digite o CPF ou CNPJ do cliente" value="">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="nome_razao">Nome/Razão Social:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nome_razao" name="nome_razao" placeholder="Digite o nome" value="">
+                                    <input type="text" class="form-control" id="nome_razao" name="nome_razao" placeholder="Digite o nome ou razão social do cliente" value="">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -210,14 +217,5 @@
         function finalizaPreloader(){
             $('#modalPreloader').modal('hide');
         }
-
-        $("form.form-pesquisa").submit(function(){
-
-            var palavraChave = $("#nome_usuario").val();
-            var url = $(this).attr("send");
-
-            location.href = url+palavraChave;
-            return false;
-        });
     </script>
 @endsection

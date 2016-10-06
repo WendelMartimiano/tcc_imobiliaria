@@ -48,7 +48,7 @@ class ClienteController extends Controller
 
     public function postCadastraCliente(){
         $dadosForm = $this->request->all();
-
+        
         $valida_requiredPessoaF = $this->validator->make($dadosForm, Cliente::$rules_requiredPessoaF);
         $valida_requiredPessoaJ = $this->validator->make($dadosForm, Cliente::$rules_requiredPessoaJ);
         $valida_cnpj = $this->validator->make($dadosForm, Cliente::$rules_cnpj);
@@ -271,4 +271,20 @@ class ClienteController extends Controller
         $this->cliente->find($id)->delete();
         return 1;
     }
+
+    public function postPesquisar(){
+       $dadosForm = $this->request->all(); 
+       
+       $clientes = $this->cliente->getResultadoPesquisa($dadosForm);
+
+       if(count($clientes) == 0){
+            $tituloTabela = 'Nenhum registro encontrado!';
+       }else{
+           $tituloTabela = 'Resultados da Pesquisa:';
+       }
+        
+        $titulo = 'ImobWeb - Clientes';              
+        return view('imobweb.cliente.index', compact('titulo', 'clientes', 'tituloTabela'));
+    }
+    
 }

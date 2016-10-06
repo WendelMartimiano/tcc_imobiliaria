@@ -50,7 +50,7 @@ class Cliente extends Model
         'uf'                =>'required',
         'tipo_pessoa'       =>'required',
         'id_empresa'        =>'required',
-        'id_tipo_pessoa'    =>'required'
+        'id_tipo_cliente'    =>'required'
     ];
 
     //regra para mínimo de caracteres
@@ -100,5 +100,18 @@ class Cliente extends Model
             ->where('clientes.id_empresa', '=', $param)
             ->select('clientes.*', 'tipos_clientes.descricao')
             ->paginate(1);
+    }
+
+    public function getResultadoPesquisa($dados){
+    //return $this->where('nome_razao', 'LIKE', "%{$param}%")->paginate(1);
+    //dd($dados);
+        return $this->where(function($query) use($dados){    
+            if($dados['cpf_cnpj']){
+                $query->where('cpf_cnpj', '=', $dados['cpf_cnpj']);
+            }            
+            if($dados['nome_razao']){
+                $query->where('nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
+            }
+        })->paginate(1);
     }
 }
