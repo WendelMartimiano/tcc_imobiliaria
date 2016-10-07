@@ -292,14 +292,15 @@ class FuncionarioController extends Controller
         return 1;
     }
 
-    public function getPesquisar($palavraChave = 'vazio'){
+    public function postPesquisar(){
+       $dadosForm = $this->request->all(); 
 
-       $funcionarios = $this->funcionario->getResultadoPesquisa($palavraChave);
+       $funcionarios = $this->funcionario->getResultadoPesquisa($dadosForm);
 
        if(count($funcionarios) == 0){
-            $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';
+            $tituloTabela = 'Nenhum registro encontrado!';
        }else{
-            $tituloTabela = "Resultados da pesquisa para: $palavraChave";
+            $tituloTabela = "Resultados da pesquisa:";
        }
         
         $titulo = 'ImobWeb - Funcionários';              

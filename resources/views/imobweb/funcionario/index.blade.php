@@ -37,13 +37,20 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Consulta de Funcionários.</div>
 					<div class="panel-body">
-						<form class="form-horizontal form-pesquisa" method="post" action="/dashboard/funcionarios/pesquisar/" send="/dashboard/funcionarios/pesquisar/">
+						<form class="form-horizontal form-pesquisa" method="post" action="/dashboard/funcionarios/pesquisar">
+                            {!! csrf_field() !!}
                             <div class="form-group">
-								<label class="control-label col-sm-2" for="nome_razao">Nome/Razão Social:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="nome_razao" name="nome_razao" placeholder="Digite o nome" value="">
-								</div>
-							</div>
+                                <label class="control-label col-sm-2" for="cpf_cnpj">CPF / CNPJ:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF ou CNPJ do funcionário" value="{{old('cpf_cnpj')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="nome_razao">Nome / Razão Social:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="nome_razao" placeholder="Digite o nome ou razão social do funcionário" value="{{old('nome_razao')}}">
+                                </div>
+                            </div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-primary">Buscar</button>
@@ -209,13 +216,5 @@
 		$('#modalPreloader').modal('hide');
 	}
 
-	$("form.form-pesquisa").submit(function(){
-
-        var palavraChave = $("#nome_razao").val();
-		var url = $(this).attr("send");
-
-		location.href = url+palavraChave;
-		return false;
-	});
 </script>
 @endsection

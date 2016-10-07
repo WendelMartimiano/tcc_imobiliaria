@@ -37,11 +37,18 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Consulta de Usuários!</div>
                     <div class="panel-body">
-                        <form class="form-horizontal form-pesquisa" method="post" action="/dashboard/usuarios/pesquisar/" send="/dashboard/usuarios/pesquisar/">
+                        <form class="form-horizontal form-pesquisa" method="post" action="/dashboard/usuarios/pesquisar">
+                            {!! csrf_field() !!}
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="name">Nome de Usuário:</label>
                                 <div class="col-sm-10">
-                                    <input id="nome_usuario" name="name" type="text" placeholder="Digite o nome de usuário" class="form-control">
+                                    <input name="name" type="text" placeholder="Digite o nome de usuário" class="form-control" value="{{old('name')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">E-mail de usuário:</label>
+                                <div class="col-sm-10">
+                                    <input name="email" type="email" placeholder="Digite o nome de usuário" class="form-control" value="{{old('email')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -200,13 +207,5 @@
             $('#modalPreloader').modal('hide');
         }
 
-        $("form.form-pesquisa").submit(function(){
-
-            var palavraChave = $("#nome_usuario").val();
-            var url = $(this).attr("send");
-
-            location.href = url+palavraChave;
-            return false;
-        });
     </script>
 @endsection

@@ -276,7 +276,7 @@ class ClienteController extends Controller
        $dadosForm = $this->request->all(); 
        
        $clientes = $this->cliente->getResultadoPesquisa($dadosForm);
-
+       
        if(count($clientes) == 0){
             $tituloTabela = 'Nenhum registro encontrado!';
        }else{

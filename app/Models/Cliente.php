@@ -102,16 +102,17 @@ class Cliente extends Model
             ->paginate(1);
     }
 
-    public function getResultadoPesquisa($dados){
-    //return $this->where('nome_razao', 'LIKE', "%{$param}%")->paginate(1);
-    //dd($dados);
-        return $this->where(function($query) use($dados){    
-            if($dados['cpf_cnpj']){
-                $query->where('cpf_cnpj', '=', $dados['cpf_cnpj']);
-            }            
-            if($dados['nome_razao']){
-                $query->where('nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
-            }
-        })->paginate(1);
+    public function getResultadoPesquisa($dados){ 
+        return $this->join('tipos_clientes', 'clientes.id_tipo_cliente', '=', 'tipos_clientes.id')
+                ->where(function($query) use($dados){    
+                        if($dados['cpf_cnpj']){
+                            $query->where('clientes.cpf_cnpj', '=', $dados['cpf_cnpj']);
+                        }            
+                        if($dados['nome_razao']){
+                            $query->where('clientes.nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
+                        }
+                    })
+                ->select('clientes.*', 'tipos_clientes.descricao')
+                ->paginate(10);
     }
 }

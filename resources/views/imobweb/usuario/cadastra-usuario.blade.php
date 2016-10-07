@@ -132,20 +132,25 @@
                     finalizaPreloader();
 
                     if(data == 1){
-                        $('#message-success').html("Usuário cadastrado com sucesso!");
+                        /*$('#message-success').html("Usuário cadastrado com sucesso!");
                         $('#modalSuccess').modal('show');
-                        setTimeout("$(window.document.location).attr('href', '/dashboard/usuarios'); ", 3000);
+                        */
+                        swal({   
+                            title: "Usuário cadastrado com sucesso!",   
+                            type: "success",   
+                            timer: 4000,   
+                            showConfirmButton: false 
+                            });
+                            setTimeout("$(window.document.location).attr('href', '/dashboard/usuarios'); ", 4000);
                     }else{
-                        for(var t in data){
-                            console.log(data);
-                            $('#message-warning').html(data[t]);
-                            $('#modalWarning').modal('show');
+                        for(var t in data){                            
+                            swal(data[t], "","warning");
                         }
                     }
 
                 }).fail(function(){
-                    finalizaPreloader();
-                    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                    finalizaPreloader();                    
+                    swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
                 });
                 return false;
             });

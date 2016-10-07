@@ -207,14 +207,15 @@ class UsuarioController extends Controller
         return 1;
     }
 
-    public function getPesquisar($palavraChave = 'vazio'){
-
-        $usuarios = $this->usuario->getResultadoPesquisa($palavraChave);
+    public function postPesquisar(){
+        $dadosForm = $this->request->all();
+        
+        $usuarios = $this->usuario->getResultadoPesquisa($dadosForm);
 
         if(count($usuarios) == 0){
-            $tituloTabela = 'Resultados da Pesquisa: Nenhum registro encontrado!';
+            $tituloTabela = 'Nenhum registro encontrado!';
         }else{
-            $tituloTabela = "Resultados da pesquisa para: $palavraChave";
+            $tituloTabela = 'Resultados da pesquisa:';
         }
 
         $titulo = 'ImobWeb - Usuários';

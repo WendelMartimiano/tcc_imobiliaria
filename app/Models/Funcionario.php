@@ -113,7 +113,14 @@ class Funcionario extends Model
         return $this->where('id_empresa', $param)->paginate(1);        
     }
 
-    public function getResultadoPesquisa($param){
-        return $this->where('nome_razao', 'LIKE', "%{$param}%")->paginate(1);
+    public function getResultadoPesquisa($dados){
+        return $this->where(function($query) use($dados){
+            if($dados['cpf_cnpj']){
+                $query->where('cpf_cnpj', '=', "%{$dados['cpf_cnpj']}%");
+            }
+            if($dados['nome_razao']){
+                $query->where('nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
+            }
+        })->paginate(10);
     }
 }
