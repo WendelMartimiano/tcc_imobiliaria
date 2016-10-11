@@ -92,29 +92,6 @@
         </div>
     </div>
 
-    <!-- Modal Status Success-->
-    <div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header header-success">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="message-success"></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Status Warning-->
-    <div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header header-warning">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="message-warning"></h4>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('scripts')
@@ -131,10 +108,7 @@
                 }).done(function(data){
                     finalizaPreloader();
 
-                    if(data == 1){
-                        /*$('#message-success').html("Usuário cadastrado com sucesso!");
-                        $('#modalSuccess').modal('show');
-                        */
+                    if(data == 1){                        
                         swal({   
                             title: "Usuário cadastrado com sucesso!",   
                             type: "success",   

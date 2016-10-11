@@ -112,7 +112,7 @@
                     <form action="">
                         <input type="text" id="url-deletar" class="form-control" name="id" value="" style="display: none">
                     </form>
-                    <p>Deseja realmente excluir o usuário(a)?</p>
+                    <p>Deseja realmente excluir este usuário?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="deletaUsuario">Confirmar</button>
@@ -132,29 +132,6 @@
         </div>
     </div>
 
-    <!-- Modal Status Success-->
-    <div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header header-success">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="message-success"></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Status Warning-->
-    <div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header header-warning">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="message-warning"></h4>
-                </div>
-            </div>
-        </div>
-    </div>>
 @endsection
 
 @section('scripts')
@@ -180,20 +157,23 @@
 
                 if(data == "1"){
                     $('#modalDeletar').modal('hide');
-                    $('#message-success').html("Usuário excluído com sucesso!");
-                    $('#modalSuccess').modal('show');
-                    setTimeout("$(window.document.location).attr('href', '/dashboard/usuarios'); ", 3000);
+                    
+                    swal({   
+                        title: "Usuário excluído com sucesso!",   
+                        type: "success",   
+                        timer: 4000,   
+                        showConfirmButton: false 
+                        });
+                        setTimeout("$(window.document.location).attr('href', '/dashboard/usuarios'); ", 4000);
                 }else{
-                    $('#modalDeletar').modal('hide');
-                    $('#message-warning').html("Falha ao excluir usuário! Informe o erro a ImobWeb no contato (16)99999-9999.");
-                    $('#modalWarning').modal('show');
+                    $('#modalDeletar').modal('hide');                   
+                    swal("Falha ao tentar excluir usuário! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
                 }
 
             });
             request.fail(function(){
                 finalizaPreloader();
-
-                alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+                swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
             });
 
             return false;

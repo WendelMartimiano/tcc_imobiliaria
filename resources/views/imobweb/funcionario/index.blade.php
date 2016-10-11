@@ -141,29 +141,6 @@
 			</div>
 		</div>
 
-		<!-- Modal Status Success-->
-		<div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header header-success">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="message-success"></h4>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal Status Warning-->
-		<div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header header-warning">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="message-warning"></h4>
-					</div>
-				</div>
-			</div>
-		</div>
 @endsection
 
 @section('scripts')
@@ -189,20 +166,23 @@
 			
 			if(data == "1"){
 				$('#modalDemissao').modal('hide');
-				$('#message-success').html("Funcionário demitido com sucesso!");
-				$('#modalSuccess').modal('show');
-				setTimeout("$(window.document.location).attr('href', '/dashboard/funcionarios'); ", 3000);
+				
+				swal({   
+					title: "Funcionário demitido com sucesso!",   
+					type: "success",   
+					timer: 4000,   
+					showConfirmButton: false 
+					});
+					setTimeout("$(window.document.location).attr('href', '/dashboard/funcionarios'); ", 4000);
 			}else{
-				$('#modalDemissao').modal('hide');
-				$('#message-warning').html("Falha ao demitir funcionário! Informe o erro a ImobWeb no contato (16)99999-9999.");
-				$('#modalWarning').modal('show');
+				$('#modalDemissao').modal('hide');				
+				swal("Falha ao tentar demitir funcionário! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
 			}
 			
 		});
 		request.fail(function(){
 			finalizaPreloader();
-			
-			alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+			swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
 		});
 
 		return false;

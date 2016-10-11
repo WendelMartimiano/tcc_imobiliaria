@@ -176,30 +176,6 @@
         </div>
     </div>
 
-    <!-- Modal Status Success-->
-    <div class="modal fade bs-example-modal-sm" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header header-success">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="message-success"></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Status Warning-->
-    <div class="modal fade bs-example-modal-sm" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header header-warning">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="message-warning"></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection
 
 @section('scripts')
@@ -267,21 +243,23 @@
             }).done(function(data){
                 finalizaPreloader();
 
-                if(data == 1){                                                       
-                    $('#message-success').html("Cliente alterado com sucesso!");
-                    $('#modalSuccess').modal('show');  
-                    setTimeout("$(window.document.location).attr('href', '/dashboard/clientes'); ", 3000);                   				    	
+                if(data == 1){  
+                    swal({   
+                        title: "Cliente alterado com sucesso!",   
+                        type: "success",   
+                        timer: 4000,   
+                        showConfirmButton: false 
+                        });
+                        setTimeout("$(window.document.location).attr('href', '/dashboard/clientes'); ", 4000);                   				    	
                 }else{ 
                     for(var t in data){
-
-                        $('#message-warning').html(data[t]);
-                        $('#modalWarning').modal('show');
+                        swal(data[t], "","warning"); 
                     }	
                 }
                 
             }).fail(function(){
                 finalizaPreloader();			    
-			    alert("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.");
+			    swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
             });
             return false;
         });
