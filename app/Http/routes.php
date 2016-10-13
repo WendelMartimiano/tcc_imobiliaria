@@ -15,10 +15,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     });
 
     //Rota para a rotina de contratos
-    Route::get('contratos', function () {
-        return view('imobweb.contratos');
-    });
-
+    Route::controller('contratos', 'ImobWeb\ContratoController');
+    
     //Rota para a rotina de clientes
     Route::controller('clientes', 'ImobWeb\ClienteController');
 
