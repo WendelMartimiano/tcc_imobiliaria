@@ -29,6 +29,6 @@ class ContratoController extends Controller
     public function getContratoReserva(){
         $titulo = 'ImobWeb - Contrato de Reserva';
 
-        return view('imobweb.contrato.contrato-venda', compact('titulo'));
+        return view('imobweb.contrato.contrato-reserva', compact('titulo'));
     }
 }
