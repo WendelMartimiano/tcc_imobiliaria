@@ -144,7 +144,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*Validações de CNPJ e CPF*/
         'KennedyTedesco\Validation\ValidationServiceProvider',
+
+        /*Snappy gerador de PDF*/
+        Barryvdh\Snappy\ServiceProvider::class,
+
     ],
 
     /*
@@ -192,6 +197,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'PDF'       => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'Image'     => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 

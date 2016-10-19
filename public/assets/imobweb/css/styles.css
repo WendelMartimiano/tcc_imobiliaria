@@ -13,13 +13,13 @@ body {
 }
 
 body.fundo-login {
-    background: url("../imagens/login/cidade.jpg") no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    padding-top: 100px;
-    width: 98%;
-    color: #5f6468;
+	background: url("../imagens/login/cidade.jpg") no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	padding-top: 100px;
+	width: 98%;
+	color: #5f6468;
 }
 
 p {
@@ -306,7 +306,7 @@ a.bg-danger:hover {
 
 .panel {
 	border: 0;
-    box-shadow: 0 0 10px -2px rgba(0,0,0,.7);
+	box-shadow: 0 0 10px -2px rgba(0,0,0,.7);
 }
 
 .panel-heading {
@@ -318,10 +318,10 @@ a.bg-danger:hover {
 }
 
 .panel-default .panel-heading {
-	background: #2196F3;
+	background: #0074E5;
 	border-bottom: 1px solid #eee;
 	color: #fff;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 .panel-footer {

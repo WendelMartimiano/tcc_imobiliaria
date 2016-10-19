@@ -35,7 +35,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Modelo de Contrato.</div>
+                    <div class="panel-heading">Clique aqui para baixar o contrato:
+                        <a href="/dashboard/contratos/contrato-reserva-pdf" style="color: #fff;">
+                            <svg class="glyph stroked printer"><use xlink:href="#stroked-printer"/></svg>
+                        </a>
+                    </div>
                     <div class="panel-body">
                         <div align="center">
                             <table class="ContTable" style="width: 484.5pt;" border="0"

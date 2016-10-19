@@ -67,6 +67,11 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
+
+Route::get('/pdf', function () {
+    return PDF::loadView('teste')->stream('contrato.pdf');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

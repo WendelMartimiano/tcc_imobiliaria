@@ -35,7 +35,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Modelo de Contrato.</div>
+                    <div class="panel-heading">Clique aqui para baixar o contrato:
+                        <a href="/dashboard/contratos/contrato-venda-pdf" style="color: #fff;">
+                            <svg class="glyph stroked printer"><use xlink:href="#stroked-printer"/></svg>
+                        </a>
+                    </div>
                     <div class="panel-body">
                         <div align="center">
                             <table class="ContTable" style="width: 484.5pt;" border="0"
@@ -63,7 +67,7 @@
 
                                             <p class="Cont" style="text-align: justify; line-height: normal;">
                                                 <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cláusula 1ª: </span></b>
-                                                <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Firmam o presente contrato particular de promessa de compra e venda de unidade imobiliária.</span>
+                                                <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Firmam o presente contrato particular de promessa de compra e venda de unidade imobiliária:</span>
                                             </p>
 
                                             {{--Tabela de dados da imobiliária--}}
@@ -449,7 +453,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

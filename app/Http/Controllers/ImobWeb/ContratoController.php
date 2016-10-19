@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class ContratoController extends Controller
 {
@@ -30,5 +31,13 @@ class ContratoController extends Controller
         $titulo = 'ImobWeb - Contrato de Reserva';
 
         return view('imobweb.contrato.contrato-reserva', compact('titulo'));
+    }
+
+    public function getContratoVendaPdf(){
+        return PDF::loadView('imobweb.contrato.contrato-venda-pdf')->download('contrato-venda.pdf');
+    }
+
+    public function getContratoReservaPdf(){
+        return PDF::loadView('imobweb.contrato.contrato-reserva-pdf')->download('contrato-reserva.pdf');
     }
 }
