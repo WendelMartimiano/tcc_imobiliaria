@@ -21,8 +21,9 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="#"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg></a></li>
-                <li class="active">Usuários / Edição de Usuário</li>
+                <li><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg></li>
+                <li><a href="/dashboard/usuarios">Usuários</a></li>
+                <li class="active">Edição de Usuário</li>
             </ol>
         </div><!--/.row-->
 

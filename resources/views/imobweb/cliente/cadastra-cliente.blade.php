@@ -21,8 +21,9 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></a></li>
-                <li class="active">Clientes / Cadastro de Cliente</li>
+                <li><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></li>
+                <li><a href="/dashboard/clientes">Clientes</a></li>
+                <li class="active">Cadastro de Cliente</li>
             </ol>
         </div><!--/.row-->
 

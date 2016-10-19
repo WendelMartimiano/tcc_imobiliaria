@@ -21,7 +21,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg></a></li>
+				<li><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg></li>
 				<li class="active">Imobiliária</li>
 			</ol>
 		</div><!--/.row-->

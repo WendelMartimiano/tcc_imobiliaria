@@ -21,8 +21,9 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a></li>
-                <li class="active">Contratos / Contrato de Compra e Venda</li>
+                <li><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></li>
+                <li><a href="/dashboard/contratos">Contratos</a></li>
+                <li class="active">Contrato de Compra e Venda</li>
             </ol>
         </div><!--/.row-->
 
@@ -36,7 +37,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Clique aqui para baixar o contrato:
-                        <a href="/dashboard/contratos/contrato-venda-pdf" style="color: #fff;">
+                        <a href="/dashboard/contratos/contrato-venda-pdf">
                             <svg class="glyph stroked printer"><use xlink:href="#stroked-printer"/></svg>
                         </a>
                     </div>

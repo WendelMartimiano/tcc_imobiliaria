@@ -317,6 +317,15 @@ a.bg-danger:hover {
 	line-height: 45px;
 }
 
+.panel-heading a{
+	text-decoration: none;
+	color: #fff;
+}
+.panel-heading a:hover{
+	text-decoration: none;
+	color: #ffeb3b;
+}
+
 .panel-default .panel-heading {
 	background: #0074E5;
 	border-bottom: 1px solid #eee;
@@ -647,7 +656,17 @@ a.bg-danger:hover {
 	padding: 10px 15px;
 	background: #e9ecf2;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-	margin: 0 ;
+	margin: 0;
+}
+
+.breadcrumb a{
+	text-decoration: none;
+	color: #777;
+}
+
+.breadcrumb a:hover{
+	text-decoration: none;
+	color: #222;
 }
 
 h1.page-header {
