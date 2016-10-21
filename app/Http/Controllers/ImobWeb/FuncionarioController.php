@@ -185,15 +185,29 @@ class FuncionarioController extends Controller
         $funcionario = $this->funcionario->all()->find($id);
         $titulo = 'ImobWeb - Edição de Funcionário';
         $cargos = Cargo::all();
-        $user = User::all()->find($funcionario->id_user);
+        //$user = User::all()->find($funcionario->id_user);
 
-        return view('imobweb.funcionario.edita-funcionario', compact('titulo', 'cargos', 'user', 'funcionario'));
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $users = $this->funcionario->getUser($empresaUserAtual);
+
+        return view('imobweb.funcionario.edita-funcionario', compact('titulo', 'cargos', 'funcionario', 'users'));
     }
 
     public function postEditaFuncionario($id){
         $funcionario = $this->funcionario->all()->find($id);
-
         $dadosForm = $this->request->all();
+
+        $rules_duplicatedCpfCnpj = [
+            'cpf_cnpj'          =>'unique:funcionarios,cpf_cnpj,'.$id
+        ];
+
+        $rules_duplicatedRG = [
+            'rg'                =>'unique:funcionarios,rg,'.$id
+        ];
+
+        $rules_duplicatedUser = [
+            'id_user'          =>'unique:funcionarios,id_user,'.$id
+        ];
 
         $valida_requiredPessoaF = $this->validator->make($dadosForm, Funcionario::$rules_requiredPessoaF);
         $valida_requiredPessoaJ = $this->validator->make($dadosForm, Funcionario::$rules_requiredPessoaJ);
@@ -201,6 +215,9 @@ class FuncionarioController extends Controller
         $valida_cpf = $this->validator->make($dadosForm, Funcionario::$rules_cpf);
         $valida_size = $this->validator->make($dadosForm, Funcionario::$rules_size);
         $valida_type = $this->validator->make($dadosForm, Funcionario::$rules_type);
+        $valida_duplicatedCpfCnpj = $this->validator->make($dadosForm, $rules_duplicatedCpfCnpj);
+        $valida_duplicatedRG = $this->validator->make($dadosForm, $rules_duplicatedRG);
+        $valida_duplicatedUser = $this->validator->make($dadosForm, $rules_duplicatedUser);
 
         //válida os campos obrigatórios tipo pessoa fisíca
         if ($dadosForm["tipo_pessoa"] == "F"){
@@ -275,6 +292,39 @@ class FuncionarioController extends Controller
 
             foreach ($messages->all(":message") as $error) {
                 array_push($displayErrors, $error);
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os cpf ou cnpj duplicados na atualização
+        if ($valida_duplicatedCpfCnpj->fails()) {
+            $messages = $valida_duplicatedCpfCnpj->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("CPF ou CNPJ já cadastrado no sistema! Verifique.");
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os rg duplicados na atualização
+        if ($valida_duplicatedRG->fails()) {
+            $messages = $valida_duplicatedRG->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("RG já cadastrado no sistema! Verifique.");
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os usuários duplicados na atualização
+        if ($valida_duplicatedUser->fails()) {
+            $messages = $valida_duplicatedUser->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("Usuário vinculado a outro funcionário! Verifique.");
             }
 
             return $displayErrors;

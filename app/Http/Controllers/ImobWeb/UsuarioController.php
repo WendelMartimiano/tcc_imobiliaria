@@ -139,11 +139,16 @@ class UsuarioController extends Controller
         $usuario = $this->usuario->all()->find($id);
         $dadosForm = $this->request->all();
 
+        $rules_duplicated = [
+            'email'                     =>'unique:users,email,'.$id
+        ];
+
         //válida os dados referente as regras na model
         $valida_required = $this->validator->make($dadosForm, User::$rules_required);
         $valida_size = $this->validator->make($dadosForm, User::$rules_size);
         $valida_type = $this->validator->make($dadosForm, User::$rules_type);
         $valida_confirmation = $this->validator->make($dadosForm, User::$rules_confirmation);
+        $valida_duplicated = $this->validator->make($dadosForm, $rules_duplicated);
 
         //válida os campos obrigatórios
         if ($valida_required->fails()) {
@@ -186,6 +191,19 @@ class UsuarioController extends Controller
 
             if ($messages->all()) {
                 $displayErrors = array("A confirmação da senha não confere!");
+            }
+
+            return $displayErrors;
+        };
+
+        //valida registros duplicados em uma atualização
+        if ($valida_duplicated->fails()) {
+            $messages = $valida_duplicated->messages();
+
+            $displayErrors = array();
+
+            foreach ($messages->all(":message") as $error) {
+                array_push($displayErrors, $error);
             }
 
             return $displayErrors;

@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_cpfCnpj" for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$funcionario->cpf_cnpj}}" readonly>
+                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$funcionario->cpf_cnpj}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="rg">RG: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$funcionario->rg}}" readonly>
+                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$funcionario->rg}}">
                                     </div>
                                 </div>
                             </div>
@@ -111,8 +111,14 @@
                             <div class="form-group">
                                 <label for="usuario" class="control-label col-sm-2">Usuário do Sistema: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" @if($user->id == $funcionario->id_user) value="{{$user->name}}" @endif readonly>
-                                    <input type="hidden" class="form-control" name="id_user" placeholder="Nome do usuário" value="{{$funcionario->id_user}}">
+                                    {{--<input type="text" class="form-control" @if($user->id == $funcionario->id_user) value="{{$user->name}}" @endif readonly>
+                                    <input type="hidden" class="form-control" name="id_user" placeholder="Nome do usuário" value="{{$funcionario->id_user}}">--}}
+                                    <select name="id_user" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($users as $user)
+                                            <option value="{{$user->id}}" @if($user->id == $funcionario->id_user) selected="selected" @endif>{{$user->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group form-inline">

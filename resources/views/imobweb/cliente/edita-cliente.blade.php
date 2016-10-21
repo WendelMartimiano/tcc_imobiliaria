@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" id="label_cpfCnpj"  for="cpf_cnpj"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$cliente->cpf_cnpj}}" readonly>
+                                    <input type="text" class="form-control cpf_cnpj" name="cpf_cnpj" placeholder="" value="{{$cliente->cpf_cnpj}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,7 +76,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="rg">RG: <strong class="color-red">*</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$cliente->rg}}" readonly>
+                                        <input type="text" class="form-control" name="rg" placeholder="Digite o RG" value="{{$cliente->rg}}">
                                     </div>
                                 </div>
                             </div>

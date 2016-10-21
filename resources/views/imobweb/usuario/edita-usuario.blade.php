@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">E-mail: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" name="email" placeholder="Digite o e-mail" value="{{$usuario->email}}" readonly>
+                                    <input type="email" class="form-control" name="email" placeholder="Digite o e-mail" value="{{$usuario->email}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -123,7 +123,7 @@
         $(function(){
             $("form").submit(function(){
                 var dadosForm = $(this).serialize();
-
+                console.log(dadosForm);
                 jQuery.ajax({
                     method:"POST",
                     url: jQuery(this).attr("send"),

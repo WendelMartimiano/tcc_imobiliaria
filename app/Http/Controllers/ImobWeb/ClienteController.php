@@ -176,12 +176,22 @@ class ClienteController extends Controller
         $cliente = $this->cliente->all()->find($id);
         $dadosForm = $this->request->all();
 
+        $rules_duplicatedCpfCnpj = [
+            'cpf_cnpj'          =>'unique:clientes,cpf_cnpj,'.$id
+        ];
+
+        $rules_duplicatedRG = [
+            'rg'                =>'unique:clientes,rg,'.$id
+        ];
+
         $valida_requiredPessoaF = $this->validator->make($dadosForm, Cliente::$rules_requiredPessoaF);
         $valida_requiredPessoaJ = $this->validator->make($dadosForm, Cliente::$rules_requiredPessoaJ);
         $valida_cnpj = $this->validator->make($dadosForm, Cliente::$rules_cnpj);
         $valida_cpf = $this->validator->make($dadosForm, Cliente::$rules_cpf);
         $valida_size = $this->validator->make($dadosForm, Cliente::$rules_size);
         $valida_type = $this->validator->make($dadosForm, Cliente::$rules_type);
+        $valida_duplicatedCpfCnpj = $this->validator->make($dadosForm, $rules_duplicatedCpfCnpj);
+        $valida_duplicatedRG = $this->validator->make($dadosForm, $rules_duplicatedRG);
 
         //válida os campos obrigatórios tipo pessoa fisíca
         if ($dadosForm["tipo_pessoa"] == "F"){
@@ -256,6 +266,28 @@ class ClienteController extends Controller
 
             foreach ($messages->all(":message") as $error) {
                 array_push($displayErrors, $error);
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os cpf ou cnpj duplicados na atualização
+        if ($valida_duplicatedCpfCnpj->fails()) {
+            $messages = $valida_duplicatedCpfCnpj->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("CPF ou CNPJ já cadastrado no sistema! Verifique.");
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os rg duplicados na atualização
+        if ($valida_duplicatedRG->fails()) {
+            $messages = $valida_duplicatedRG->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("RG já cadastrado no sistema! Verifique.");
             }
 
             return $displayErrors;
