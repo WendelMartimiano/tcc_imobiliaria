@@ -108,7 +108,7 @@
                                     <input type="text" class="form-control" name="telefone" placeholder="Digite o número de telefone" value="{{$funcionario->telefone}}">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group form-inline">
                                 <label for="usuario" class="control-label col-sm-2">Usuário do Sistema: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     {{--<input type="text" class="form-control" @if($user->id == $funcionario->id_user) value="{{$user->name}}" @endif readonly>
@@ -205,7 +205,7 @@
 
          if ($("#radio_cpf").prop("checked")){
 
-             $("#radio_cnpj").attr('disabled', true);
+             /*$("#radio_cnpj").attr('disabled', true);*/
              $("#tipo_cnpj input").val("");
              $("#tipo_cnpj").hide();
              $("#tipo_cpf").show();
@@ -216,7 +216,7 @@
 
          }else{
 
-             $("#radio_cpf").attr('disabled', true);
+             /*$("#radio_cpf").attr('disabled', true);*/
              $("#tipo_cpf input").val("");
              $("#tipo_cpf").hide();
              $("#tipo_cnpj").show();

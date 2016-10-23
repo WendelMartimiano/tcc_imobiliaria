@@ -24,9 +24,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
     Route::controller('funcionarios', 'ImobWeb\FuncionarioController');
 
     //Rota para a rotina de imóveis
-    Route::get('imoveis', function () {
-        return view('imobweb.imoveis');
-    });
+    Route::controller('imoveis', 'ImobWeb\ImovelController');
 
     //Rota Home do Sistema
     Route::controller('/', 'ImobWeb\HomeController');

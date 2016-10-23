@@ -12,7 +12,8 @@
     <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">	
 	<link href="{{url('assets/imobweb/css/preloader.css')}}" rel="stylesheet">
 	<link href="{{url('bower_components/sweetalert/dist/sweetalert.css')}}" rel="stylesheet">
-	
+	<link href="{{url('bower_components/blueimp-file-upload/css/jquery.fileupload-ui.css')}}" rel="stylesheet">
+
 
     <!--Icons-->
     <script src="{{url('assets/imobweb/js/lumino.glyphs.js')}}"></script>
@@ -52,11 +53,13 @@
 
     <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
 	<script src="{{url('bower_components/sweetalert/dist/sweetalert.min.js')}}"></script>
+	<script src="{{url('bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js')}}"></script>
+	<script src="{{url('bower_components/blueimp-file-upload/js/jquery.fileupload.js')}}"></script>
     <script src="{{url('assets/imobweb/js/bootstrap.min.js')}}"></script>
     <script src="{{url('assets/imobweb/js/chart.min.js')}}"></script>
-    <script src="{{url('assets/imobweb/js/chart-data.js')}}"></script>
+    {{--<script src="{{url('assets/imobweb/js/chart-data.js')}}"></script>--}}
     <script src="{{url('assets/imobweb/js/easypiechart.js')}}"></script>
-    <script src="{{url('assets/imobweb/js/easypiechart-data.js')}}"></script>
+    {{--<script src="{{url('assets/imobweb/js/easypiechart-data.js')}}"></script>--}}
     <script src="{{url('assets/imobweb/js/bootstrap-datepicker.js')}}"></script>
     <script src="{{url('assets/imobweb/js/bootstrap-table.js')}}"></script>
 	<script>

@@ -108,6 +108,7 @@
 				</div>
 			</div>
 		</div><!--/.row-->
+	</div>
 
 	<!-- Modal de Demissão -->
 	<div class="modal fade" id="modalDemissao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -131,15 +132,15 @@
 		</div>
 	</div>
 
-		<!-- Modal Preloader -->
-		<div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-			<div class="modal-dialog modal-sm" role="document">
-				<div class="modal-content">
-					<div class="spinner"></div>
-					<p class="spinner-text">carregando..</p>
-				</div>
+	<!-- Modal Preloader -->
+	<div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="spinner"></div>
+				<p class="spinner-text">carregando..</p>
 			</div>
 		</div>
+	</div>
 
 @endsection
 

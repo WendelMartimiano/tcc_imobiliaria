@@ -185,7 +185,7 @@
 
             if ($("#radio_cpf").prop("checked")){
 
-                $("#radio_cnpj").attr('disabled', true);
+                /*$("#radio_cnpj").attr('disabled', true);*/
                 $("#tipo_cnpj input").val("");
                 $("#tipo_cnpj").hide();
                 $("#tipo_cpf").show();
@@ -196,7 +196,7 @@
 
             }else{
 
-                $("#radio_cpf").attr('disabled', true);
+                /*$("#radio_cpf").attr('disabled', true);*/
                 $("#tipo_cpf input").val("");
                 $("#tipo_cpf").hide();
                 $("#tipo_cnpj").show();

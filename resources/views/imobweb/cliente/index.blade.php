@@ -110,38 +110,39 @@
                 </div>
             </div>
         </div><!--/.row-->
+    </div>
 
-        <!-- Modal de Exclusão -->
-        <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header header-danger">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Exclusão de Cliente</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="">
-                            <input type="text" id="url-deletar" class="form-control" name="id" value="" style="display: none">
-                        </form>
-                        <p>Deseja realmente excluir o cliente(a)?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="deletaCliente">Confirmar</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    </div>
+    <!-- Modal de Exclusão -->
+    <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header header-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Exclusão de Cliente</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="text" id="url-deletar" class="form-control" name="id" value="" style="display: none">
+                    </form>
+                    <p>Deseja realmente excluir o cliente(a)?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="deletaCliente">Confirmar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal Preloader -->
-        <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="spinner"></div>
-                    <p class="spinner-text">carregando..</p>
-                </div>
+    <!-- Modal Preloader -->
+    <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="spinner"></div>
+                <p class="spinner-text">carregando..</p>
             </div>
         </div>
+    </div>
 
 @endsection
 
