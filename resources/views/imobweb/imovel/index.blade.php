@@ -49,12 +49,9 @@
                                 <label class="control-label col-sm-2" for="tipo_imovel">Tipo de Imóvel:</label>
                                 <div class="col-sm-10">
                                     <select name="id_tipo_imovel" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        <option value="">Apartamento</option>
-                                        <option value="">Casa</option>
-                                        <option value="">Rancho</option>
-                                        <option value="">Chacara</option>
-                                        <option value="">Terreno</option>
+                                        @foreach($tiposImoveis as $tipo)
+                                            <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -73,7 +70,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{$tituloTabela or 'Todos os Usuários:'}}</div>
+                    <div class="panel-heading">{{$tituloTabela or 'Todos os Imóveis:'}}</div>
                     <div class="panel-body">
                         <table class="table table-hover"  id="imovel-table">
                             <thead>
@@ -87,13 +84,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{--@foreach($usuarios as $usuario)--}}
+                            @foreach($imoveis as $imovel)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$imovel->codigo}}</td>
+                                    <td>{{$imovel->nome_tipo}}</td>
+                                    <td>{{$imovel->rua}}</td>
+                                    <td>{{$imovel->numero}}</td>
+                                    <td>{{$imovel->bairro}}</td>
                                     <td>
                                         <a href="" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -103,10 +100,10 @@
                                         </a>
                                     </td>
                                 </tr>
-                            {{--@endforeach--}}
+                            @endforeach
                             </tbody>
                         </table>
-                        {{--{!! $usuarios->render() !!}--}}
+                        {!! $imoveis->render() !!}
                     </div>
                 </div>
             </div>

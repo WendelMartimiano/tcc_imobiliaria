@@ -22,7 +22,7 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg></li>
-                <li><a href="">Imóveis</a></li>
+                <li><a href="/dashboard/imoveis">Imóveis</a></li>
                 <li class="active">Cadastro de Imóvel</li>
             </ol>
         </div><!--/.row-->
@@ -38,7 +38,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe os dados do novo imóvel.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="" send="">
+                        <form class="form-horizontal" method="post" action="/dashboard/imoveis/cadastra-imovel" send="/dashboard/imoveis/cadastra-imovel">
                             {!! csrf_field() !!}
                             <div class="form-group" hidden>
                                 <label class="control-label col-sm-2" for="empresa">Empresa:</label>
@@ -57,23 +57,16 @@
                                 <div class="col-sm-10">
                                     <select name="id_tipo_imovel" class="form-control">
                                         <option value="">Selecione uma opção</option>
-                                        <option value="">Apartamento</option>
-                                        <option value="">Casa</option>
-                                        <option value="">Rancho</option>
-                                        <option value="">Chacara</option>
-                                        <option value="">Terreno</option>
+                                        @foreach($tiposImoveis as $tipo)
+                                            <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group form-inline">
+                            <div class="form-group">
                                 <label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ vendedor: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <select name="cpf_cnpj" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        <option value="">35208211000107 - Wendel M. Gonçalves</option>
-                                        <option value="">35208211000107 - Viviane Badoco Costa</option>
-                                        <option value="">35208211000107 - Fulano da Silva</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF ou CNPJ do vendedor" value="{{old('cpf_cnpj')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -109,7 +102,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="estado">Estado: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="estado" placeholder="Digite o estado" value="{{old('estado')}}">
+                                    <input type="text" class="form-control" name="uf" placeholder="Digite o estado" value="{{old('uf')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -127,10 +120,10 @@
                             <div class="form-group form-inline">
                                 <label for="situação" class="control-label col-sm-2">Situação: </label>
                                 <label class="form-check-inline col-sm-2">
-                                    <input class="form-check-input" type="radio" name="status" value="N"> Imóvel Novo
+                                    <input class="form-check-input" type="radio" name="situacao" value="NOVO"> Imóvel Novo
                                 </label>
                                 <label class="form-check-inline ">
-                                    <input class="form-check-input" type="radio" name="status" value="U"> Imóvel Usado
+                                    <input class="form-check-input" type="radio" name="situacao" value="USADO"> Imóvel Usado
                                 </label>
                             </div>
                             <div class="form-group">
@@ -155,4 +148,50 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(function(){
+            $("form").submit(function(){
+                var dadosForm = $(this).serialize();
+                console.log(dadosForm);
+                jQuery.ajax({
+                    method:"POST",
+                    url: jQuery(this).attr("send"),
+                    data: dadosForm,
+                    beforeSend: iniciaPreloader()
+                }).done(function(data){
+                    finalizaPreloader();
+
+                    if(data == 1){
+                        swal({
+                            title: "Imóvel cadastrado com sucesso!",
+                            type: "success",
+                            timer: 4000,
+                            showConfirmButton: false
+                        });
+                        setTimeout("$(window.document.location).attr('href', '/dashboard/imoveis'); ", 4000);
+                    }else{
+                        for(var t in data){
+                            swal(data[t], "","warning");
+                        }
+                    }
+
+                }).fail(function(){
+                    finalizaPreloader();
+                    swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+                });
+                return false;
+            });
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+    </script>
 @endsection

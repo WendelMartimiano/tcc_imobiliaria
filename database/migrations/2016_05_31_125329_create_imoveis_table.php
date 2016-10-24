@@ -14,7 +14,7 @@ class CreateImoveisTable extends Migration
     {
         Schema::create('imoveis', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('codigo')->unique()->nullable();
+            $table->string('codigo')->unique()->nullable();
             $table->string('cpf_cnpj', 14)->nullable();
             $table->string('rua', 100)->nullable();
             $table->integer('numero')->nullable();

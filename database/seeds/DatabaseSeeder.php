@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call('TiposClientesSeeder');
         $this->call('EmpresasSeeder');
         $this->call('UsuariosSeeder');
+        $this->call('TiposImoveisSeeder');
 
         Model::reguard();
     }
