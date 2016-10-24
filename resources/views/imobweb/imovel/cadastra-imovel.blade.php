@@ -47,6 +47,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-sm-2" for="codigo">Código do Imóvel: <strong class="color-red">*</strong></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="codigo" placeholder="Digite o código do imóvel" value="{{old('codigo')}}">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
                                 <label class="control-label col-sm-2" for="tipo_imovel">Tipo de imóvel: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <select name="id_tipo_imovel" class="form-control">
@@ -59,10 +65,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group form-inline">
                                 <label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ vendedor: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite CPF ou CNPJ do vendedor" value="{{old('cpf_cnpj')}}">
+                                    <select name="cpf_cnpj" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="">35208211000107 - Wendel M. Gonçalves</option>
+                                        <option value="">35208211000107 - Viviane Badoco Costa</option>
+                                        <option value="">35208211000107 - Fulano da Silva</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -75,6 +86,12 @@
                                 <label class="control-label col-sm-2" for="rua">Rua: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="rua" placeholder="Digite a rua" value="{{old('rua')}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="numero">Número: <strong class="color-red">*</strong></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="numero" placeholder="Digite o número" value="{{old('numero')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -119,7 +136,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Confirmar</button>
-                                    <a href="" class="btn btn-default">Cancelar</a>
+                                    <a href="/dashboard/imoveis" class="btn btn-default">Cancelar</a>
                                 </div>
                             </div>
                         </form>

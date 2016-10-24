@@ -80,13 +80,17 @@
                             <tr>
                                 <th>Código</th>
                                 <th>Tipo</th>
-                                <th>CEP</th>
+                                <th>Rua</th>
+                                <th>Número</th>
+                                <th>Bairro</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
                             {{--@foreach($usuarios as $usuario)--}}
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
