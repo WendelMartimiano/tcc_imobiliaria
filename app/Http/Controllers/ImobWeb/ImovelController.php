@@ -41,7 +41,7 @@ class ImovelController extends Controller
 
     public function getCadastraImovel(){
         $titulo = 'ImobWeb - Cadastro de Imóvel';
-        $tiposImoveis = TipoImovel::all();
+        $tiposImoveis = TipoImovel::orderBy('descricao')->get();
 
         return view('imobweb.imovel.cadastra-imovel', compact('titulo', 'tiposImoveis'));
     }
@@ -132,6 +132,15 @@ class ImovelController extends Controller
         };
 
         $this->imovel->create($dadosForm);
+        return 1;
+    }
+
+    public function getEditaImovel(){}
+
+    public function postEditaImovel(){}
+
+    public function getDeletaImovel($id){
+        $this->imovel->find($id)->delete();
         return 1;
     }
 }

@@ -95,7 +95,7 @@
                                         <a href="" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
-                                        <a href="" onclick="" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                        <a href="" onclick="modalDeleta('/dashboard/imoveis/deleta-imovel/{{$imovel->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </a>
                                     </td>
@@ -142,4 +142,59 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        //Chama modal de excluir
+        function modalDeleta(url){
+
+            $('#url-deletar').val(url);
+            $('#modalDeletar').modal('show');
+        }
+
+        //Efetua a exclusão do imóvel
+        $("#deletaImovel").click(function() {
+            var url = $("#url-deletar").val();
+
+            var request = $.ajax({
+                url: url,
+                method: "GET",
+                beforeSend: iniciaPreloader()
+            });
+            request.done(function(data){
+                finalizaPreloader();
+
+                if(data == "1"){
+                    $('#modalDeletar').modal('hide');
+
+                    swal({
+                        title: "Imóvel excluído com sucesso!",
+                        type: "success",
+                        timer: 4000,
+                        showConfirmButton: false
+                    });
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/imoveis'); ", 4000);
+                }else{
+                    $('#modalDeletar').modal('hide');
+                    swal("Falha ao excluir imóvel! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+                }
+
+            });
+            request.fail(function(){
+                finalizaPreloader();
+                swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+            });
+
+            return false;
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+    </script>
 @endsection
