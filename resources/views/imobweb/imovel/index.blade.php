@@ -37,12 +37,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Consulta de Imoveis.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal form-pesquisa" method="post" action="">
+                        <form class="form-horizontal form-pesquisa" method="post" action="/dashboard/imoveis/pesquisar">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="id">Código do Imóvel:</label>
+                                <label class="control-label col-sm-2" for="codigo">Código do Imóvel:</label>
                                 <div class="col-sm-10">
-                                    <input name="id" type="text" placeholder="Digite o código do imóvel" class="form-control" value="{{old('id')}}">
+                                    <input name="codigo" type="text" placeholder="Digite o código do imóvel" class="form-control" value="{{old('codigo')}}">
                                 </div>
                             </div>
                             <div class="form-group">

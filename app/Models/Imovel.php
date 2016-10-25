@@ -69,4 +69,18 @@ class Imovel extends Model
             ->paginate(1);
     }
 
+    public function getResultadoPesquisa($dados){
+        return $this->join('tipos_imoveis', 'imoveis.id_tipo_imovel', '=', 'tipos_imoveis.id')
+            ->where(function($query) use($dados){
+                if($dados['codigo']){
+                    $query->where('imoveis.codigo', '=', $dados['codigo']);
+                }
+                if($dados['id_tipo_imovel']){
+                    $query->where('imoveis.id_tipo_imovel', '=', $dados['id_tipo_imovel']);
+                }
+            })
+            ->select('imoveis.*', 'tipos_imoveis.descricao as nome_tipo')
+            ->paginate(10);
+    }
+
 }

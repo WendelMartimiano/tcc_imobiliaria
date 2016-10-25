@@ -243,4 +243,20 @@ class ImovelController extends Controller
         $this->imovel->find($id)->delete();
         return 1;
     }
+
+    public function postPesquisar(){
+        $dadosForm = $this->request->all();
+
+        $imoveis = $this->imovel->getResultadoPesquisa($dadosForm);
+        $tiposImoveis = TipoImovel::orderBy('descricao')->get();
+
+        if(count($imoveis) == 0){
+            $tituloTabela = 'Nenhum registro encontrado!';
+        }else{
+            $tituloTabela = 'Resultados da Pesquisa:';
+        }
+
+        $titulo = 'ImobWeb - Imoveis';
+        return view('imobweb.imovel.index', compact('titulo', 'imoveis', 'tituloTabela', 'tiposImoveis'));
+    }
 }
