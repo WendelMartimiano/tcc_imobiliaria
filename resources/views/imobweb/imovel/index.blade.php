@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Consulta de Imoveis!</div>
+                    <div class="panel-heading">Consulta de Imoveis.</div>
                     <div class="panel-body">
                         <form class="form-horizontal form-pesquisa" method="post" action="">
                             {!! csrf_field() !!}
@@ -49,6 +49,7 @@
                                 <label class="control-label col-sm-2" for="tipo_imovel">Tipo de Imóvel:</label>
                                 <div class="col-sm-10">
                                     <select name="id_tipo_imovel" class="form-control">
+                                        <option value="">Selecione uma opção</option>
                                         @foreach($tiposImoveis as $tipo)
                                             <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
                                         @endforeach
@@ -92,7 +93,7 @@
                                     <td>{{$imovel->numero}}</td>
                                     <td>{{$imovel->bairro}}</td>
                                     <td>
-                                        <a href="" class="btn btn-success btn-xs">
+                                        <a href="/dashboard/imoveis/edita-imovel/{{$imovel->id}}" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
                                         <a href="" onclick="modalDeleta('/dashboard/imoveis/deleta-imovel/{{$imovel->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">

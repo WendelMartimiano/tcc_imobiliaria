@@ -135,9 +135,109 @@ class ImovelController extends Controller
         return 1;
     }
 
-    public function getEditaImovel(){}
+    public function getEditaImovel($id){
+        $imovel = $this->imovel->all()->find($id);
+        $titulo = 'ImobWeb - Edição de Imóvel';
+        $tiposImoveis = TipoImovel::orderBy('descricao')->get();
 
-    public function postEditaImovel(){}
+        return view('imobweb.imovel.edita-imovel', compact('titulo', 'imovel', 'tiposImoveis'));
+    }
+
+    public function postEditaImovel($id){
+        $imovel = $this->imovel->all()->find($id);
+        $dadosForm = $this->request->all();
+
+        $rules_duplicatedCode = [
+            'codigo'          =>'unique:imoveis,codigo,'.$id
+        ];
+
+        $valida_required = $this->validator->make($dadosForm, Imovel::$rules_required);
+        $valida_cnpj = $this->validator->make($dadosForm, Imovel::$rules_cnpj);
+        $valida_cpf = $this->validator->make($dadosForm, Imovel::$rules_cpf);
+        $valida_size = $this->validator->make($dadosForm, Imovel::$rules_size);
+        $valida_type = $this->validator->make($dadosForm, Imovel::$rules_type);
+        $valida_duplicatedCode = $this->validator->make($dadosForm, $rules_duplicatedCode);
+
+
+        //valida os campos obrigatórios
+        if ($valida_required->fails()) {
+            $messages = $valida_required->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("É necessário informar todos os campos com ' * ' para prosseguir!");
+            }
+
+            return $displayErrors;
+        };
+
+        //válida o cpf
+        if (strlen($dadosForm["cpf_cnpj"]) == 11){
+            if ($valida_cpf->fails()) {
+                $messages = $valida_cpf->messages();
+
+                if ($messages->all()) {
+                    $displayErrors = array("CPF inválido! Verifique.");
+                }
+
+                return $displayErrors;
+            };
+        };
+
+        //válida o cnpj
+        if (strlen($dadosForm["cpf_cnpj"]) == 14){
+            if ($valida_cnpj->fails()) {
+                $messages = $valida_cnpj->messages();
+
+                if ($messages->all()) {
+                    $displayErrors = array("CNPJ inválido! Verifique.");
+                }
+
+                return $displayErrors;
+            };
+        };
+
+        //válida a quantidade mínima de caracteres por campo
+        if ($valida_size->fails()) {
+            $messages = $valida_size->messages();
+
+            $displayErrors = array();
+
+            foreach ($messages->all(":message") as $error) {
+                array_push($displayErrors, $error);
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os tipos dos campos
+        if ($valida_type->fails()) {
+            $messages = $valida_type->messages();
+
+            $displayErrors = array();
+
+            foreach ($messages->all(":message") as $error) {
+                array_push($displayErrors, $error);
+            }
+
+            return $displayErrors;
+        };
+
+        //válida os código duplicado na atualização
+        if ($valida_duplicatedCode->fails()) {
+            $messages = $valida_duplicatedCode->messages();
+
+            if ($messages->all()) {
+                $displayErrors = array("Código já cadastrado no sistema! Verifique.");
+            }
+
+            return $displayErrors;
+        };
+
+        $imovel->fill($dadosForm);
+        $imovel->save();
+
+        return 1;
+    }
 
     public function getDeletaImovel($id){
         $this->imovel->find($id)->delete();
