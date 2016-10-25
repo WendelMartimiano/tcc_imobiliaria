@@ -7,20 +7,28 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Empresa;
 
 class HomeController extends Controller
 {
 
-    public function __construct()
+    private $empresa;
+
+    public function __construct(Empresa $empresa)
     {
         $this->middleware('auth');
+        $this->empresa = $empresa;
     }
 
     public function getIndex(){
 
         $titulo = 'ImobWeb - Home';
 
-        return view('imobweb.home.index', compact('titulo'));
+        $user = Auth::user()->id_empresa;
+
+        $imobiliaria = $this->empresa->all()->find($user);
+
+        return view('imobweb.home.index', compact('titulo', 'imobiliaria'));
     }
 
    /*

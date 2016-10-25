@@ -5,7 +5,7 @@
 
         <ul class="nav menu">
             <li><a href="/dashboard"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
-            <li class="active"><a href="/dashboard/imoveis"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Imoveis</a></li>
+            <li class="active"><a href="/dashboard/imoveis"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Imoveis</a></li>
             <li><a href="/dashboard/funcionarios"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Funcionários</a></li>
             <li><a href="/dashboard/clientes"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Clientes</a></li>
             <li><a href="/dashboard/contratos"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Contratos</a></li>
@@ -21,21 +21,21 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg></li>
-                <li class="active">Imoveis</li>
+                <li><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></li>
+                <li class="active">Imóveis</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Imoveis</h1>
+                <h1 class="page-header">Imóveis</h1>
             </div>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Consulta de Imoveis.</div>
+                    <div class="panel-heading">Consulta de Imóveis.</div>
                     <div class="panel-body">
                         <form class="form-horizontal form-pesquisa" method="post" action="/dashboard/imoveis/pesquisar">
                             {!! csrf_field() !!}
