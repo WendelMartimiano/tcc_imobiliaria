@@ -99,6 +99,9 @@
                                         <a href="" onclick="modalDeleta('/dashboard/imoveis/deleta-imovel/{{$imovel->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </a>
+                                        <a href="/dashboard/imoveis/upload-imagem/{{$imovel->id}}" class="btn btn-primary btn-xs">
+                                            <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -153,6 +156,29 @@
             $('#url-deletar').val(url);
             $('#modalDeletar').modal('show');
         }
+
+        /*//chama modal de imagem
+        function modalImagem(url){
+            $(function() {
+
+                var request = $.ajax({
+                    url: url,
+                    method: "GET",
+                    beforeSend: iniciaPreloader()
+                });
+                request.done(function(data){
+                    finalizaPreloader();
+
+                    $('#modalImagem').modal('show');
+                });
+                request.fail(function(){
+                    finalizaPreloader();
+                    swal("Falha ao carregar imagens! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+                });
+
+                return false;
+            });
+        }*/
 
         //Efetua a exclusão do imóvel
         $("#deletaImovel").click(function() {

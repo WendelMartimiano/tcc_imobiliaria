@@ -259,4 +259,38 @@ class ImovelController extends Controller
         $titulo = 'ImobWeb - Imoveis';
         return view('imobweb.imovel.index', compact('titulo', 'imoveis', 'tituloTabela', 'tiposImoveis'));
     }
+
+    public function getUploadImagem($id){
+
+        $dadosImovel = $this->imovel->all()->find($id);
+        $imovel = $this->imovel->with('imagens')->find($id);
+
+        $titulo = 'ImobWeb - Cadastro de Imagem';
+        return view('imobweb.imovel.upload-imagem', compact('titulo', 'dadosImovel', 'imovel'));
+    }
+
+    public function postUploadImagem(){
+        /**
+         * Recebendo imagem do formulário
+         */
+        $item = \Request::file('imagem');
+        $idImovel = \Request::get('idImovel');
+        /**
+         * Criando local de armazenamento da imagem
+         */
+        $storagePath = storage_path().'/documentos/'.$idImovel;
+        $itemName = $item->getClientOriginalName();
+        /**
+         * Salvando imagens no banco com relacionamento a imóvel
+         */
+        $itemModel = new \App\Models\ItemImovel();
+        $itemModel->caminho = $itemName;
+        $imovel = \App\Models\Imovel::find($idImovel);
+        $imovel->imagens()->save($itemModel);
+        return $item->move($storagePath, $itemName);
+    }
+
+    public function getDownload(){}
+
+    public function getDeletaImagem(){}
 }

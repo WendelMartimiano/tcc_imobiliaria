@@ -12,7 +12,7 @@
     <link href="{{url('assets/imobweb/css/styles.css')}}" rel="stylesheet">	
 	<link href="{{url('assets/imobweb/css/preloader.css')}}" rel="stylesheet">
 	<link href="{{url('bower_components/sweetalert/dist/sweetalert.css')}}" rel="stylesheet">
-	<link href="{{url('bower_components/blueimp-file-upload/css/jquery.fileupload-ui.css')}}" rel="stylesheet">
+	<link href="{{url('bower_components/blueimp-file-upload/css/jquery.fileupload.css')}}" rel="stylesheet">
 
 
     <!--Icons-->

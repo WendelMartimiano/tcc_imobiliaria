@@ -319,7 +319,7 @@ a.bg-danger:hover {
 
 .panel-heading a{
 	text-decoration: none;
-	color: #fff;
+	color: #30a5ff;
 }
 .panel-heading a:hover{
 	text-decoration: none;
@@ -327,9 +327,9 @@ a.bg-danger:hover {
 }
 
 .panel-default .panel-heading {
-	background: #0074E5;
+	background: #fafafa;
 	border-bottom: 1px solid #eee;
-	color: #fff;
+	color: #444;
 	font-size: 20px;
 }
 
@@ -666,7 +666,7 @@ a.bg-danger:hover {
 
 .breadcrumb a:hover{
 	text-decoration: none;
-	color: #222;
+	color: #30a5ff;
 }
 
 h1.page-header {
@@ -968,6 +968,10 @@ h1.page-header {
 /*Modal*/
 .header-danger{
 	background-color: #d32f2f;
+}
+
+.header-images{
+	background-color: #4fc3f7;
 }
 
 .modal-title{

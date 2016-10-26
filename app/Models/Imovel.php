@@ -83,4 +83,9 @@ class Imovel extends Model
             ->paginate(10);
     }
 
+    public function imagens()
+    {
+        return $this->hasMany('App\Models\ItemImovel', 'id_imovel');
+    }
+
 }
