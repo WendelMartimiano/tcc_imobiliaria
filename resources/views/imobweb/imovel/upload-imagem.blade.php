@@ -64,7 +64,6 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Enviado em</th>
-                                {{--<th>Usuário</th>--}}
                                 <th>Ações</th>
                             </tr>
                             </thead>
@@ -73,10 +72,9 @@
                                 <tr>
                                     <td>{!! $imagem->caminho !!}</td>
                                     <td>{!! $imagem->created_at !!}</td>
-                                    {{--<td>{!! $imovel->name !!}</td>--}}
                                     <td>
-                                        <a {{--href="{!! route('files.download', [$user->id, $file->id]) !!}"--}} class="btn btn-xs btn-success">download</a>
-                                        <a {{--href="{!! route('files.destroy', [$user->id, $file->id]) !!}"--}} class="btn btn-xs btn-danger">excluir</a>
+                                        <a href="/dashboard/imoveis/download-imagem/{{$imovel->id}}/{{$imagem->id}}" class="btn btn-xs btn-success">download</a>
+                                        <a href="/dashboard/imoveis/deleta-imagem/{{$imovel->id}}/{{$imagem->id}}" class="btn btn-xs btn-danger">excluir</a>
                                     </td>
                                 </tr>
                             @endforeach

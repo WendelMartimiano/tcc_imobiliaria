@@ -290,7 +290,18 @@ class ImovelController extends Controller
         return $item->move($storagePath, $itemName);
     }
 
-    public function getDownload(){}
+    public function getDownloadImagem($idImovel, $idItem){
+        $item = \App\Models\ItemImovel::find($idItem);
+        $storagePath = storage_path().'/documentos/'.$idImovel;
+        return \Response::download($storagePath.'/'.$item->caminho);
+    }
 
-    public function getDeletaImagem(){}
+    public function getDeletaImagem($idImovel, $idItem){
+        $item = \App\Models\ItemImovel::find($idItem);
+        $storagePath = storage_path().'/documentos/'.$idImovel;
+        $item->delete();
+        unlink($storagePath.'/'.$item->caminho);
+
+        return redirect()->back();
+    }
 }
