@@ -44,7 +44,9 @@
 
                             <input id="fileupload" type="file" name="imagem"
                                    data-token="{!! csrf_token() !!}"
-                                   data-id-imovel="{!! $imovel->id !!}">
+                                   data-nome-imobiliaria="{!! $imobiliaria->razao_social !!}"
+                                   data-id-imovel="{!! $imovel->id !!}"
+                                   data-codigo-imovel="{!! $imovel->codigo !!}">
 				        </span>
                         <br>
                         <br>
@@ -73,8 +75,8 @@
                                     <td>{!! $imagem->caminho !!}</td>
                                     <td>{!! $imagem->created_at !!}</td>
                                     <td>
-                                        <a href="/dashboard/imoveis/download-imagem/{{$imovel->id}}/{{$imagem->id}}" class="btn btn-xs btn-success">download</a>
-                                        <a href="/dashboard/imoveis/deleta-imagem/{{$imovel->id}}/{{$imagem->id}}" class="btn btn-xs btn-danger">excluir</a>
+                                        <a href="/dashboard/imoveis/download-imagem/{{$imagem->id}}/{{$imovel->codigo}}" class="btn btn-xs btn-success">download</a>
+                                        <a href="/dashboard/imoveis/deleta-imagem/{{$imagem->id}}/{{$imovel->codigo}}" class="btn btn-xs btn-danger">excluir</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -102,7 +104,10 @@
                 $fileupload.fileupload({
                     url: '/dashboard/imoveis/upload-imagem',
                     method: "POST",
-                    formData: {_token: $fileupload.data('token'), idImovel: $fileupload.data('idImovel')},
+                    formData: {_token: $fileupload.data('token'),
+                                idImovel: $fileupload.data('idImovel'),
+                                nomeImobiliaria: $fileupload.data('nomeImobiliaria'),
+                                codigoImovel: $fileupload.data('codigoImovel')},
                     progressall: function (e, data) {
                         var progress = parseInt(data.loaded / data.total * 100, 10);
                         $('#progress .progress-bar').css(
@@ -111,9 +116,7 @@
                         );
                     },
                     done: function (e, data) {
-                        /*setTimeout(function(){*/
                         location.reload();
-                        /*}, 2000);*/
                     }
                 });
             });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ImobWeb;
 
+use App\Models\Empresa;
 use App\Models\Imovel;
 use App\Models\TipoImovel;
 use Illuminate\Http\Request;
@@ -265,8 +266,13 @@ class ImovelController extends Controller
         $dadosImovel = $this->imovel->all()->find($id);
         $imovel = $this->imovel->with('imagens')->find($id);
 
+
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $imobiliaria = Empresa::all()->find($empresaUserAtual);
+
+
         $titulo = 'ImobWeb - Cadastro de Imagem';
-        return view('imobweb.imovel.upload-imagem', compact('titulo', 'dadosImovel', 'imovel'));
+        return view('imobweb.imovel.upload-imagem', compact('titulo', 'dadosImovel', 'imovel', 'imobiliaria'));
     }
 
     public function postUploadImagem(){
@@ -274,12 +280,16 @@ class ImovelController extends Controller
          * Recebendo imagem do formulário
          */
         $item = \Request::file('imagem');
+        $nomeImobiliaria = \Request::get('nomeImobiliaria');
         $idImovel = \Request::get('idImovel');
+        $codigoImovel = \Request::get('codigoImovel');
+
         /**
          * Criando local de armazenamento da imagem
          */
-        $storagePath = storage_path().'/documentos/'.$idImovel;
+        $storagePath = storage_path().'/documentos/'.$nomeImobiliaria.'/imagens/'."imóvel - $codigoImovel";
         $itemName = $item->getClientOriginalName();
+
         /**
          * Salvando imagens no banco com relacionamento a imóvel
          */
@@ -287,18 +297,27 @@ class ImovelController extends Controller
         $itemModel->caminho = $itemName;
         $imovel = \App\Models\Imovel::find($idImovel);
         $imovel->imagens()->save($itemModel);
+
         return $item->move($storagePath, $itemName);
     }
 
-    public function getDownloadImagem($idImovel, $idItem){
+    public function getDownloadImagem($idItem, $codigoImovel){
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $imobiliaria = Empresa::all()->find($empresaUserAtual);
+
         $item = \App\Models\ItemImovel::find($idItem);
-        $storagePath = storage_path().'/documentos/'.$idImovel;
+        $storagePath = storage_path().'/documentos/'.$imobiliaria->razao_social.'/imagens/'."imóvel - $codigoImovel";
+
         return \Response::download($storagePath.'/'.$item->caminho);
     }
 
-    public function getDeletaImagem($idImovel, $idItem){
+    public function getDeletaImagem($idItem, $codigoImovel){
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $imobiliaria = Empresa::all()->find($empresaUserAtual);
+
         $item = \App\Models\ItemImovel::find($idItem);
-        $storagePath = storage_path().'/documentos/'.$idImovel;
+        $storagePath = storage_path().'/documentos/'.$imobiliaria->razao_social.'/imagens/'."imóvel - $codigoImovel";
+
         $item->delete();
         unlink($storagePath.'/'.$item->caminho);
 
