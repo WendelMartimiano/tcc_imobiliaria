@@ -72,11 +72,12 @@
                             <tbody>
                             @foreach($imovel->imagens as $imagem)
                                 <tr>
-                                    <td>{!! $imagem->caminho !!}</td>
+                                    <td>{!! $imagem->titulo !!}</td>
                                     <td>{!! $imagem->created_at !!}</td>
                                     <td>
                                         <a href="/dashboard/imoveis/download-imagem/{{$imagem->id}}/{{$imovel->codigo}}" class="btn btn-xs btn-success">download</a>
                                         <a href="/dashboard/imoveis/deleta-imagem/{{$imagem->id}}/{{$imovel->codigo}}" class="btn btn-xs btn-danger">excluir</a>
+                                        <a href="/dashboard/imoveis/visualiza-imagem/{{$imagem->id}}/{{$imovel->codigo}}" class="btn btn-xs btn-info" target="_blank">visualizar</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -88,11 +89,9 @@
         </div>
     </div>
 
-
 @endsection
 
 @section('scripts')
-    {{-- --}}
     <script>
         ;(function($)
         {
@@ -116,7 +115,19 @@
                         );
                     },
                     done: function (e, data) {
-                        location.reload();
+                        /*location.reload();*/
+
+                        if(data){
+                            swal({
+                                title: "Imagem cadastrada com sucesso!",
+                                type: "success",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            setTimeout("location.reload(); ", 2000);
+                        }else{
+                            swal(data, "","error");
+                        }
                     }
                 });
             });

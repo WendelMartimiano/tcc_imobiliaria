@@ -14,6 +14,7 @@ class CreateItensImoveisTable extends Migration
     {
         Schema::create('itens_imoveis', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('titulo', 60)->nullable();
             $table->string('caminho', 200)->nullable();
 
             $table->integer('id_imovel')->unsigned();

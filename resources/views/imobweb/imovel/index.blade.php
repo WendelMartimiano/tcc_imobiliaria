@@ -157,29 +157,6 @@
             $('#modalDeletar').modal('show');
         }
 
-        /*//chama modal de imagem
-        function modalImagem(url){
-            $(function() {
-
-                var request = $.ajax({
-                    url: url,
-                    method: "GET",
-                    beforeSend: iniciaPreloader()
-                });
-                request.done(function(data){
-                    finalizaPreloader();
-
-                    $('#modalImagem').modal('show');
-                });
-                request.fail(function(){
-                    finalizaPreloader();
-                    swal("Falha ao carregar imagens! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
-                });
-
-                return false;
-            });
-        }*/
-
         //Efetua a exclusão do imóvel
         $("#deletaImovel").click(function() {
             var url = $("#url-deletar").val();

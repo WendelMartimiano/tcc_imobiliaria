@@ -287,14 +287,16 @@ class ImovelController extends Controller
         /**
          * Criando local de armazenamento da imagem
          */
-        $storagePath = storage_path().'/documentos/'.$nomeImobiliaria.'/imagens/'."imóvel - $codigoImovel";
+        $storagePath = public_path().'/documentos/'.$nomeImobiliaria.'/imagens/'."imóvel - $codigoImovel";
         $itemName = $item->getClientOriginalName();
 
         /**
          * Salvando imagens no banco com relacionamento a imóvel
          */
         $itemModel = new \App\Models\ItemImovel();
-        $itemModel->caminho = $itemName;
+        $itemModel->titulo = $itemName;
+        $itemModel->caminho = public_path().'/documentos/'.$nomeImobiliaria.'/imagens/'."imóvel - $codigoImovel";
+
         $imovel = \App\Models\Imovel::find($idImovel);
         $imovel->imagens()->save($itemModel);
 
@@ -306,9 +308,9 @@ class ImovelController extends Controller
         $imobiliaria = Empresa::all()->find($empresaUserAtual);
 
         $item = \App\Models\ItemImovel::find($idItem);
-        $storagePath = storage_path().'/documentos/'.$imobiliaria->razao_social.'/imagens/'."imóvel - $codigoImovel";
+        $storagePath = public_path().'/documentos/'.$imobiliaria->razao_social.'/imagens/'."imóvel - $codigoImovel";
 
-        return \Response::download($storagePath.'/'.$item->caminho);
+        return \Response::download($storagePath.'/'.$item->titulo);
     }
 
     public function getDeletaImagem($idItem, $codigoImovel){
@@ -316,11 +318,20 @@ class ImovelController extends Controller
         $imobiliaria = Empresa::all()->find($empresaUserAtual);
 
         $item = \App\Models\ItemImovel::find($idItem);
-        $storagePath = storage_path().'/documentos/'.$imobiliaria->razao_social.'/imagens/'."imóvel - $codigoImovel";
+        $storagePath = public_path().'/documentos/'.$imobiliaria->razao_social.'/imagens/'."imóvel - $codigoImovel";
 
         $item->delete();
-        unlink($storagePath.'/'.$item->caminho);
+        unlink($storagePath.'/'.$item->titulo);
 
         return redirect()->back();
+    }
+
+    public function getVisualizaImagem($idItem, $codigoImovel){
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $imobiliaria = Empresa::all()->find($empresaUserAtual);
+
+        $item = \App\Models\ItemImovel::find($idItem);
+
+        return view('imobweb.imovel.visualiza-imagem', compact('imobiliaria', 'item', 'codigoImovel'));
     }
 }

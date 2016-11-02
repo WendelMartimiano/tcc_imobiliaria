@@ -23,7 +23,7 @@ class CreateImoveisTable extends Migration
             $table->string('cidade', 50)->nullable();
             $table->string('uf', 2)->nullable();
             $table->text('descricao')->nullable();
-            $table->float('valor')->nullable();
+            $table->double('valor', 15, 3)->nullable();
             $table->string('situacao', 10)->nullable();
 
 
