@@ -40,38 +40,65 @@
                     <div class="panel-body">
                         <form class="form-horizontal" method="post" action="" send="">
                             {!! csrf_field() !!}
-                            <div class="form-group">
+                            <div class="form-group form-inline">
                                 <label class="control-label col-sm-2" for="name">Cliente Comprador:</label>
                                 <div class="col-sm-10">
-                                    <input name="cliente_comprador" type="text" placeholder="Digite o CPF/CNPJ ou nome do comprador" class="form-control" value="{{old('cliente_comprador')}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="email">Cliente Vendedor:</label>
-                                <div class="col-sm-10">
-                                    <input name="cliente_vendedor" type="text" placeholder="Digite o CPF/CNPJ ou nome do vendedor" class="form-control" value="{{old('cliente_vendedor')}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="email">Corretor:</label>
-                                <div class="col-sm-10">
-                                    <input name="corretor" type="text" placeholder="Digite o CPF ou nome do corretor" class="form-control" value="{{old('corretor')}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="email">Imóvel:</label>
-                                <div class="col-sm-10">
-                                    <input name="id_imovel" type="text" placeholder="Digite o código do imóvel" class="form-control" value="{{old('id_imovel')}}">
+                                    <select name="cliente_comprador" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($clienteComprador as $comprador)
+                                            <option value="{{$comprador->cpf_cnpj}}">{{$comprador->nome_razao}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group form-inline">
-                                <label class="control-label col-sm-2" for="email">Tipos de Cotratos:</label>
+                                <label class="control-label col-sm-2" for="email">Cliente Vendedor:</label>
                                 <div class="col-sm-10">
-                                    <select name="tipo_contrato" id="" class="form-control">
+                                    <select name="cliente_vendedor" class="form-control">
                                         <option value="">Selecione uma opção</option>
-                                        <option value="">Contrato de Reserva</option>
-                                        <option value="">Contrato de Venda</option>
+                                        @foreach($clienteVendedor as $vendedor)
+                                            <option value="{{$vendedor->cpf_cnpj}}">{{$vendedor->nome_razao}}</option>
+                                        @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label col-sm-2">Corretor:</label>
+                                <div class="col-sm-10">
+                                    <select name="corretor" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($corretores as $corretor)
+                                            <option value="{{$corretor->cpf_cnpj}}">{{$corretor->nome_razao}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label col-sm-2">Imóvel:</label>
+                                <div class="col-sm-10">
+                                    <select name="codigo_imovel" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($imoveis as $imovel)
+                                            <option value="{{$imovel->codigo}}">{{$imovel->codigo}} | {{$imovel->bairro}} | {{$imovel->cidade}}, {{$imovel->uf}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label col-sm-2">Tipos de Cotratos:</label>
+                                <div class="col-sm-10">
+                                    <select name="id_tipo_contrato" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($contratos as $contrato)
+                                            <option value="{{$contrato->id}}">{{$contrato->descricao}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" hidden>
+                                <label class="control-label col-sm-2">Empresa:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="id_empresa" placeholder="empresa" value="{{Auth::user()->id_empresa}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">

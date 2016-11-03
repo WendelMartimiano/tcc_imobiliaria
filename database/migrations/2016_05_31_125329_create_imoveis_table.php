@@ -26,24 +26,12 @@ class CreateImoveisTable extends Migration
             $table->double('valor', 15, 3)->nullable();
             $table->string('situacao', 10)->nullable();
 
-
-            /*$table->integer('id_reserva')->unsigned();
-            $table->foreign('id_reserva')->references('id')->on('reservas');
-
-            $table->integer('id_venda')->unsigned();
-            $table->foreign('id_venda')->references('id')->on('vendas');
-
-            $table->integer('id_item')->unsigned();
-            $table->foreign('id_item')->references('id')->on('itens_imoveis');*/
-
             $table->integer('id_tipo_imovel')->unsigned();
             $table->foreign('id_tipo_imovel')->references('id')->on('tipos_imoveis');
 
             $table->integer('id_empresa')->unsigned();
             $table->foreign('id_empresa')->references('id')->on('empresas');
 
-            /*$table->integer('id_status')->unsigned();
-            $table->foreign('id_status')->references('id')->on('status_imoveis');*/
             $table->timestamps();
             $table->softDeletes();
         });

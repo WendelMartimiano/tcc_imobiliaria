@@ -14,13 +14,7 @@ class CreateTiposContratosTable extends Migration
     {
         Schema::create('tipos_contratos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_contrato', 50)->nullable();
-
-            $table->integer('id_reserva')->unsigned();
-            $table->foreign('id_reserva')->references('id')->on('reservas');
-
-            $table->integer('id_venda')->unsigned();
-            $table->foreign('id_venda')->references('id')->on('vendas');
+            $table->string('descricao', 60)->nullable();
             $table->timestamps();
         });
     }
