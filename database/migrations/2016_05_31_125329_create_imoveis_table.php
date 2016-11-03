@@ -24,7 +24,8 @@ class CreateImoveisTable extends Migration
             $table->string('uf', 2)->nullable();
             $table->text('descricao')->nullable();
             $table->double('valor', 15, 3)->nullable();
-            $table->string('situacao', 10)->nullable();
+            $table->string('situacao', 45)->nullable();
+            $table->string('status', 45)->nullable();
 
             $table->integer('id_tipo_imovel')->unsigned();
             $table->foreign('id_tipo_imovel')->references('id')->on('tipos_imoveis');
