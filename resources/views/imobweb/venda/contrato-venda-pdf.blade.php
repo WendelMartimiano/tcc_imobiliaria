@@ -421,7 +421,7 @@
                 </p>
                 <p class="Cont" style="line-height: normal; margin-top: 50px;" align="center">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">____________________________________<br>
-                                                    @foreach($imobiliarias as $imobiliaria){{$imobiliaria->nome_fantasia}}@endforeach</span></b>
+                                                    @foreach($imobiliarias as $imobiliaria){{$imobiliaria->razao_social}}@endforeach</span></b>
                 </p>
             </td>
         </tr>

@@ -34,6 +34,13 @@ Route::group(['prefix' => 'site'], function () {
     Route::get('empresa/{id}', 'Site\EmpresaController@getIndex');
     Route::post('empresa', 'Site\EmpresaController@postAdicionarEmpresa');
     Route::post('send_mail', 'Site\PlanoController@postMailContato');
+
+    /*Route::get('envia-email', function (){
+        Mail::raw('Mesangem de testo puro', function($m){
+           $m->to('taisapalenciano@gmail.com', 'Wendel')->subject('Enviando e-mails pela imobweb');
+        });
+    });*/
+
     Route::controller('/', 'Site\PlanoController');
 });
 

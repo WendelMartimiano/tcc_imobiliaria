@@ -196,7 +196,7 @@
     <div class="container text-center padding-50">
         <h1 class="titulo color-white">Contato</h1>
         <div class="divider"></div>
-        <p class="descricao color-white">Dúvidas, reclamações ou sugestões envie-nos sua mensagem.<br>Somos gratos em ajudar. <br>Mais informações: (16)99999-9999</p>
+        <p class="descricao color-white">Dúvidas, reclamações ou sugestões envie-nos sua mensagem.<br>Somos gratos em ajudar. <br>Mais informações: (16)99988-4334</p>
 
         <form class="imobweb-form" method="POST" action="/site/send_mail" send="/site/send_mail">
             {!! csrf_field() !!}

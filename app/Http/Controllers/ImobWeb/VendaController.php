@@ -87,7 +87,7 @@ class VendaController extends Controller
         $venda = $this->venda->all()->find($id);
         $imovel = Imovel::find($venda->id_imovel);
 
-        $imovel->fill(['status' => ""]);
+        $imovel->fill(['status' => NULL]);
         $imovel->save();
 
         $venda->delete();
