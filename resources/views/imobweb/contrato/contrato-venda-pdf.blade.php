@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Laravel</title>
+    <title>Contrato de Venda</title>
 
 
     <link href="{{url('assets/imobweb/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -72,7 +72,7 @@
                         <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">RG:</td>
                     </tr>
                     <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;"> CEP:</td>
+                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP:</td>
                     </tr>
                     <tr>
                         <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>
@@ -107,7 +107,7 @@
                         <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">RG:</td>
                     </tr>
                     <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;"> CEP:</td>
+                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP:</td>
                     </tr>
                     <tr>
                         <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>
@@ -158,7 +158,7 @@
                         <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cod.:</td>
                     </tr>
                     <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Tipo ed Imóvel:</td>
+                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Tipo de Imóvel:</td>
                     </tr>
                     <tr>
                         <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>

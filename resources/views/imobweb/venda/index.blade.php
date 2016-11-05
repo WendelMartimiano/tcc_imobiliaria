@@ -36,65 +36,23 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Elaboração de contrato de venda.</div>
+                    <div class="panel-heading">Consulta de Vendas.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="" send="">
+                        <form class="form-horizontal" method="post" action="/dashboard/vendas/pesquisar" send="">
                             {!! csrf_field() !!}
-                            <div class="form-group form-inline">
-                                <label class="control-label col-sm-2" for="name">Cliente Comprador:</label>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Código da venda:</label>
                                 <div class="col-sm-10">
-                                    <select name="cliente_comprador" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        @foreach($clienteComprador as $comprador)
-                                            <option value="{{$comprador->cpf_cnpj}}">{{$comprador->nome_razao}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="id" placeholder="Digite o código da venda" value="{{old('id')}}">
                                 </div>
                             </div>
-                            <div class="form-group form-inline">
-                                <label class="control-label col-sm-2" for="email">Cliente Vendedor:</label>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Vendedor:</label>
                                 <div class="col-sm-10">
-                                    <select name="cliente_vendedor" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        @foreach($clienteVendedor as $vendedor)
-                                            <option value="{{$vendedor->cpf_cnpj}}">{{$vendedor->nome_razao}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="vendedor" placeholder="Digite o CPF/CNPJ do vendedor" value="{{old('vendedor')}}">
                                 </div>
                             </div>
-                            <div class="form-group form-inline">
-                                <label class="control-label col-sm-2">Corretor:</label>
-                                <div class="col-sm-10">
-                                    <select name="corretor" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        @foreach($corretores as $corretor)
-                                            <option value="{{$corretor->cpf_cnpj}}">{{$corretor->nome_razao}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label class="control-label col-sm-2">Imóvel:</label>
-                                <div class="col-sm-10">
-                                    <select name="codigo_imovel" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        @foreach($imoveis as $imovel)
-                                            <option value="{{$imovel->codigo}}">{{$imovel->codigo}} | {{$imovel->bairro}} | {{$imovel->cidade}}, {{$imovel->uf}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label class="control-label col-sm-2">Tipos de Cotratos:</label>
-                                <div class="col-sm-10">
-                                    <select name="id_tipo_contrato" class="form-control">
-                                        <option value="">Selecione uma opção</option>
-                                        @foreach($contratos as $contrato)
-                                            <option value="{{$contrato->id}}">{{$contrato->descricao}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group" hidden>
                                 <label class="control-label col-sm-2">Empresa:</label>
                                 <div class="col-sm-10">
@@ -103,7 +61,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Finalizar Venda</button>
+                                    <button type="submit" class="btn btn-primary">Buscar</button>
+                                    <a href="/dashboard/vendas/cadastra-venda" class="btn btn-default">Novo</a>
                                 </div>
                             </div>
                         </form>
@@ -111,5 +70,135 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{$tituloTabela or 'Todos as Vendas:'}}</div>
+                    <div class="panel-body">
+                        <table class="table table-hover"  id="vendas-table">
+                            <thead>
+                            <tr>
+                                <th>Código da Venda</th>
+                                <th>Vendedor</th>
+                                <th>Comprador</th>
+                                <th>Corretor</th>
+                                <th>Código Imóvel</th>
+                                <th>Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($vendas as $venda)
+                                <tr>
+                                    <td>{{$venda->id}}</td>
+                                    <td>{{$venda->vendedor}}</td>
+                                    <td>{{$venda->comprador}}</td>
+                                    <td>{{$venda->corretor}}</td>
+                                    <td>{{$venda->codigo}}</td>
+                                    <td>
+                                        <a href="/dashboard/vendas/imprime-contrato/{{$venda->id}}" class="btn btn-primary btn-xs">
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                                        </a>
+                                        <a href="" onclick="modalDeleta('/dashboard/vendas/cancela-venda/{{$venda->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!! $vendas->render() !!}
+                    </div>
+                </div>
+            </div>
+        </div><!--/.row-->
     </div>
+
+    <!-- Modal de Deletar -->
+    <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header header-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cancelamento de Venda</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="text" id="url-deletar" class="form-control" name="id" value="" style="display: none">
+                    </form>
+                    <p>Deseja realmente cancelar esta venda?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="cancelaVenda">Confirmar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Preloader -->
+    <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="spinner"></div>
+                <p class="spinner-text">carregando..</p>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script>
+        //Chama modal de cancelar venda
+        function modalDeleta(url){
+
+            $('#url-deletar').val(url);
+            $('#modalDeletar').modal('show');
+        }
+
+        //Efetua o cancelamento da venda
+        $("#cancelaVenda").click(function() {
+            var url = $("#url-deletar").val();
+
+            var request = $.ajax({
+                url: url,
+                method: "GET",
+                beforeSend: iniciaPreloader()
+            });
+            request.done(function(data){
+                finalizaPreloader();
+
+                if(data == "1"){
+                    $('#modalDeletar').modal('hide');
+
+                    swal({
+                        title: "Venda cancelada com sucesso!",
+                        type: "success",
+                        timer: 4000,
+                        showConfirmButton: false
+                    });
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/vendas'); ", 4000);
+                }else{
+                    $('#modalDeletar').modal('hide');
+                    swal("Falha ao tentar cancelar venda! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+                }
+
+            });
+            request.fail(function(){
+                finalizaPreloader();
+                swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+            });
+
+            return false;
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+
+    </script>
 @endsection

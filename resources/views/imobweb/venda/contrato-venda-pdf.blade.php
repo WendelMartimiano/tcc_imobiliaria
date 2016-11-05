@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Contrato de Reserva</title>
+    <title>Contrato de Venda</title>
 
 
     <link href="{{url('assets/imobweb/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -17,7 +17,7 @@
                     <b>
                         <u>
                                                         <span style="font-size: 10pt; font-family:quot, Verdana, sans-serif;">
-                                                            CONTRATO DE RESERVA DE IMÓVEL
+                                                            CONTRATO DE COMPRA E VENDA DE IMÓVEL
                                                         </span>
                         </u>
                     </b>
@@ -33,7 +33,7 @@
 
                 <p class="Cont" style="text-align: justify; line-height: normal;">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cláusula 1ª: </span></b>
-                    <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Firmam o presente contrato particular de promessa de reserva da unidade imobiliária:</span>
+                    <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Firmam o presente contrato particular de promessa de compra e venda de unidade imobiliária:</span>
                 </p>
 
                 {{--Tabela de dados da imobiliária--}}
@@ -41,16 +41,17 @@
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Dados Imobiliária:</span></b>
 
                 <table class="ContTable" style="width: 484.5pt;" border="1" cellpadding="0" cellspacing="0" width="646">
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Razão Social:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CNPJ:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>
-                    </tr>
-
+                    @foreach($imobiliarias as $imobiliaria)
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Razão Social: {{$imobiliaria->razao_social}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CNPJ: {{$imobiliaria->cnpj}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço: {{$imobiliaria->rua}}, {{$imobiliaria->numero}} - {{$imobiliaria->cidade}}, {{$imobiliaria->uf}}</td>
+                        </tr>
+                    @endforeach
                 </table>
                 </p>
 
@@ -59,33 +60,35 @@
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Dados Promitente Vendedor:</span></b>
 
                 <table class="ContTable" style="width: 484.5pt;" border="1" cellpadding="0" cellspacing="0" width="646">
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Nome:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Data Nascimento:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CPF:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">RG:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Bairro:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cidade/Estado:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Telefone:</td>
-                    </tr>
+                    @foreach($vendedores as $vendedor)
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Nome: {{$vendedor->nome_razao}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Data Nascimento: {{ date('d/m/Y', strtotime($vendedor->data_nascimento)) }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CPF: {{$vendedor->cpf_cnpj}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">RG: {{$vendedor->rg}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP: {{$vendedor->cep}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço: {{$vendedor->rua}}, {{$vendedor->numero}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Bairro: {{$vendedor->bairro}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cidade/Estado: {{$vendedor->cidade}}, {{$vendedor->uf}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Telefone: {{$vendedor->telefone}}</td>
+                        </tr>
+                    @endforeach
                 </table>
                 </p>
 
@@ -94,33 +97,35 @@
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Dados Promitente Comprador:</span></b>
 
                 <table class="ContTable" style="width: 484.5pt;" border="1" cellpadding="0" cellspacing="0" width="646">
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Nome:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Data Nascimento:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CPF:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">RG:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Bairro:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cidade/Estado:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Telefone:</td>
-                    </tr>
+                    @foreach($compradores as $comprador)
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Nome: {{$comprador->nome_razao}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Data Nascimento: {{ date('d/m/Y', strtotime($comprador->data_nascimento)) }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CPF: {{$comprador->cpf_cnpj}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">RG: {{$comprador->rg}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP: {{$comprador->cep}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço: {{$comprador->rua}}, {{$comprador->numero}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Bairro: {{$comprador->bairro}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cidade/Estado: {{$comprador->cidade}}, {{$comprador->uf}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Telefone: {{$comprador->telefone}}</td>
+                        </tr>
+                    @endforeach
                 </table>
                 </p>
 
@@ -129,18 +134,20 @@
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Dados do Corretor:</span></b>
 
                 <table class="ContTable" style="width: 484.5pt;" border="1" cellpadding="0" cellspacing="0" width="646">
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Nome:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CPF:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CRECI:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Telefone:</td>
-                    </tr>
+                    @foreach($corretores as $corretor)
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Nome: {{$corretor->nome_razao}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CPF: {{$corretor->cpf_cnpj}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CRECI: {{$corretor->creci}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Telefone: {{$corretor->telefone}}</td>
+                        </tr>
+                    @endforeach
                 </table>
                 </p>
 
@@ -154,27 +161,29 @@
                                                     a unidade imobiliária descrita abaixo, doravante designada apenas UNIDADE IMOBILIÁRIA:</span>
 
                 <table class="ContTable" style="width: 484.5pt;" border="1" cellpadding="0" cellspacing="0" width="646">
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cod.:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Tipo de Imóvel:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Bairro:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cidade:</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Estado:</td>
-                    </tr>
+                    @foreach($imoveis as $imovel)
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cod.: {{$imovel->codigo}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Tipo de Imóvel: {{$imovel->tipo}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Endereço: {{$imovel->rua}}, {{$imovel->numero}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">CEP: {{$imovel->cep}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Bairro: {{$imovel->bairro}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cidade: {{$imovel->cidade}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Estado: {{$imovel->uf}}</td>
+                        </tr>
+                    @endforeach
                 </table>
                 </p>
 
@@ -190,7 +199,7 @@
 
                 <p class="Cont" style="text-align: justify; line-height: normal;">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Cláusula 4ª: </span></b>
-                    <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Pela UNIDADE IMOBILIÁRIA, o COMPRADOR pagará ao VENDEDOR o preço total de R$ _________, ____.</span>
+                    <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Pela UNIDADE IMOBILIÁRIA, o COMPRADOR pagará ao VENDEDOR o preço total de R$ @foreach($imoveis as $imovel){{$imovel->valor}}@endforeach.</span>
                 </p>
 
                 <p class="Cont" style="text-align: justify; line-height: normal;">
@@ -395,24 +404,24 @@
 
                 <p class="Cont" style="line-height: normal; margin-top: 30px;">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">Franca: </span></b>
-                    <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">dia/mês/ano.</span>
+                    <span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">{{ date('d/m/Y') }}.</span>
                 </p>
 
                 <p class="Cont" style="line-height: normal; margin-top: 50px;" align="center">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">____________________________________<br>
-                                                    Cliente Comprador</span></b>
+                                                    @foreach($compradores as $comprador){{$comprador->nome_razao}}@endforeach</span></b>
                 </p>
                 <p class="Cont" style="line-height: normal; margin-top: 50px;" align="center">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">____________________________________<br>
-                                                    Cliente Vendedor</span></b>
+                                                    @foreach($vendedores as $vendedor){{$vendedor->nome_razao}}@endforeach</span></b>
                 </p>
                 <p class="Cont" style="line-height: normal; margin-top: 50px;" align="center">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">____________________________________<br>
-                                                    Corretor</span></b>
+                                                    @foreach($corretores as $corretor){{$corretor->nome_razao}}@endforeach</span></b>
                 </p>
                 <p class="Cont" style="line-height: normal; margin-top: 50px;" align="center">
                     <b><span style="font-size: 7.5pt; font-family: quot, Verdana, sans-serif;">____________________________________<br>
-                                                    Imobiliária</span></b>
+                                                    @foreach($imobiliarias as $imobiliaria){{$imobiliaria->nome_fantasia}}@endforeach</span></b>
                 </p>
             </td>
         </tr>
