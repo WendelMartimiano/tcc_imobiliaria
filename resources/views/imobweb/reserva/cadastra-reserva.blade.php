@@ -8,8 +8,8 @@
             <li><a href="/dashboard/imoveis"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Imoveis</a></li>
             <li><a href="/dashboard/funcionarios"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Funcionários</a></li>
             <li><a href="/dashboard/clientes"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Clientes</a></li>
-            <li class="active"><a href="/dashboard/vendas"><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg> Vendas</a></li>
-            <li><a href="/dashboard/reservas"><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg> Reservas</a></li>
+            <li><a href="/dashboard/vendas"><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg> Vendas</a></li>
+            <li class="active"><a href="/dashboard/reservas"><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg> Reservas</a></li>
             <li><a href="/dashboard/contratos"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Contratos</a></li>
             <li><a href="/dashboard/relatorios"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Relatórios</a></li>
 
@@ -23,24 +23,24 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg></li>
-                <li><a href="/dashboard/vendas">Vendas</a></li>
-                <li class="active">Cadastro de Venda</li>
+                <li><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg></li>
+                <li><a href="/dashboard/reservas">Reservas</a></li>
+                <li class="active">Cadastro de Reserva</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Vendas</h1>
+                <h1 class="page-header">Reservas</h1>
             </div>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Elaboração de contrato de venda.</div>
+                    <div class="panel-heading">Elaboração de contrato de reserva.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/vendas/cadastra-venda" send="" target="_blank">
+                        <form class="form-horizontal" method="post" action="/dashboard/reservas/cadastra-reserva" send="" target="_blank">
                             {!! csrf_field() !!}
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Tipos de Cotratos: <strong class="color-red">*</strong></label>
@@ -101,7 +101,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Finalizar Venda</button>
+                                    <button type="submit" class="btn btn-primary">Finalizar Reserva</button>
                                 </div>
                             </div>
                         </form>
@@ -110,61 +110,5 @@
             </div>
         </div>
     </div>
-
-    {{--<!-- Modal Preloader -->
-    <div class="modal fade bs-example-modal-sm" id="modalPreloader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="spinner"></div>
-                <p class="spinner-text">carregando..</p>
-            </div>
-        </div>
-    </div>--}}
 @endsection
 
-{{--
-@section('scripts')
-    <script>
-        $(function(){
-            $("form").submit(function(){
-                var dadosForm = $(this).serialize();
-
-                jQuery.ajax({
-                    method:"POST",
-                    url: jQuery(this).attr("send"),
-                    data: dadosForm,
-                    beforeSend: iniciaPreloader()
-                }).done(function(data){
-                    finalizaPreloader();
-
-                    if(data == 1){
-                        swal({
-                            title: "Venda finalizada com sucesso!",
-                            type: "success",
-                            timer: 4000,
-                            showConfirmButton: false
-                        });
-                        setTimeout("$(window.document.location).attr('href', '/dashboard/vendas'); ", 4000);
-                    }else{
-                        for(var t in data){
-                            swal(data[t], "","warning");
-                        }
-                    }
-
-                }).fail(function(){
-                    finalizaPreloader();
-                    swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
-                });
-                return false;
-            });
-        });
-
-        function iniciaPreloader(){
-            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
-        }
-
-        function finalizaPreloader(){
-            $('#modalPreloader').modal('hide');
-        }
-    </script>
-@endsection--}}

@@ -8,8 +8,8 @@
             <li><a href="/dashboard/imoveis"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Imoveis</a></li>
             <li><a href="/dashboard/funcionarios"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Funcionários</a></li>
             <li><a href="/dashboard/clientes"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Clientes</a></li>
-            <li class="active"><a href="/dashboard/vendas"><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg> Vendas</a></li>
-            <li><a href="/dashboard/reservas"><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg> Reservas</a></li>
+            <li><a href="/dashboard/vendas"><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg> Vendas</a></li>
+            <li class="active"><a href="/dashboard/reservas"><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg> Reservas</a></li>
             <li><a href="/dashboard/contratos"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Contratos</a></li>
             <li><a href="/dashboard/relatorios"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Relatórios</a></li>
 
@@ -23,28 +23,28 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg></li>
-                <li class="active">Vendas</li>
+                <li><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg></li>
+                <li class="active">Reservas</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Vendas</h1>
+                <h1 class="page-header">Reservas</h1>
             </div>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Consulta de Vendas.</div>
+                    <div class="panel-heading">Consulta de Reservas.</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="/dashboard/vendas/pesquisar" send="">
+                        <form class="form-horizontal" method="post" action="/dashboard/reservas/pesquisar" send="">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-sm-2">Código da venda:</label>
+                                <label class="control-label col-sm-2">Código da reserva:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="id" placeholder="Digite o código da venda" value="{{old('id')}}">
+                                    <input type="text" class="form-control" name="id" placeholder="Digite o código da reserva" value="{{old('id')}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Buscar</button>
-                                    <a href="/dashboard/vendas/cadastra-venda" class="btn btn-default">Novo</a>
+                                    <a href="/dashboard/reservas/cadastra-reserva" class="btn btn-default">Novo</a>
                                 </div>
                             </div>
                         </form>
@@ -75,12 +75,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{$tituloTabela or 'Todos as Vendas:'}}</div>
+                    <div class="panel-heading">{{$tituloTabela or 'Todos as Reservas:'}}</div>
                     <div class="panel-body">
-                        <table class="table table-hover"  id="vendas-table">
+                        <table class="table table-hover"  id="reservas-table">
                             <thead>
                             <tr>
-                                <th>Código da Venda</th>
+                                <th>Código da Reserva</th>
                                 <th>Vendedor</th>
                                 <th>Comprador</th>
                                 <th>Corretor</th>
@@ -89,26 +89,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($vendas as $venda)
+                            @foreach($reservas as $reserva)
                                 <tr>
-                                    <td>{{$venda->id}}</td>
-                                    <td>{{$venda->vendedor}}</td>
-                                    <td>{{$venda->comprador}}</td>
-                                    <td>{{$venda->corretor}}</td>
-                                    <td>{{$venda->codigo}}</td>
+                                    <td>{{$reserva->id}}</td>
+                                    <td>{{$reserva->vendedor}}</td>
+                                    <td>{{$reserva->comprador}}</td>
+                                    <td>{{$reserva->corretor}}</td>
+                                    <td>{{$reserva->codigo}}</td>
                                     <td>
-                                        <a href="/dashboard/vendas/imprime-contrato/{{$venda->id}}" class="btn btn-primary btn-xs">
+                                        <a href="/dashboard/reservas/imprime-contrato/{{$reserva->id}}" class="btn btn-primary btn-xs">
                                             <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
                                         </a>
-                                        <a href="" onclick="modalDeleta('/dashboard/vendas/cancela-venda/{{$venda->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                        <a href="" onclick="modalDeleta('/dashboard/reservas/cancela-reserva/{{$reserva->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                        <a href="" onclick="modalVenda('/dashboard/reservas/gera-venda/{{$reserva->id}}')" class="btn btn-success btn-xs"  data-toggle="modal" data-target="#myModal">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                         </a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        {!! $vendas->render() !!}
+                        {!! $reservas->render() !!}
                     </div>
                 </div>
             </div>
@@ -121,16 +124,38 @@
             <div class="modal-content">
                 <div class="modal-header header-danger">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Cancelamento de Venda</h4>
+                    <h4 class="modal-title" id="myModalLabel">Cancelamento de Reserva</h4>
                 </div>
                 <div class="modal-body">
                     <form action="">
                         <input type="text" id="url-deletar" class="form-control" name="id" value="" style="display: none">
                     </form>
-                    <p>Deseja realmente cancelar esta venda?</p>
+                    <p>Deseja realmente cancelar esta reserva?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="cancelaVenda">Confirmar</button>
+                    <button type="button" class="btn btn-primary" id="cancelaReserva">Confirmar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Efetuar Venda de Imóvel Reservado -->
+    <div class="modal fade" id="modalVenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Efetuar Venda de Imóvel Reservado</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="text" id="url-venda" class="form-control" name="id" value="" style="display: none">
+                    </form>
+                    <p>Deseja realmente efetuar a venda deste imóvel reservado?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="geraVenda">Confirmar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -150,15 +175,15 @@
 
 @section('scripts')
     <script>
-        //Chama modal de cancelar venda
+        //Chama modal de cancelar reserva
         function modalDeleta(url){
 
             $('#url-deletar').val(url);
             $('#modalDeletar').modal('show');
         }
 
-        //Efetua o cancelamento da venda
-        $("#cancelaVenda").click(function() {
+        //Efetua o cancelamento da reserva
+        $("#cancelaReserva").click(function() {
             var url = $("#url-deletar").val();
 
             var request = $.ajax({
@@ -173,15 +198,68 @@
                     $('#modalDeletar').modal('hide');
 
                     swal({
-                        title: "Venda cancelada com sucesso!",
+                        title: "Reserva cancelada com sucesso!",
                         type: "success",
                         timer: 4000,
                         showConfirmButton: false
                     });
-                    setTimeout("$(window.document.location).attr('href', '/dashboard/vendas'); ", 4000);
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/reservas'); ", 4000);
                 }else{
                     $('#modalDeletar').modal('hide');
-                    swal("Falha ao tentar cancelar venda! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+                    swal("Falha ao tentar cancelar reserva! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+                }
+
+            });
+            request.fail(function(){
+                finalizaPreloader();
+                swal("Falha Inesperada! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
+            });
+
+            return false;
+        });
+
+        function iniciaPreloader(){
+            $('#modalPreloader').modal({backdrop: 'static',  keyboard: false})
+        }
+
+        function finalizaPreloader(){
+            $('#modalPreloader').modal('hide');
+        }
+
+    </script>
+    <script>
+        //Chama modal de gerar venda
+        function modalVenda(url){
+
+            $('#url-venda').val(url);
+            $('#modalVenda').modal('show');
+        }
+
+        //Efetua a veda do imóvel reservado
+        $("#geraVenda").click(function() {
+            var url = $("#url-venda").val();
+
+            var request = $.ajax({
+                url: url,
+                method: "GET",
+                beforeSend: iniciaPreloader()
+            });
+            request.done(function(data){
+                finalizaPreloader();
+
+                if(data == "1"){
+                    $('#modalVenda').modal('hide');
+
+                    swal({
+                        title: "Venda efetuada com sucesso!",
+                        type: "success",
+                        timer: 4000,
+                        showConfirmButton: false
+                    });
+                    setTimeout("$(window.document.location).attr('href', '/dashboard/reservas'); ", 4000);
+                }else{
+                    $('#modalDeletar').modal('hide');
+                    swal("Falha ao tentar efetuar venda de imóvel! Informe o erro a ImobWeb no contato (16)99999-9999.", "","error");
                 }
 
             });

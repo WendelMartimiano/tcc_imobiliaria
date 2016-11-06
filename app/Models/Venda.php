@@ -86,14 +86,18 @@ class Venda extends Model
     }
 
     public function getResultadoPesquisa($dadosForm, $empresaUserAtual){
-        return $this->where('id_empresa', '=', $empresaUserAtual)
+        return $this->join('imoveis', 'vendas.id_imovel', '=', 'imoveis.id')
+            ->where('vendas.id_empresa', '=', $empresaUserAtual)
             ->where(function($query) use($dadosForm){
-            if($dadosForm['id']){
-                $query->where('id', '=', "{$dadosForm['id']}");
-            }
-            if($dadosForm['vendedor']){
-                $query->where('vendedor', '=', "{$dadosForm['vendedor']}");
-            }
-        })->paginate(10);
+                if($dadosForm['id']){
+                    $query->where('vendas.id', '=', "{$dadosForm['id']}");
+                }
+                if($dadosForm['vendedor']){
+                    $query->where('vendas.vendedor', '=', "{$dadosForm['vendedor']}");
+                }
+            })
+            ->select('vendas.*', 'imoveis.codigo')
+            ->orderBy('vendas.id')
+            ->paginate(10);
     }
 }
