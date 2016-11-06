@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ImobWeb;
 
 use App\Http\Middleware\Authenticate;
+use App\Models\Imovel;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
@@ -13,22 +14,26 @@ class HomeController extends Controller
 {
 
     private $empresa;
+    private $imovel;
 
-    public function __construct(Empresa $empresa)
+    public function __construct(Empresa $empresa, Imovel $imovel)
     {
         $this->middleware('auth');
         $this->empresa = $empresa;
+        $this->imovel = $imovel;
     }
 
     public function getIndex(){
 
         $titulo = 'ImobWeb - Home';
 
-        $user = Auth::user()->id_empresa;
+        $empresaUserAtual = Auth::user()->id_empresa;
 
-        $imobiliaria = $this->empresa->all()->find($user);
-
-        return view('imobweb.home.index', compact('titulo', 'imobiliaria'));
+        $imobiliaria = $this->empresa->all()->find($empresaUserAtual);
+        $disponiveis = count($this->imovel->getDisponiveis($empresaUserAtual));
+        $reservados = count($this->imovel->getReservados($empresaUserAtual));
+        $vendidos = count($this->imovel->getVendidos($empresaUserAtual));
+        return view('imobweb.home.index', compact('titulo', 'imobiliaria', 'disponiveis', 'reservados', 'vendidos'));
     }
 
    /*

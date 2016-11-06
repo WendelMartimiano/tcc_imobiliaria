@@ -62,6 +62,24 @@ class Imovel extends Model
         'codigo'          =>'unique:imoveis,codigo'
     ];
 
+    public function getDisponiveis($param){
+        return $this->where('id_empresa', '=', $param)
+            ->where('status', '=', NULL)
+            ->get();
+    }
+
+    public function getReservados($param){
+        return $this->where('id_empresa', '=', $param)
+            ->where('status', '=', 'RESERVADO')
+            ->get();
+    }
+
+    public function getVendidos($param){
+        return $this->where('id_empresa', '=', $param)
+            ->where('status', '=', 'VENDIDO')
+            ->get();
+    }
+
     public function getImovel($param){
         return $this->join('tipos_imoveis', 'imoveis.id_tipo_imovel', '=', 'tipos_imoveis.id')
             ->where('imoveis.id_empresa', '=', $param)

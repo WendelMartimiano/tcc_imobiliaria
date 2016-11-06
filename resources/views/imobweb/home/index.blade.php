@@ -42,8 +42,8 @@
 							<svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">XXX</div> <!-- quantidade de imoveis disponiveis -->
-							<div class="text-muted">Imóveis Disp.</div>
+							<div class="large">{{$disponiveis}}</div> <!-- quantidade de imoveis disponiveis -->
+							<div class="text-muted">Disponíveis</div>
 						</div>
 					</div>
 				</div>
@@ -52,11 +52,24 @@
 				<div class="panel panel-orange panel-widget">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked calendar "><use xlink:href="#stroked-calendar"></use></svg>
+							<svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">XXX</div> <!-- quantidade de imoveis reservados -->
-							<div class="text-muted">Reservas</div>
+							<div class="large">{{$reservados}}</div> <!-- quantidade de imoveis reservados -->
+							<div class="text-muted">Reservados</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-teal panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">{{$vendidos}}</div> <!-- quantidade de imoveis vendidos -->
+							<div class="text-muted">Vendidos</div>
 						</div>
 					</div>
 				</div>
