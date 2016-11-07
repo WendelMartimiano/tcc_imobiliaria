@@ -115,4 +115,29 @@ class Cliente extends Model
                 ->select('clientes.*', 'tipos_clientes.descricao')
                 ->paginate(10);
     }
+
+    public function getDadosRelatorio($dadosForm, $empresaAtual){
+        return $this->join('tipos_clientes', 'clientes.id_tipo_cliente', '=', 'tipos_clientes.id')
+            ->where('clientes.id_empresa', '=', $empresaAtual)
+            ->where(function($query) use($dadosForm){
+                if($dadosForm['cpf_cnpj']){
+                    $query->where('clientes.cpf_cnpj', '=', $dadosForm['cpf_cnpj']);
+                }
+                if($dadosForm['nome_razao']){
+                    $query->where('clientes.nome_razao', 'LIKE', "%{$dadosForm['nome_razao']}%");
+                }
+                if($dadosForm['id_tipo_cliente']){
+                    $query->where('clientes.id_tipo_cliente', '=', $dadosForm['id_tipo_cliente']);
+                }
+                if($dadosForm['tipo_pessoa']){
+                    $query->where('clientes.tipo_pessoa', '=', $dadosForm['tipo_pessoa']);
+                }
+                if($dadosForm['data_inicial'] && $dadosForm['data_final']){
+                    $query->whereBetween('clientes.created_at', [$dadosForm['data_inicial'], $dadosForm['data_final']]);
+                }
+            })
+            ->select('clientes.*', 'tipos_clientes.descricao as tipo')
+            ->orderBy('clientes.nome_razao')
+            ->get();
+    }
 }

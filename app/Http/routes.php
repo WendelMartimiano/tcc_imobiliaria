@@ -7,9 +7,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
 
     Route::controller('usuarios', 'ImobWeb\UsuarioController');
     Route::controller('imobiliaria', 'ImobWeb\ImobiliariaController');
-    Route::get('relatorios', function () {
-        return view('imobweb.relatorios');
-    });
+    Route::controller('relatorios', 'ImobWeb\RelatorioController');
     Route::controller('contratos', 'ImobWeb\ContratoController');
     Route::controller('clientes', 'ImobWeb\ClienteController');
     Route::controller('reservas', 'ImobWeb\ReservaController');

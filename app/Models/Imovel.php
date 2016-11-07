@@ -106,4 +106,33 @@ class Imovel extends Model
         return $this->hasMany('App\Models\ItemImovel', 'id_imovel');
     }
 
+    public function getDadosRelatorio($dadosForm, $empresaAtual){
+        return $this->join('tipos_imoveis', 'imoveis.id_tipo_imovel', '=', 'tipos_imoveis.id')
+            ->join('clientes', 'imoveis.cpf_cnpj', '=', 'clientes.cpf_cnpj')
+            ->where('imoveis.id_empresa', '=', $empresaAtual)
+            ->where(function($query) use($dadosForm){
+                if($dadosForm['cep']){
+                    $query->where('imoveis.cep', '=', $dadosForm['cep']);
+                }
+                if($dadosForm['id_tipo_imovel']){
+                    $query->where('imoveis.id_tipo_imovel', '=', $dadosForm['id_tipo_imovel']);
+                }
+                if($dadosForm['status']){
+                    $query->where('imoveis.status', '=', $dadosForm['status']);
+                }
+                if($dadosForm['situacao']){
+                    $query->where('imoveis.situacao', '=', $dadosForm['situacao']);
+                }
+                if($dadosForm['data_inicial'] && $dadosForm['data_final']){
+                    $query->whereBetween('imoveis.created_at', [$dadosForm['data_inicial'], $dadosForm['data_final']]);
+                }
+                if($dadosForm['valor_inicial'] && $dadosForm['valor_final']){
+                    $query->whereBetween('imoveis.valor', [$dadosForm['valor_inicial'], $dadosForm['valor_final']]);
+                }
+            })
+            ->select('imoveis.*', 'tipos_imoveis.descricao as tipo', 'clientes.nome_razao as vendedor')
+            ->orderBy('imoveis.codigo')
+            ->get();
+    }
+
 }

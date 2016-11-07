@@ -110,7 +110,11 @@ class Funcionario extends Model
     }
 
     public function getFuncionario($param){
-        return $this->where('id_empresa', $param)->paginate(1);        
+        return $this->where('id_empresa', $param)->paginate(1);
+    }
+
+    public function getTotalFuncionario($param){
+        return $this->where('id_empresa', $param)->get();
     }
 
     public function getResultadoPesquisa($dados){
@@ -122,5 +126,36 @@ class Funcionario extends Model
                 $query->where('nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
             }
         })->paginate(10);
+    }
+
+    public function getDadosRelatorio($dadosForm, $empresaAtual){
+        return $this->join('cargos', 'funcionarios.id_cargo', '=', 'cargos.id')
+            ->where('funcionarios.id_empresa', '=', $empresaAtual)
+            ->where(function($query) use($dadosForm){
+                if($dadosForm['cpf_cnpj']){
+                    $query->where('funcionarios.cpf_cnpj', '=', $dadosForm['cpf_cnpj']);
+                }
+                if($dadosForm['nome_razao']){
+                    $query->where('funcionarios.nome_razao', 'LIKE', "%{$dadosForm['nome_razao']}%");
+                }
+                if($dadosForm['id_cargo']){
+                    $query->where('funcionarios.id_cargo', '=', $dadosForm['id_cargo']);
+                }
+                if($dadosForm['tipo_pessoa']){
+                    $query->where('funcionarios.tipo_pessoa', '=', $dadosForm['tipo_pessoa']);
+                }
+                if($dadosForm['situacao'] && $dadosForm['situacao'] == 'ATIVO'){
+                    $query->whereNull('funcionarios.deleted_at');
+                }
+                if($dadosForm['situacao'] && $dadosForm['situacao'] == 'DEMITIDO'){
+                    $query->whereNotNull('funcionarios.deleted_at');
+                }
+                if($dadosForm['data_inicial'] && $dadosForm['data_final']){
+                    $query->whereBetween('funcionarios.created_at', [$dadosForm['data_inicial'], $dadosForm['data_final']]);
+                }
+            })
+            ->select('funcionarios.*', 'cargos.nome as funcao')
+            ->orderBy('funcionarios.nome_razao')
+            ->get();
     }
 }
