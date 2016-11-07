@@ -227,8 +227,8 @@ class UsuarioController extends Controller
 
     public function postPesquisar(){
         $dadosForm = $this->request->all();
-        
-        $usuarios = $this->usuario->getResultadoPesquisa($dadosForm);
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $usuarios = $this->usuario->getResultadoPesquisa($dadosForm, $empresaUserAtual);
 
         if(count($usuarios) == 0){
             $tituloTabela = 'Nenhum registro encontrado!';

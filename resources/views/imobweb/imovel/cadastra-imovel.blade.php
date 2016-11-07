@@ -65,10 +65,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group form-inline">
                                 <label class="control-label col-sm-2" for="cpf_cnpj">CPF/CNPJ vendedor: <strong class="color-red">*</strong></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="cpf_cnpj" placeholder="Digite o CPF ou CNPJ do vendedor" value="{{old('cpf_cnpj')}}">
+                                    <select name="cpf_cnpj" class="form-control">
+                                        <option value="">Selecione uma opção</option>
+                                        @foreach($vendedores as $vendedor)
+                                            <option value="{{$vendedor->cpf_cnpj}}">{{$vendedor->nome_razao}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

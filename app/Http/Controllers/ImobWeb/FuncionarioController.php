@@ -44,7 +44,7 @@ class FuncionarioController extends Controller
     public function getCadastraFuncionario(){
 
         $titulo = 'ImobWeb - Cadastro de Funcionário';
-        $cargos = Cargo::all();
+        $cargos = Cargo::whereNotIn('id', [1])->get();
         $empresaUserAtual = Auth::user()->id_empresa;
         $users = $this->funcionario->getUser($empresaUserAtual);
 
@@ -163,7 +163,7 @@ class FuncionarioController extends Controller
             }
 
             return $displayErrors;
-        };        
+        };
 
         //válida os usuários duplicados
         if ($valida_duplicatedUser->fails()) {
@@ -184,8 +184,7 @@ class FuncionarioController extends Controller
 
         $funcionario = $this->funcionario->all()->find($id);
         $titulo = 'ImobWeb - Edição de Funcionário';
-        $cargos = Cargo::all();
-        //$user = User::all()->find($funcionario->id_user);
+        $cargos = Cargo::whereNotIn('id', [1])->get();
 
         $empresaUserAtual = Auth::user()->id_empresa;
         $users = $this->funcionario->getUser($empresaUserAtual);
@@ -343,9 +342,9 @@ class FuncionarioController extends Controller
     }
 
     public function postPesquisar(){
-       $dadosForm = $this->request->all(); 
-
-       $funcionarios = $this->funcionario->getResultadoPesquisa($dadosForm);
+       $dadosForm = $this->request->all();
+       $empresaUserAtual = Auth::user()->id_empresa;
+       $funcionarios = $this->funcionario->getResultadoPesquisa($dadosForm, $empresaUserAtual);
 
        if(count($funcionarios) == 0){
             $tituloTabela = 'Nenhum registro encontrado!';

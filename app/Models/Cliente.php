@@ -102,18 +102,19 @@ class Cliente extends Model
             ->paginate(1);
     }
 
-    public function getResultadoPesquisa($dados){ 
+    public function getResultadoPesquisa($dados, $empresaUserAtual){
         return $this->join('tipos_clientes', 'clientes.id_tipo_cliente', '=', 'tipos_clientes.id')
-                ->where(function($query) use($dados){    
-                        if($dados['cpf_cnpj']){
-                            $query->where('clientes.cpf_cnpj', '=', $dados['cpf_cnpj']);
-                        }            
-                        if($dados['nome_razao']){
-                            $query->where('clientes.nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
-                        }
-                    })
-                ->select('clientes.*', 'tipos_clientes.descricao')
-                ->paginate(10);
+            ->where('clientes.id_empresa', '=', $empresaUserAtual)
+            ->where(function($query) use($dados){
+                    if($dados['cpf_cnpj']){
+                        $query->where('clientes.cpf_cnpj', '=', $dados['cpf_cnpj']);
+                    }
+                    if($dados['nome_razao']){
+                        $query->where('clientes.nome_razao', 'LIKE', "%{$dados['nome_razao']}%");
+                    }
+                })
+            ->select('clientes.*', 'tipos_clientes.descricao')
+            ->paginate(10);
     }
 
     public function getDadosRelatorio($dadosForm, $empresaAtual){

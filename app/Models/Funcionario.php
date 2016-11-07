@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
+use App\Models\Permission;
 
 class Funcionario extends Model
 {
@@ -117,8 +118,9 @@ class Funcionario extends Model
         return $this->where('id_empresa', $param)->get();
     }
 
-    public function getResultadoPesquisa($dados){
-        return $this->where(function($query) use($dados){
+    public function getResultadoPesquisa($dados, $empresaUserAtual){
+        return $this->where('id_empresa', '=', $empresaUserAtual)
+            ->where(function($query) use($dados){
             if($dados['cpf_cnpj']){
                 $query->where('cpf_cnpj', '=', "%{$dados['cpf_cnpj']}%");
             }
@@ -158,4 +160,23 @@ class Funcionario extends Model
             ->orderBy('funcionarios.nome_razao')
             ->get();
     }
+
+/*    public function cargos(){
+        return $this->belongsTo(Cargo::class, 'id_cargo');
+    }
+
+    public function hasPermission(Permission $permission){
+        return $this->hasAnyCargos($permission->cargos);
+    }
+
+    public function hasAnyCargos($cargos){
+
+        if(is_array($cargos) || is_object($cargos)){
+            foreach ($cargos as $cargo){
+                return $this->hasAnyCargos($cargo);
+            }
+        }
+
+        return $this->cargos->contains('nome', $cargos);
+    }*/
 }

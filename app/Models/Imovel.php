@@ -87,8 +87,18 @@ class Imovel extends Model
             ->paginate(1);
     }
 
-    public function getResultadoPesquisa($dados){
+    public function getVendedor($param){
+        return Cliente::join('tipos_clientes', 'clientes.id_tipo_cliente', '=', 'tipos_clientes.id')
+            ->where('clientes.id_empresa', '=', $param)
+            ->whereIn('clientes.id_tipo_cliente', [1,3])
+            ->select('clientes.*')
+            ->orderBy('clientes.nome_razao')
+            ->get();
+    }
+
+    public function getResultadoPesquisa($dados, $empresaUserAtual){
         return $this->join('tipos_imoveis', 'imoveis.id_tipo_imovel', '=', 'tipos_imoveis.id')
+            ->where('imoveis.id_empresa', '=', $empresaUserAtual)
             ->where(function($query) use($dados){
                 if($dados['codigo']){
                     $query->where('imoveis.codigo', '=', $dados['codigo']);

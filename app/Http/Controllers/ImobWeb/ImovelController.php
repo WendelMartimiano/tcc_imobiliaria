@@ -43,8 +43,9 @@ class ImovelController extends Controller
     public function getCadastraImovel(){
         $titulo = 'ImobWeb - Cadastro de Imóvel';
         $tiposImoveis = TipoImovel::orderBy('descricao')->get();
-
-        return view('imobweb.imovel.cadastra-imovel', compact('titulo', 'tiposImoveis'));
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $vendedores = $this->imovel->getVendedor($empresaUserAtual);
+        return view('imobweb.imovel.cadastra-imovel', compact('titulo', 'tiposImoveis', 'vendedores'));
     }
 
     public function postCadastraImovel(){
@@ -141,7 +142,10 @@ class ImovelController extends Controller
         $titulo = 'ImobWeb - Edição de Imóvel';
         $tiposImoveis = TipoImovel::orderBy('descricao')->get();
 
-        return view('imobweb.imovel.edita-imovel', compact('titulo', 'imovel', 'tiposImoveis'));
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $vendedores = $this->imovel->getVendedor($empresaUserAtual);
+
+        return view('imobweb.imovel.edita-imovel', compact('titulo', 'imovel', 'tiposImoveis', 'vendedores'));
     }
 
     public function postEditaImovel($id){
@@ -247,8 +251,8 @@ class ImovelController extends Controller
 
     public function postPesquisar(){
         $dadosForm = $this->request->all();
-
-        $imoveis = $this->imovel->getResultadoPesquisa($dadosForm);
+        $empresaUserAtual = Auth::user()->id_empresa;
+        $imoveis = $this->imovel->getResultadoPesquisa($dadosForm, $empresaUserAtual);
         $tiposImoveis = TipoImovel::orderBy('descricao')->get();
 
         if(count($imoveis) == 0){
@@ -334,4 +338,5 @@ class ImovelController extends Controller
 
         return view('imobweb.imovel.visualiza-imagem', compact('imobiliaria', 'item', 'codigoImovel'));
     }
+
 }

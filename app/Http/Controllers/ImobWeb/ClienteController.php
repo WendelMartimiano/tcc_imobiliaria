@@ -305,9 +305,9 @@ class ClienteController extends Controller
     }
 
     public function postPesquisar(){
-       $dadosForm = $this->request->all(); 
-       
-       $clientes = $this->cliente->getResultadoPesquisa($dadosForm);
+       $dadosForm = $this->request->all();
+       $empresaUserAtual = Auth::user()->id_empresa;
+       $clientes = $this->cliente->getResultadoPesquisa($dadosForm, $empresaUserAtual);
        
        if(count($clientes) == 0){
             $tituloTabela = 'Nenhum registro encontrado!';
