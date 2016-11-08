@@ -111,7 +111,7 @@ class Funcionario extends Model
     }
 
     public function getFuncionario($param){
-        return $this->where('id_empresa', $param)->paginate(1);
+        return $this->where('id_empresa', $param)->paginate(5);
     }
 
     public function getTotalFuncionario($param){

@@ -84,7 +84,7 @@ class Imovel extends Model
         return $this->join('tipos_imoveis', 'imoveis.id_tipo_imovel', '=', 'tipos_imoveis.id')
             ->where('imoveis.id_empresa', '=', $param)
             ->select('imoveis.*', 'tipos_imoveis.descricao as nome_tipo')
-            ->paginate(1);
+            ->paginate(5);
     }
 
     public function getVendedor($param){

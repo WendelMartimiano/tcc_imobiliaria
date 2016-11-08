@@ -28,7 +28,7 @@ class Reserva extends Model
             ->where('reservas.id_empresa', '=', $param)
             ->select('reservas.*', 'imoveis.codigo')
             ->orderBy('reservas.id')
-            ->paginate(1);
+            ->paginate(5);
     }
 
     public function getComprador($param){

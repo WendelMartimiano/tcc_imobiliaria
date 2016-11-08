@@ -5,17 +5,17 @@
 
         <ul class="nav menu">
             <li><a href="/dashboard"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
-            <li><a href="/dashboard/imoveis"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Imoveis</a></li>
-            <li><a href="/dashboard/funcionarios"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Funcionários</a></li>
-            <li><a href="/dashboard/clientes"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Clientes</a></li>
-            <li><a href="/dashboard/vendas"><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg> Vendas</a></li>
-            <li><a href="/dashboard/reservas"><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg> Reservas</a></li>
-            <li><a href="/dashboard/contratos"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Contratos</a></li>
-            <li><a href="/dashboard/relatorios"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Relatórios</a></li>
+            @shield('view.imovel')<li><a href="/dashboard/imoveis"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Imoveis</a></li>@endshield
+            @shield('view.funcionario')<li><a href="/dashboard/funcionarios"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Funcionários</a></li>@endshield
+            @shield('view.cliente')<li><a href="/dashboard/clientes"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Clientes</a></li>@endshield
+            @shield('view.venda')<li><a href="/dashboard/vendas"><svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"/></svg> Vendas</a></li>@endshield
+            @shield('view.reserva')<li><a href="/dashboard/reservas"><svg class="glyph stroked lock"><use xlink:href="#stroked-lock"/></svg> Reservas</a></li>@endshield
+            @shield('view.contrato')<li><a href="/dashboard/contratos"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Contratos</a></li>@endshield
+            @shield('view.relatorio')<li><a href="/dashboard/relatorios"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Relatórios</a></li>@endshield
 
             <li role="presentation" class="divider"></li>
-            <li><a href="/dashboard/imobiliaria"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Imobiliaria</a></li>
-            <li class="active"><a href="/dashboard/usuarios"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Usuários</a></li>
+            @shield('view.imobiliaria')<li><a href="/dashboard/imobiliaria"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Imobiliaria</a></li>@endshield
+            @shield('view.usuario')<li  class="active"><a href="/dashboard/usuarios"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Usuários</a></li>@endshield
         </ul>
 
     </div><!--/.sidebar-->
@@ -56,7 +56,11 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Buscar</button>
-                                    <a href="/dashboard/usuarios/cadastra-usuario" class="btn btn-default">Novo</a>
+                                    @shield('create.usuario')
+                                        <a href="/dashboard/usuarios/cadastra-usuario" class="btn btn-default">Novo</a>
+                                    @else
+                                        <a href="/dashboard/usuarios/cadastra-usuario" class="btn btn-default" disabled>Novo</a>
+                                    @endshield
                                 </div>
                             </div>
                         </form>
@@ -84,12 +88,24 @@
                                     <td>{{$usuario->name}}</td>
                                     <td>{{$usuario->email}}</td>
                                     <td>
-                                        <a href="/dashboard/usuarios/edita-usuario/{{$usuario->id}}" class="btn btn-success btn-xs">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                        </a>
-                                        <a href="" onclick="modalDeleta('/dashboard/usuarios/deleta-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                        </a>
+                                        @shield('edit.usuario')
+                                            <a href="/dashboard/usuarios/edita-usuario/{{$usuario->id}}" class="btn btn-success btn-xs">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </a>
+                                        @else
+                                            <a href="/dashboard/usuarios/edita-usuario/{{$usuario->id}}" class="btn btn-success btn-xs" disabled>
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </a>
+                                        @endshield
+                                        @shield('delete.usuario')
+                                            <a href="" onclick="modalDeleta('/dashboard/usuarios/deleta-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </a>
+                                        @else
+                                            <a href="" onclick="modalDeleta('/dashboard/usuarios/deleta-usuario/{{$usuario->id}}')" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal" disabled>
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </a>
+                                        @endshield
                                     </td>
                                 </tr>
                             @endforeach

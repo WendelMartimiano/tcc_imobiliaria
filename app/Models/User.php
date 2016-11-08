@@ -71,7 +71,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
     public function getUser($param){
-        return $this->where('id_empresa', $param)->paginate(1);
+        return $this->where('id_empresa', $param)->paginate(5);
     }
 
     public function getResultadoPesquisa($dados, $empresaUserAtual){

@@ -29,7 +29,7 @@ class Venda extends Model
             ->where('vendas.id_empresa', '=', $param)
             ->select('vendas.*', 'imoveis.codigo')
             ->orderBy('vendas.id')
-            ->paginate(1);
+            ->paginate(5);
     }
 
     public function getComprador($param){

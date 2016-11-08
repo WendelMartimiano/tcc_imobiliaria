@@ -99,7 +99,7 @@ class Cliente extends Model
         return $this->join('tipos_clientes', 'clientes.id_tipo_cliente', '=', 'tipos_clientes.id')
             ->where('clientes.id_empresa', '=', $param)
             ->select('clientes.*', 'tipos_clientes.descricao')
-            ->paginate(1);
+            ->paginate(5);
     }
 
     public function getResultadoPesquisa($dados, $empresaUserAtual){
