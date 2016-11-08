@@ -25,7 +25,7 @@ class CargosSeeder extends Seeder
                 'data_cadastro'     =>  '01082016'
             ],
             3   =>  [
-                'nome'              =>  'AUXILIAR GERENTE',
+                'nome'              =>  'AUXILIAR ADMINISTRATIVO',
                 'data_cadastro'     =>  '01082016'
             ]
         ];

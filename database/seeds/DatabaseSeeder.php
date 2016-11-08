@@ -16,15 +16,18 @@ class DatabaseSeeder extends Seeder
 
         // $this->call('UserTableSeeder');
 
-//        $this->call('PlanosSeeder');
-//        $this->call('OpcoesSeeder');
-//        $this->call('CargosSeeder');
-//        $this->call('OpcoesPlanosSeeder');
-//        $this->call('TiposClientesSeeder');
-//        $this->call('EmpresasSeeder');
-//        $this->call('UsuariosSeeder');
-//        $this->call('TiposImoveisSeeder');
-//        $this->call('TiposContratosSeeder');
+        $this->call('PlanosSeeder');
+        $this->call('OpcoesSeeder');
+        $this->call('CargosSeeder');
+        $this->call('OpcoesPlanosSeeder');
+        $this->call('TiposClientesSeeder');
+        $this->call('EmpresasSeeder');
+        $this->call('UsuariosSeeder');
+        $this->call('TiposImoveisSeeder');
+        $this->call('TiposContratosSeeder');
+        $this->call('ClienteSeeder');
+        $this->call('FuncionarioSeeder');
+        $this->call('ImovelSeeder');
         $this->call('DefenderSeeder');
 
         Model::reguard();

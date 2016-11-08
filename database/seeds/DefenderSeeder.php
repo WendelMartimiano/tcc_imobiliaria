@@ -117,9 +117,15 @@ class DefenderSeeder extends Seeder
          * ATRIBUIR USUÁRIO AO GRUPO
          */
         $user1 = User::find(1);
-        $user1->attachRole($grupoGerente);
+        $user1->attachRole($grupoAuxAdm);
 
         $user2 = User::find(2);
+        $user2->attachRole($grupoGerente);
+
+        $user2 = User::find(3);
+        $user2->attachRole($grupoCorretor);
+
+        $user2 = User::find(4);
         $user2->attachRole($grupoCorretor);
     }
 }

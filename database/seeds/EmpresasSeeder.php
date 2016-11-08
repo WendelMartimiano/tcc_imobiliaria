@@ -13,11 +13,11 @@ class EmpresasSeeder extends Seeder
     {
         $empresas = [
             0   =>  [
-                'razao_social'         =>  'Wendel & Taisa - Agência de Desenvolvimento',
-                'nome_fantasia'        =>  'EndSystem',
+                'razao_social'         =>  'ADP Imobiliária',
+                'nome_fantasia'        =>  'ADP',
                 'cnpj'                 =>  '34301387000138',
                 'inscricao'            =>  '1111111111',
-                'email'                =>  'endsystem@outlook.com',
+                'email'                =>  'adp@gmail.com',
                 'telefone'             =>  '16991765753',
                 'cep'                  =>  '14407624',
                 'rua'                  =>  'Rua Dorivaldo Chioca',
@@ -26,8 +26,42 @@ class EmpresasSeeder extends Seeder
                 'cidade'               =>  'Franca',
                 'uf'                   =>  'SP',
                 'creci'                =>  '123131',
-                'id_plano'             =>  '3',
-                'data_confirmacao'     =>  '2016-09-30'
+                'data_confirmacao'     =>  '2016-09-30',
+                'id_plano'             =>  '3'
+            ],
+            1   =>  [
+                'razao_social'         =>  'Villa Imóveis LTDA',
+                'nome_fantasia'        =>  'Villa Imóveis',
+                'cnpj'                 =>  '74058208000106',
+                'inscricao'            =>  '1111111111',
+                'email'                =>  'vila_imoveis@gamil.com',
+                'telefone'             =>  '16991765753',
+                'cep'                  =>  '14407624',
+                'rua'                  =>  'Rua Dorivaldo Chioca',
+                'numero'               =>  '2955',
+                'bairro'               =>  'Jardim Luiza II',
+                'cidade'               =>  'Franca',
+                'uf'                   =>  'SP',
+                'creci'                =>  '123131',
+                'data_confirmacao'     =>  '2016-09-30',
+                'id_plano'             =>  '3'
+            ],
+            2   =>  [
+                'razao_social'         =>  'Espaço Nobre LTDA',
+                'nome_fantasia'        =>  'Espaço Nobre',
+                'cnpj'                 =>  '66193017000110',
+                'inscricao'            =>  '1111111111',
+                'email'                =>  'espaco_nobre@gmail.com',
+                'telefone'             =>  '16991765753',
+                'cep'                  =>  '14407624',
+                'rua'                  =>  'Rua Dorivaldo Chioca',
+                'numero'               =>  '2955',
+                'bairro'               =>  'Jardim Luiza II',
+                'cidade'               =>  'Franca',
+                'uf'                   =>  'SP',
+                'creci'                =>  '123131',
+                'data_confirmacao'     =>  NULL,
+                'id_plano'             =>  '3'
             ]
         ];
 
