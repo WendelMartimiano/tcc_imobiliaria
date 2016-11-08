@@ -74,6 +74,7 @@
 					</div>
 				</div>
 			</div>
+			@shield('view.funcionario')
 			<div class="col-xs-12 col-md-6 col-lg-3">
 				<div class="panel panel-red panel-widget">
 					<div class="row no-padding">
@@ -87,6 +88,7 @@
 					</div>
 				</div>
 			</div>
+			@endshield
 		</div>
 	</div>
 @endsection

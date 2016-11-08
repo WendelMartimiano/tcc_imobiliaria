@@ -150,6 +150,9 @@ return [
         /*Snappy gerador de PDF*/
         Barryvdh\Snappy\ServiceProvider::class,
 
+        /*Defender ACL*/
+        'Artesaos\Defender\Providers\DefenderServiceProvider',
+
     ],
 
     /*
@@ -200,7 +203,7 @@ return [
 
         'PDF'       => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'Image'     => Barryvdh\Snappy\Facades\SnappyImage::class,
-
+        'Defender' => 'Artesaos\Defender\Facades\Defender',
     ],
 
 ];

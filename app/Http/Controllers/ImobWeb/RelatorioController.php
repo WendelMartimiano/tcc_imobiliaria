@@ -73,7 +73,7 @@ class RelatorioController extends Controller
         $empresaUserAtual = Auth::user()->id_empresa;
 
         $funcionario = $this->funcionario->getDadosRelatorio($dadosForm, $empresaUserAtual);
-
+        //dd($funcionario);
         return PDF::loadView('imobweb.relatorio.relatorio-funcionario-pdf', ['funcionarios'=> $funcionario])->download('relatório-funcionário.pdf');
     }
 
