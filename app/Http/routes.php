@@ -21,14 +21,18 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
  * GRUPO DE ROTAS DO SITE IMOBWEB
  */
 Route::group(['prefix' => 'site'], function () {
-
-   // Route::get('teste/{mensagem}', 'Site\UsuarioController@postMailConfirmacao');
+//    Route::get('teste/{mensagem}', 'Site\UsuarioController@postMailConfirmacao');
+//    Route::get('cadastro-confirmacao/{titulo?}', function ($titulo = 'Confirmação de Cadastro') {
+//        return view('site.confirma_cadastro', compact('titulo'));
+//    });
 
     Route::get('confirmacao/{titulo?}', function ($titulo = 'Confirmação de E-mail') {
         return view('site.confirma_email', compact('titulo'));
     });
     Route::get('usuario/{id}', 'Site\UsuarioController@getIndex');
     Route::post('usuario', 'Site\UsuarioController@postAdicionarUsuario');
+    Route::get('empresa/confirmacao-empresa/{id}', 'Site\EmpresaController@getConfirmacaoEmpresa');
+    Route::get('empresa/confirmacao/{id}', 'Site\EmpresaController@getConfirmacao');
     Route::get('empresa/{id}', 'Site\EmpresaController@getIndex');
     Route::post('empresa', 'Site\EmpresaController@postAdicionarEmpresa');
     Route::post('send_mail', 'Site\PlanoController@postMailContato');

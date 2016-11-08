@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use App\Models\Empresa;
+use Auth;
 
 class RedirectIfAuthenticated
 {
@@ -34,8 +36,17 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next)
     {
+
         if ($this->auth->check()) {
-            return redirect('/dashboard');
+
+            $empresaUserAtual = Auth::user()->id_empresa;
+            $dataConfirmacao = Empresa::find($empresaUserAtual);
+
+            if ($dataConfirmacao->data_confirmacao){
+                return redirect('/dashboard');
+            }
+
+            return view('errors.not-confirmed');
         }
 
         return $next($request);

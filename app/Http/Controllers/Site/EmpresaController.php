@@ -117,4 +117,19 @@ class EmpresaController extends Controller
         return $lastId;
     }
 
+    public function getConfirmacao($id){
+        $idEmpresa = $id;
+        $titulo = 'Confirmação de Cadastro';
+
+        return view('site.confirma_cadastro', compact('titulo', 'idEmpresa'));
+    }
+
+    public function getConfirmacaoEmpresa($id){
+        $empresa = $this->empresa->find($id);
+        //dd($empresa);
+        $empresa->fill(['data_confirmacao' => date('Y/m/d')]);
+        $empresa->save();
+
+        return redirect('/login');
+    }
 }

@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6994e7ad-1884-41f7-a45e-1ef1b629665d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Models/Iteracao.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Models/StatusChamado.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/migrations/2016_05_30_195134_create_iteracoes_table.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/migrations/2016_05_30_200534_create_status_chamados_table.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/migrations/2016_05_30_201109_create_chamados_table.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Models/Chamado.php" afterPath="$PROJECT_DIR$/app/Models/Permission.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ClienteController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ClienteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/FuncionarioController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/FuncionarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ImovelController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ImovelController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/UsuarioController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/UsuarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Cliente.php" afterPath="$PROJECT_DIR$/app/Models/Cliente.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Funcionario.php" afterPath="$PROJECT_DIR$/app/Models/Funcionario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Imovel.php" afterPath="$PROJECT_DIR$/app/Models/Imovel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/User.php" afterPath="$PROJECT_DIR$/app/Models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_31_060239_create_clientes_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_31_060239_create_clientes_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_31_064144_create_funcionarios_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_31_064144_create_funcionarios_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/imobweb/imovel/cadastra-imovel.blade.php" afterPath="$PROJECT_DIR$/resources/views/imobweb/imovel/cadastra-imovel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/imobweb/imovel/edita-imovel.blade.php" afterPath="$PROJECT_DIR$/resources/views/imobweb/imovel/edita-imovel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/EmpresaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/EmpresaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="ImobWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +32,75 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="218">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+            <state relative-caret-position="323">
+              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticatesAndRegistersUsers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesAndRegistersUsers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticatesUsers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="92" selection-end-column="44" />
+              <folding>
+                <element signature="e#46#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedirectIfAuthenticated.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="547">
+              <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+              <folding>
+                <element signature="e#39#51#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="not-confirmed.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/errors/not-confirmed.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="48" column="103" selection-start-line="48" selection-start-column="103" selection-end-line="48" selection-end-column="103" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="404.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/errors/404.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="547">
+              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -66,13 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Models/Reserva.php" />
-        <option value="$PROJECT_DIR$/app/Models/Venda.php" />
-        <option value="$PROJECT_DIR$/public/assets/imobweb/css/styles.css" />
-        <option value="$PROJECT_DIR$/resources/views/imobweb/relatorios.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ReservaController.php" />
-        <option value="$PROJECT_DIR$/resources/views/imobweb/relatorio/relatorio-imovel-pdf.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/imobweb/relatorio/relatorio-funcionario-pdf.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/RelatorioController.php" />
         <option value="$PROJECT_DIR$/resources/views/imobweb/relatorio/relatorio-cliente-pdf.blade.php" />
@@ -117,6 +158,13 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_05_31_060239_create_clientes_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_31_064144_create_funcionarios_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ImovelController.php" />
+        <option value="$PROJECT_DIR$/resources/views/site/confirma_cadastro.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Site/EmpresaController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" />
+        <option value="$PROJECT_DIR$/resources/views/errors/not-confirmed.blade.php" />
+        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
       </list>
     </option>
   </component>
@@ -247,6 +295,54 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="site">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tcc_imobiliaria">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="site">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="emails">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tcc_imobiliaria">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="imobweb">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -273,7 +369,29 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="imovel">
+            <PATH_ELEMENT USER_OBJECT="reserva">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tcc_imobiliaria">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="errors">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -315,43 +433,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="database">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="migrations">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="tcc_imobiliaria">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="tcc_imobiliaria">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Models">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -370,6 +452,28 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="Http">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tcc_imobiliaria">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Http">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Middleware">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -417,7 +521,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ImobWeb">
+            <PATH_ELEMENT USER_OBJECT="Auth">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -612,12 +716,12 @@
       <workItem from="1478352455198" duration="5221000" />
       <workItem from="1478361736337" duration="5566000" />
       <workItem from="1478389540125" duration="22082000" />
-      <workItem from="1478447943715" duration="48782000" />
+      <workItem from="1478447943715" duration="59299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="834299000" />
+    <option name="totallyTimeSpent" value="844816000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -670,144 +774,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assets/imobweb/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="370" column="8" selection-start-line="370" selection-start-column="1" selection-end-line="370" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_09_31_125248_create_reservas_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="26" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_11_07_114606_create_permissions_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/UsuarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1326">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/imovel/visualiza-imagem.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/relatorio/relatorio-cliente-pdf.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Cargo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Permission.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#75#133#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ClienteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="304" column="5" selection-start-line="304" selection-start-column="5" selection-end-line="304" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/venda/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/venda/cadastra-venda.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="158" selection-start-line="16" selection-start-column="158" selection-end-line="16" selection-end-column="158" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/usuario/cadastra-usuario.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/usuario/edita-usuario.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="158" selection-start-line="16" selection-start-column="158" selection-end-line="16" selection-end-column="158" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/usuario/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="158" selection-start-line="16" selection-start-column="158" selection-end-line="16" selection-end-column="158" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/reserva/cadastra-reserva.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/reserva/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="158" selection-start-line="16" selection-start-column="158" selection-end-line="16" selection-end-column="158" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/imobweb/relatorio/relatorio-imovel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -952,14 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ReservaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1116">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Reserva.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1085">
@@ -1045,7 +1003,7 @@
         <state relative-caret-position="-1224">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
+            <element signature="e#30#69#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1058,14 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ImovelController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -1074,11 +1024,250 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/site/emails/contato.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/UsuarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1377">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/site/emails/confirmacao.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/site/confirma_email.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="287" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="308" selection-end-column="14" />
+          <folding>
+            <marker date="1476641248443" expanded="true" signature="192:350" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="227:339" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="4782:4815" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="4786:4815" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="4790:4815" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="4968:5063" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="5001:5063" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="5038:5063" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="9159:9192" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="9163:9192" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="9167:9192" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="9345:9440" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="9378:9440" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="9415:9440" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="18633:18666" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="18637:18666" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="18641:18666" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="18819:18914" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="18852:18914" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="18889:18914" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="26212:26245" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="26216:26245" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="26220:26245" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="26398:26493" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="26431:26493" ph="..." />
+            <marker date="1476641248443" expanded="true" signature="26468:26493" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/site/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="117" column="18" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/ReservaController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/site/confirma_cadastro.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="251" column="119" selection-start-line="251" selection-start-column="119" selection-end-line="251" selection-end-column="119" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#strong#0;n#span#0;n#p#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13848#13854#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#1;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#strong#0;n#span#0;n#p#1;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14108#14114#0#HTML" expanded="true" />
+            <element signature="e#14128#14134#0#HTML" expanded="true" />
+            <element signature="e#14135#14141#0#HTML" expanded="true" />
+            <element signature="e#21855#21861#0#HTML" expanded="true" />
+            <element signature="e#21874#21880#0#HTML" expanded="true" />
+            <element signature="e#21880#21886#0#HTML" expanded="true" />
+            <element signature="e#21924#21930#0#HTML" expanded="true" />
+            <element signature="e#21946#21952#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#0;n#tbody#0;n#table#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#26417#26423#0#HTML" expanded="true" />
+            <element signature="e#26423#26429#0#HTML" expanded="true" />
+            <marker date="1478559765789" expanded="true" signature="192:350" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="227:339" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="4782:4815" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="4786:4815" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="4790:4815" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="4968:5063" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="5001:5063" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="5038:5063" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="9159:9192" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="9163:9192" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="9167:9192" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="9345:9440" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="9378:9440" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="9415:9440" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="18991:19024" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="18995:19024" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="18999:19024" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="19177:19272" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="19210:19272" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="19247:19272" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="23090:23137" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="23138:23823" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="23655:23745" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="23746:23823" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="30167:30200" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="30171:30200" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="30175:30200" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="30353:30448" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="30386:30448" ph="..." />
+            <marker date="1478559765789" expanded="true" signature="30423:30448" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/imobweb/reserva/contrato-reserva-pdf.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="427" column="16" selection-start-line="427" selection-start-column="16" selection-end-line="427" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/EmpresasSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/errors/404.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImobWeb/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Site/EmpresaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1578">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/errors/not-confirmed.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="48" column="103" selection-start-line="48" selection-start-column="103" selection-end-line="48" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesAndRegistersUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="92" selection-end-column="44" />
+          <folding>
+            <element signature="e#46#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding>
+            <element signature="e#39#51#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
